@@ -1,3 +1,5 @@
 # SOA_Group6
-### Payang.com
-Repository for SOA Mini Project
+### Technology ที่ใช้ในระบบ
+- React.js
+- Spring Boot 2 (Java)
+- MongoDB
