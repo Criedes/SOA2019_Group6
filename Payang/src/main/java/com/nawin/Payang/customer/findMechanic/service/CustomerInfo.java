@@ -1,10 +1,12 @@
 package com.nawin.Payang.customer.findMechanic.service;
 
 import com.nawin.Payang.customer.findMechanic.model.CustomerData;
+import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class CustomerInfo {
 
     Map<String, CustomerData> customerList = new HashMap<String, CustomerData>();
@@ -18,11 +20,4 @@ public class CustomerInfo {
 
     }
 
-    public Map<String, CustomerData> getCustomerList() {
-        return customerList;
-    }
-
-    public void setMechanicList(Map<String, CustomerData> customerList) {
-        this.customerList = customerList;
-    }
 }

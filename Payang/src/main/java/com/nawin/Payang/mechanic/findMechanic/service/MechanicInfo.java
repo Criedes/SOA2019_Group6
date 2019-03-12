@@ -2,9 +2,11 @@ package com.nawin.Payang.mechanic.findMechanic.service;
 
 import com.nawin.Payang.mechanic.findMechanic.controller.FindMechanicController;
 import com.nawin.Payang.mechanic.findMechanic.model.MechanicData;
+import lombok.Data;
 
 import java.util.*;
 
+@Data
 public class MechanicInfo {
 
     Map<String, MechanicData> mechanicList = new HashMap<String, MechanicData>();
@@ -27,26 +29,6 @@ public class MechanicInfo {
 
     }
 
-    public Map<String, MechanicData> getMechanicList() {
-        return mechanicList;
-    }
-
-    public void setMechanicList(Map<String, MechanicData> mechanicList) {
-        this.mechanicList = mechanicList;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MechanicInfo that = (MechanicInfo) o;
-        return Objects.equals(mechanicList, that.mechanicList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(mechanicList);
-    }
 
 }
 

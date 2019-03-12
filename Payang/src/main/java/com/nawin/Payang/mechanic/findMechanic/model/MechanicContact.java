@@ -1,7 +1,10 @@
 package com.nawin.Payang.mechanic.findMechanic.model;
 
+import lombok.Data;
+
 import java.util.Objects;
 
+@Data
 public class MechanicContact {
     private String tel ;
     private String line;
@@ -15,33 +18,4 @@ public class MechanicContact {
 
     }
 
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public String getLine() {
-        return line;
-    }
-
-    public void setLine(String line) {
-        this.line = line;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MechanicContact that = (MechanicContact) o;
-        return Objects.equals(tel, that.tel) &&
-                Objects.equals(line, that.line);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(tel, line);
-    }
 }
