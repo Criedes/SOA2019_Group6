@@ -3,14 +3,12 @@ package com.nawin.Payang.mechanic.findMechanic.service;
 import com.nawin.Payang.mechanic.findMechanic.controller.FindMechanicController;
 import com.nawin.Payang.mechanic.findMechanic.model.MechanicData;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MechanicInfo {
 
     Map<String, MechanicData> mechanicList = new HashMap<String, MechanicData>();
+
     public MechanicInfo(){
         MechanicData a5kei8d790fw09bvcoevc = new MechanicData(
                 "jameonline","cf23df2207d99a74fbe169e3eba035e633b65d94","Chang James Shop"
@@ -36,5 +34,19 @@ public class MechanicInfo {
     public void setMechanicList(Map<String, MechanicData> mechanicList) {
         this.mechanicList = mechanicList;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MechanicInfo that = (MechanicInfo) o;
+        return Objects.equals(mechanicList, that.mechanicList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mechanicList);
+    }
+
 }
 

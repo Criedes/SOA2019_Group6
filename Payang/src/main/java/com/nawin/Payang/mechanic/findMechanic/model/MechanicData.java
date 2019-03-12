@@ -1,5 +1,7 @@
 package com.nawin.Payang.mechanic.findMechanic.model;
 
+import java.util.Objects;
+
 public class MechanicData {
 
     private String username;
@@ -131,5 +133,28 @@ public class MechanicData {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MechanicData that = (MechanicData) o;
+        return number_of_customer == that.number_of_customer &&
+                Objects.equals(username, that.username) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(garage_name, that.garage_name) &&
+                Objects.equals(mechanic_name, that.mechanic_name) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(addressCoordinate, that.addressCoordinate) &&
+                Objects.equals(mechanicPrice, that.mechanicPrice) &&
+                Objects.equals(join_date, that.join_date) &&
+                Objects.equals(contact, that.contact) &&
+                Objects.equals(status, that.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, password, garage_name, mechanic_name, address, addressCoordinate, mechanicPrice, number_of_customer, join_date, contact, status);
     }
 }
