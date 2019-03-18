@@ -4,14 +4,19 @@ const bcrypt = require('bcrypt');
 const fs = require('fs');
 const app = express()
 
-port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+var jsonParser = bodyParser.json()
 app.use(urlencodedParser = bodyParser.urlencoded({ extended: false }))
 
+app.use(bodyParser.json());
+
 const loginController = require('./src/login/controller/loginController');
+const mechanicsController = require('./src/mechanics/controller/mechanicsController')
 app.use('/api/login', loginController);
 
-app.listen(port, function () {
+
+app.use('/api/mechanics',mechanicsController)
+
+app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 })
