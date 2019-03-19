@@ -31,7 +31,8 @@ use command. `npm start`
 
 | Event                     | Description                                   | 
 |---------------------------|---------------------------------------------|
-| `/api/customer/:id` |  get information of customer by ID.| 
+| `/api/customer/:id` |  get information of customer by ID.|
+| `/api/customer/register` |  post request body to save in Database.| 
 
 # Test Endpoint
 1. make sure your computer be installed mongoDB and MongoShell started already.
