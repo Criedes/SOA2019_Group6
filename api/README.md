@@ -1,4 +1,4 @@
-# How to use Service
+# How to run Service
 ### Set Up MongoDB
 1. make sure your computer be installed mongoDB and MongoShell started already.
  2. import mockup database use this command.
