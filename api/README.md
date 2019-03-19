@@ -27,6 +27,12 @@ use command. `npm start`
 |---------------------------|---------------------------------------------|
 | `/api/login` |  post request body to compile with hash password for login. | 
 
+# Customer Endpoint
+
+| Event                     | Description                                   | 
+|---------------------------|---------------------------------------------|
+| | 
+
 # Test Endpoint
 1. make sure your computer be installed mongoDB and MongoShell started already.
 2. cd to directory 'api'
