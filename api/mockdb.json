@@ -1,0 +1,6 @@
+{
+    "email": "test@email.com",
+    "salt": "$2a$16$h.2gxUlvefpdhV/Dh1/SCe",
+    "hash": "$2a$16$h.2gxUlvefpdhV/Dh1/SCe.xzkYbQxrbukznWySLvefgx10cITr.",
+    "iterations": 10000
+}
