@@ -1,5 +1,5 @@
 const request = require('supertest');
-const server = require('../../server');
+const server = require('../../server')
 
 beforeAll(async () => {
     console.log('Start testing with Jest');

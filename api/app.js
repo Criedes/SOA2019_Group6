@@ -14,5 +14,4 @@ const loginController = require('./src/login/controller/loginController');
 const mechanicsController = require('./src/mechanics/controller/mechanicsController')
 app.use('/api/login', loginController);
 app.use('/api/mechanics',mechanicsController)
-
 module.exports = app

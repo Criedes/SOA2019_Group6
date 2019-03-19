@@ -54,7 +54,7 @@ exports.updateCountById = (req,res)=>{
     async function updateCount(){
         const _id = req.params.id
         const result =await findMechanicSchema.findOneAndUpdate({ _id:_id }, { $inc: { number_of_customer: 1 } }, {new: true })
-        res.json(result)
+        res.status(200).json(result)
     }
     updateCount();
 }

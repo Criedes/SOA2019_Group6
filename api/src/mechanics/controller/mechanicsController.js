@@ -17,9 +17,9 @@ router.get('/find/:id', mechanicService.findMechanicById)
 router.get('/find/garage/:shopname', mechanicService.findMechanicByShopName)
 
 //update Status ( change toggle )
-router.get('/updatestatus/:id', mechanicService.updateStatusById)
+router.put('/updatestatus/:id', mechanicService.updateStatusById)
 
 //update counter of customer
-router.get('/updatecounter/:id', mechanicService.updateCountById)
+router.put('/updatecounter/:id', mechanicService.updateCountById)
 
 module.exports = router;
