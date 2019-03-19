@@ -25,24 +25,18 @@ exports.PostLogin = (req, res) => {
                     //ถ้า result == true รหัสผ่านตรง
                     res.status('200').json({
                         success: true,
-                        email: true,
-                        password: true,
                     })
                 }
                 else {
                     //ถ้า result == false รหัสผ่านไม่ตรง
                     res.status('400').json({
                         success: false,
-                        email: true,
-                        password: false,
                     })
                 }
             }
             else {
                 res.status('400').json({
                     success: false,
-                    email: false,
-                    password: false
                 })
             }
         }
