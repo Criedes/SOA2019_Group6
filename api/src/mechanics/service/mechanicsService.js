@@ -36,14 +36,14 @@ exports.updateStatusById = (req,res)=>{
                     status:false
                 }
             },{ new : true})
-            res.json(result_updated)
+            res.status(200).json(result_updated)
         }else{
             const result_updated = await findMechanicSchema.update({"_id":id},{
                 $set:{
                     status:true
                 }
             },{ new : true})
-            res.json(result_updated)
+            res.status(200).json(result_updated)
         }
     }
     checkStatus()

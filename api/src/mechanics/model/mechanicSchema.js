@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/payang', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/payang', { useNewUrlParser: true })
 
 const mechanicSchema = mongoose.Schema({
     username : String,
