@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/payang', { useNewUrlParser: true })
+const mongoose = require('../../../config/db')
 
 const mechanicSchema = mongoose.Schema({
     username : String,

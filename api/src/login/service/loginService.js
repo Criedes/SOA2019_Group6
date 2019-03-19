@@ -1,5 +1,15 @@
 const fs = require('fs');
 const bcrypt = require('bcrypt');
+// const loginSchema = require('../model/loginSchema')
+
+exports.getLogin = (req, res) => {
+    // async function getAuthen (){
+    //     const at = await loginSchema.find()
+    //     res.status(200).json(at)
+    // }
+    // getAuthen();
+    res.status(200).json({ success: true })
+}
 
 exports.PostLogin = (req, res) => {
     const email = req.body.email;

@@ -1,7 +1,9 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var loginSchema = new Schema({
+const mongoose = require('../../../config/db')
+const loginSchema = mongoose.Schema({
   email: String,
-  password: String
+  salt: String,
+  hash: String
 });
+
+const LoginSchema = mongoose.model('user_authen', loginSchema)
+module.exports = LoginSchema

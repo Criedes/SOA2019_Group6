@@ -1,6 +1,1 @@
-{
-    "email": "test@email.com",
-    "salt": "$2b$10$0xq4NlNRuRkshi",
-    "hash": "$2b$10$0xq4NlNRuRkshi.SOnjYlujyQjXk3olYi3Xnzj1A/4DTauMgiagnq",
-    "iterations": 10
-}
+{"_id":{"$oid":"5c90c5fb633c283f67a82be7"},"email":"test@email.com","salt":"$2b$10$0xq4NlNRuRkshi","hash":"$2b$10$0xq4NlNRuRkshi.SOnjYlujyQjXk3olYi3Xnzj1A/4DTauMgiagnq"}
