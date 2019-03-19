@@ -8,7 +8,7 @@
 ### Install node module
 use command. `npm install`
 
-### Start a server
+### Start server to run a service
 use command. `npm start`
 
 # Mechanic Endpoint
