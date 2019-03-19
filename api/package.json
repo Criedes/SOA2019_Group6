@@ -2,18 +2,26 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "jest": "^24.5.0"
+    "mongoose": "^5.0.1",
+    "nodemon": "^1.18.10"
+  },
+  "devDependencies": {
+    "jest": "^24.5.0",
+    "supertest": "^4.0.2"
   }
 }
