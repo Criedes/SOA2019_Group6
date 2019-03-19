@@ -21,7 +21,13 @@ use command. `npm start`
 | `/api/mechanics/updatestatus/:id` | update status of mechanic by ID. | 
 | `/api/mechanics/updatecounter/:id` | increate a number of customer of mechanic by ID.|
 
-# Test Mechanic Endpoint
+# Login Endpoint
+
+| Event                     | Description                                   | 
+|---------------------------|---------------------------------------------|
+| `/api/login` |  post request body to compile with hash password for login. | 
+
+# Test Endpoint
 1. make sure your computer be installed mongoDB and MongoShell started already.
 2. cd to directory 'api'
 3. run test by this command `npm test`
