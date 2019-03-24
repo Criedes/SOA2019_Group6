@@ -12,6 +12,8 @@ app.use(bodyParser.json());
 
 const loginController = require('./src/login/controller/loginController');
 const mechanicsController = require('./src/mechanics/controller/mechanicsController')
+const customerController = require('./src/customer/controller/customerController');
 app.use('/api/login', loginController);
 app.use('/api/mechanics',mechanicsController)
+app.use('/api/customer', customerController);
 module.exports = app

@@ -9,7 +9,7 @@ router.use(bodyParser.json());
 // GET customer by ID
 router.get('/:id', customerService.getCustomerById);
 
-// POST customer
+// POST customer information
 router.post('/register', customerService.registerCustomer);
 
 module.exports = router;
