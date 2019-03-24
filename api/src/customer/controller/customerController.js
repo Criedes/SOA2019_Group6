@@ -1,18 +1,15 @@
-// Variables
-const router = require('express').Router();
+const express = require('express');
+const customerService = require('../service/customerService');
 const bodyParser = require('body-parser');
-const mock_model = require('../model/mock_model.js');
+const router = express.Router();
 
-// Middleware
+router.use(bodyParser.urlencoded({ extended : true }));
 router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: true }));
 
-// Routes & HTTP Methods
-router.get('/:id', (req, res) => {
-    res.json(mock_model);
-});
-router.post('/register', (req, res) => {
-    res.send({ status : "Registered"});
-});
+// GET customer by ID
+router.get('/:id', customerService.getCustomerById);
+
+// POST customer
+router.post('/register', customerService.registerCustomer);
 
 module.exports = router;
