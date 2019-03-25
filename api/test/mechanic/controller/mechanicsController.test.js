@@ -4,7 +4,7 @@ const server = require('../../../app')
 
 describe('/api/mechanics',()=>{
     beforeAll(async ()=>{
-        console.log('change port to 3001 to test')
+        console.log('change port to 3000 to test')
     })
 
     afterAll(()=>{
@@ -21,14 +21,31 @@ describe('/api/mechanics',()=>{
 
     describe('GET /find/:id', ()=>{
         it('should return mechanic by id', async ()=>{
-            const res = await request(server).get('/api/mechanics/find/5c9001f5cf9f9075a756e419')
+            let test_Id = '5c9001f5cf9f9075a756e419'
+            const res = await request(server).get('/api/mechanics/find/'+test_Id)
+
+            expect(res.body[0]).toHaveProperty("username", "jameonline")
+            expect(res.body[0]).toHaveProperty("coordinate", { lat: '29.001993213', lng: '18.09002313' })
+            expect(res.body[0]).toHaveProperty("_id", '5c9001f5cf9f9075a756e419' )
+            expect(res.body[0]).toHaveProperty("garagename", 'Chang James Shop' )
+            expect(res.body[0]).toHaveProperty("join_date", '12/1/2019' )
+            expect(res.body[0]).toHaveProperty("contact", '099-9999999' )
+            expect(res.body[0]).toHaveProperty("machanic_name", 'Bratt Pitch' )
             expect(res.status).toBe(200)
         })
     })
 
     describe('GET /find/garage/:garagename', ()=>{
         it('should return mechanic information by garage name', async ()=>{
-            const res = await request(server).get('/api/mechanics/find/garage/Koon%20Shop')
+            let test_garage_name = 'Chang James Shop'
+            const res = await request(server).get('/api/mechanics/find/garage/'+test_garage_name)
+            expect(res.body[0]).toHaveProperty("username", "jameonline")
+            expect(res.body[0]).toHaveProperty("coordinate", { lat: '29.001993213', lng: '18.09002313' })
+            expect(res.body[0]).toHaveProperty("_id", '5c9001f5cf9f9075a756e419' )
+            expect(res.body[0]).toHaveProperty("garagename", 'Chang James Shop' )
+            expect(res.body[0]).toHaveProperty("join_date", '12/1/2019' )
+            expect(res.body[0]).toHaveProperty("contact", '099-9999999' )
+            expect(res.body[0]).toHaveProperty("machanic_name", 'Bratt Pitch' )
             expect(res.status).toBe(200)
         })
     })
