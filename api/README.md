@@ -20,6 +20,7 @@ use command. `npm start`
 | `/api/mechanics/find/garage/:shopname` | get information of mechanic by Garage name ( shop name ). | 
 | `/api/mechanics/updatestatus/:id` | update status of mechanic by ID. | 
 | `/api/mechanics/updatecounter/:id` | increate a number of customer of mechanic by ID.|
+| `/api/mechanics/register` | register new mechanic by request body.|
 
 # Login Endpoint
 
@@ -31,8 +32,8 @@ use command. `npm start`
 
 | Event                     | Description                                   | 
 |---------------------------|---------------------------------------------|
-| `/api/customer/:id` |  get information of customer by ID.|
-| `/api/customer/register` |  post request body to save in Database.| 
+| `/api/customers/:id` |  get information of customer by ID.|
+| `/api/customers/register` |  post request body to save in Database.| 
 
 # Test Endpoint
 1. make sure your computer be installed mongoDB and MongoShell started already.
