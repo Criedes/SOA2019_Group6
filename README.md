@@ -4,6 +4,9 @@
 - NodeJS
 - MongoDB
 
+### Deploy API
+```http://35.231.183.143:3000/{endpoint}```
+
 # How to run API
 
 ### Require Software
