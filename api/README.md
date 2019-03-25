@@ -5,7 +5,7 @@ use command `cd request`
 
 ### Set Up MongoDB
 1. make sure your computer be installed mongoDB and MongoShell started already.
- 2. import mockup database use this command.
+2. import mockup database use this command.
  
  `mongoimport --db notification --collection mechanics --file mechanics.json`
  
@@ -22,8 +22,7 @@ use command. `npm start`
 | `/api/request:id` |  update status to request mechanic to fix with mechnicId | 
 ### Test Endpoint
 1. make sure your computer be installed mongoDB and MongoShell started already.
-2. cd to directory 'api'
-3. run test by this command `npm test`
+2. run test by this command `npm test`
 
 
 ## Other Service
