@@ -4,6 +4,7 @@
  2. import mockup database use this command.
  
  `mongoimport --db payang --collection mechanics --file mechanics.json`
+ `mongoimport --db payang --collection customers --file customers.json`
 
 ### Install node module
 use command. `npm install`
