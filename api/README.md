@@ -1,4 +1,32 @@
 # How to run Service
+## Request Service
+### Change Directory
+use command `cd request`
+
+### Set Up MongoDB
+1. make sure your computer be installed mongoDB and MongoShell started already.
+ 2. import mockup database use this command.
+ 
+ `mongoimport --db notification --collection mechanics --file mechanics.json`
+ 
+### Install node module
+use command. `npm install`
+
+### Start server to run a service
+use command. `npm start`
+
+### Request Endpoint
+
+| Event                     | Description                                   | 
+|---------------------------|---------------------------------------------|
+| `/api/request:id` |  update status to request mechanic to fix with mechnicId | 
+### Test Endpoint
+1. make sure your computer be installed mongoDB and MongoShell started already.
+2. cd to directory 'api'
+3. run test by this command `npm test`
+
+
+## Other Service
 ### Set Up MongoDB
 1. make sure your computer be installed mongoDB and MongoShell started already.
  2. import mockup database use this command.
