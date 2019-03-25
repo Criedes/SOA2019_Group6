@@ -20,6 +20,7 @@ use command. `npm start`
 | `/api/mechanics/find/garage/:shopname` | get information of mechanic by Garage name ( shop name ). | 
 | `/api/mechanics/updatestatus/:id` | update status of mechanic by ID. | 
 | `/api/mechanics/updatecounter/:id` | increate a number of customer of mechanic by ID.|
+| `/api/mechanics/register` | register new mechanic by request body.|
 
 # Login Endpoint
 
