@@ -22,4 +22,7 @@ router.put('/updatestatus/:id', mechanicService.updateStatusById)
 //update counter of customer
 router.put('/updatecounter/:id', mechanicService.updateCountById)
 
+//register new mechanic
+router.post('/register', mechanicService.registerMechanic)
+
 module.exports = router;

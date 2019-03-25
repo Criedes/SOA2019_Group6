@@ -46,4 +46,63 @@ describe('/api/mechanics',()=>{
             expect(res.status).toBe(200)
         })
     })
+
+    describe('POST /register with correctness data', ()=>{
+        const case1 = {
+            "coordinate": {
+              "lat": "29.001993213",
+              "lng": "18.09002313"
+            },
+            "username": "Kit KUBKKKK",
+            "password": "cf23df2207d99a74fbe169e3eba035e633b65d9",
+            "garagename": "Chang James Shop",
+            "machanic_name": "Bratt Pitch",
+            "price": {
+              "patch_rubber": 30,
+              "change_rubber": 120
+            },
+            "number_of_customer": 44,
+            "address": "Khaosan Road, Bangkok",
+            "join_date": "12/1/2019",
+            "contact": "099-9999999",
+            "status": false
+          }    
+        it('should create new document in Database', async ()=>{
+            const res = await request(server)
+            .post('/api/mechanics/register')
+            .send(case1)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            
+            expect(res.status).toBe(201)
+        })        
+    })
+
+    describe('POST /register with Incorrectness data', ()=>{
+        const case2 = {
+            "coordinate": {
+              "lat": "29.001993213",
+              "lng": "18.09002313"
+            },
+            "username": "Kit KUBKKKK",
+            "password": "cf23df2207d99a74fbe169e3eba035e633b65d9",
+            "garagename": "Chang James Shop",
+            "machanic_name": "Bratt Pitch",
+            "price": {
+              "patch_rubber": 30,
+              "change_rubber": 120
+            },
+            "number_of_customer": 44,
+            "address": "Khaosan Road, Bangkok",
+          }    
+        it('should create new document in Database', async ()=>{
+            const res = await request(server)
+            .post('/api/mechanics/register')
+            .send(case2)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            
+            expect(res.status).toBe(400)
+        })        
+    })
 })
