@@ -54,7 +54,7 @@ describe('/api/mechanics',()=>{
               "lng": "18.09002313"
             },
             "username": "Kit KUBKKKK",
-            "password": "cf23df2207d99a74fbe169e3eba035e633b65d9",
+            "password": "test1234",
             "garagename": "Chang James Shop",
             "machanic_name": "Bratt Pitch",
             "price": {
@@ -85,7 +85,7 @@ describe('/api/mechanics',()=>{
               "lng": "18.09002313"
             },
             "username": "Kit KUBKKKK",
-            "password": "cf23df2207d99a74fbe169e3eba035e633b65d9",
+            "password": "test1234",
             "garagename": "Chang James Shop",
             "machanic_name": "Bratt Pitch",
             "price": {

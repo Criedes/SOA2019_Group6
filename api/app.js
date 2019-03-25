@@ -15,5 +15,5 @@ const mechanicsController = require('./src/mechanics/controller/mechanicsControl
 const customerController = require('./src/customer/controller/customerController');
 app.use('/api/login', loginController);
 app.use('/api/mechanics',mechanicsController)
-app.use('/api/customer', customerController);
+app.use('/api/customers', customerController);
 module.exports = app

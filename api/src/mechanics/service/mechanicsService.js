@@ -1,5 +1,5 @@
 const findMechanicSchema = require('../model/mechanicSchema')
-const { check, validationResult } = require('express-validator/check');
+const bcrypt = require('bcrypt');
 exports.findMechanic = (req, res) => {
     async function getMechanicAll() {
         const mechanicAll = await findMechanicSchema.find()
@@ -62,16 +62,42 @@ exports.updateCountById = (req, res) => {
 
 exports.registerMechanic = (req, res) => {
     async function registMechanic() {
-        const newMechanic = new findMechanicSchema(req.body, { versionKey: false })
-        await newMechanic.save(function (err, post) {
-            if (err) { 
-                return res.status(400).json({
-                success: false
-            })}
-            res.status(201).json({
-                success: true
+        const saltRounds = 10;
+        await bcrypt.genSalt(saltRounds, function (err, getsalt) {
+            bcrypt.hash(req.body.password, getsalt, function (err, gethash) {
+                salt = getsalt
+                hash = gethash
+                const newMechanic = new findMechanicSchema({
+                    username: req.body.username,
+                    password: hash,
+                    garagename: req.body.garagename,
+                    machanic_name: req.body.machanic_name,
+                    coordinate: {
+                        lat: req.body.coordinate.lat,
+                        lng: req.body.coordinate.lng
+                    },
+                    number_of_customer: req.body.number_of_customer,
+                    address: req.body.address,
+                    join_date: req.body.join_date,
+                    contact: req.body.contact,
+                    status: req.body.status,
+                    price: {
+                        patch_rubber: req.body.price.patch_rubber,
+                        change_rubber: req.body.price.change_rubber
+                    },
+                })
+                newMechanic.save(function (err, post) {
+                    if (err) { 
+                        return res.status(400).json({
+                        success: false
+                    })}
+                    res.status(201).json({
+                        success: true
+                    })
+                  })
             })
-          })
+        })
+        
 
     }
 
