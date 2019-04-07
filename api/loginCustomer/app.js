@@ -9,5 +9,5 @@ app.use(bodyParser.json());
 
 const loginController = require('./controller/loginController');
 
-app.use('/api/login', loginController);
+app.use('/api/auth', loginController);
 module.exports = app

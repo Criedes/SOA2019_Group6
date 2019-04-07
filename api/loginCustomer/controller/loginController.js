@@ -1,9 +1,7 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
 const loginService = require('../service/loginService');
 
-router.get('/', loginService.getLogin)
-
-router.post('/', loginService.PostLogin)
+router.post('/customer', loginService.authenUser)
 
 module.exports = router;
