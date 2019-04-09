@@ -1,0 +1,13 @@
+version: '3'
+services:
+  customer:
+    build:
+      context: ./customer
+    ports:
+      - "80:3000"
+  mechanic:
+    build:
+      context: ./mechanic
+  request:
+    build:
+      context: ./request

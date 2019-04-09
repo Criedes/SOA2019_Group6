@@ -1,0 +1,46 @@
+version: '3'
+services:
+# Customer Service
+  customer:
+    image: customer_service:1.0
+    ports:
+      - "80:3000"
+    links:
+        - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+  mongo-seed-customer:
+    image: mongo
+    links:
+      - mongo
+    volumes:
+      - ./:/seed-data
+    environment:
+      WAIT_HOSTS: mongo:27017
+    command:
+      'bash -c "mongoimport --host mongo --db payang --collection customers --file /seed-data/customers.json
+      &&
+      mongoimport --host mongo --db payang --collection mechanics --file /seed-data/mechanics.json
+      &&
+      mongoimport --host mongo --db notification --collection mechanics --file /seed-data/notification.json
+      "'
+# Mechanics Service
+  mechanic:
+    image: mechanic_service:1.0
+    links:
+        - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017
+# Notification Service
+  request:
+    image: request_service:1.0
+    links:
+        - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017
+
