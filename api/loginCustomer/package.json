@@ -13,6 +13,7 @@
     "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "joi": "^14.3.1",
     "mongoose": "^5.4.20",
     "nodemon": "^1.18.10",
     "supertest": "^4.0.2"
