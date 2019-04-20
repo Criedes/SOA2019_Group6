@@ -7,7 +7,7 @@ jobs:
         WAIT_HOSTS: mongo:27017
     working_directory: ~/SOA2019_Group6/api/customer/
     steps:
-      - checkout
+      - checkout:
           path: ~/SOA2019_Group6
       # Download and cache dependencies
       - restore_cache:
@@ -43,7 +43,7 @@ jobs:
             - '27017:27017'
         working_directory: ~/SOA2019_Group6
         steps:
-          - checkout
+          - checkout:
             path: ~/SOA2019_Group6
 
 
