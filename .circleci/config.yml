@@ -39,7 +39,7 @@ jobs:
                     docker push tomtan05/customer_service
   mongo:
     docker:
-      - image: mongo
+      - image: mongo:3.6.12-xenial
       - ports:
         - '27017:27017'
     working_directory: ~/SOA2019_Group6
