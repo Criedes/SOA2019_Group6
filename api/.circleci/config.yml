@@ -5,7 +5,7 @@ jobs:
       - image: node:11.13.0
     environment:
           WAIT_HOSTS: mongo:27017
-    working_directory: working_directory: ~/SOA2019_Group6/api/customer/
+    working_directory: ~/SOA2019_Group6/api/customer/
     steps:
       - checkout
           path: ~/SOA2019_Group6/
@@ -41,7 +41,10 @@ jobs:
           - image: mongo
           - ports:
             - '27017:27017'
-        working_directory: working_directory: ~/SOA2019_Group6
+        working_directory: ~/SOA2019_Group6
+        steps:
+          - checkout
+            path: ~/SOA2019_Group6/
 
 
 workflows:
