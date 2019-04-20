@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: node:11.13.0
     environment:
-          WAIT_HOSTS: mongo:27017
+        WAIT_HOSTS: mongo:27017
     working_directory: ~/SOA2019_Group6/api/customer/
     steps:
       - checkout
