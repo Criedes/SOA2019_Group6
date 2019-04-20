@@ -8,6 +8,7 @@ jobs:
     working_directory: ~/SOA2019_Group6/api/customer/
     steps:
       - checkout:
+      #Error
           path: ~/SOA2019_Group6
       # Download and cache dependencies
       - restore_cache:
