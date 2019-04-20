@@ -4,11 +4,12 @@ jobs:
     docker:
       - image: node:11.13.0
     environment:
-          WAIT_HOSTS: mongo:27017
+        WAIT_HOSTS: mongo:27017
     working_directory: ~/SOA2019_Group6/api/customer/
     steps:
-      - checkout
-          path: ~/SOA2019_Group6/
+      - checkout:
+      #Error
+          path: ~/SOA2019_Group6
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -43,8 +44,8 @@ jobs:
             - '27017:27017'
         working_directory: ~/SOA2019_Group6
         steps:
-          - checkout
-            path: ~/SOA2019_Group6/
+          - checkout:
+            path: ~/SOA2019_Group6
 
 
 workflows:
