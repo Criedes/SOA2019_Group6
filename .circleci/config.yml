@@ -2,7 +2,7 @@ version: 2
 jobs:
   customer:
     docker:
-      - image: node:11.13.0
+      - image: circleci/node:11.13.0
     environment:
         WAIT_HOSTS: mongo:27017
     working_directory: ~/SOA2019_Group6/api/customer/
@@ -39,7 +39,7 @@ jobs:
                     docker push tomtan05/customer_service
   mongo:
     docker:
-      - image: mongo:3.6.12-xenial
+      - image: mongo:3.4.4
       - ports:
         - '27017:27017'
     working_directory: ~/SOA2019_Group6
