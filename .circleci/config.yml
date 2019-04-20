@@ -37,29 +37,12 @@ jobs:
                     docker login -u tomtan05 -p it59070062
                     docker build -t tomtan05/customer_service
                     docker push tomtan05/customer_service
-  mongo:
-    docker:
-      - image: mongo:3.4.4
-      - ports:
-        - '27017:27017'
-    working_directory: ~/SOA2019_Group6
-    steps:
-      - checkout:
-          path: ~/SOA2019_Group6
-
 
 workflows:
     version: 2
     complie:
         jobs:
-            - mongo:
-                filters:
-                    branches:
-                        only:
-                            - master
             - customer:
-                requires:
-                  - mongo
                 filters:
                     branches:
                         only:
