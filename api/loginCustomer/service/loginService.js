@@ -6,6 +6,7 @@ const customerSchema = require('../model/customerSchema')
 
 
 exports.authenUser = async (req, res) => {
+    
     const {error} = validateUser(req.body)
 
     if(error) return res.status(400).send(error.details[0].message)

@@ -1,0 +1,51 @@
+.header-group{
+    width: 100%;
+    height: 80px;
+    background: white;
+    position: fixed;
+}
+
+.nav-wrapper{
+    display: flex;
+    height: 80px;
+    align-items: center;
+}
+
+.brand{
+    margin-right: auto;
+}
+
+.brand img{
+    margin-right: auto;
+    width: 239px;
+}
+
+.navbar-r{
+    margin-top : none;
+    margin-right:10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar-r div{
+    margin-right:2rem;
+    list-style: none!important;
+}
+
+.navbar-r h6{
+    margin-bottom: -4px;
+    font-weight: bold;
+    font-family: 'Fredoka One', cursive;
+    color: #9338D0;
+}
+
+.navbar-r span{
+    font-size: .85rem;
+    font-family: 'Prompt', sans-serif;
+}
+
+.isCurrent{
+    border-bottom: 2px solid #9338D0;
+}
+

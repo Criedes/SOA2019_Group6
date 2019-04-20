@@ -1,0 +1,68 @@
+.man_landing{
+    height: 90vh;
+    max-height: 1080px;
+    overflow: hidden;
+    position: relative;
+}
+
+.Intro{
+    position: absolute;
+    top: 20%;
+    right: 10%;
+}
+
+.main-man img{
+    height: 80%;
+}
+.effect-front{
+    top: 30%;
+}
+
+.effect-back{
+    top: 10%;
+    right: 12%;
+    z-index: -1;
+}
+
+.title{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.title h3{
+    font-family: 'Fredoka One', cursive;
+    font-size:3rem;
+    color: #9338D0;
+}
+
+.title h1{
+    font-family: 'Fredoka One', cursive;
+    font-size:5rem;
+    color: #545156;
+}
+
+.title span{
+    font-family: 'Prompt', sans-serif;
+    font-size:1.2rem;
+    color: #545156;
+}
+
+.title-text{
+    margin-bottom: -0.5rem;
+}
+.gt-findPage-btn{
+    margin-top: 1rem;
+    display: flex;
+    padding: 0.6rem;
+    width: 200px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    color:white;
+    background: #9338D0;
+    border-radius: 70px;
+}
