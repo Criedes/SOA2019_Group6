@@ -6,23 +6,23 @@ class Login extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {isLoginOpen: true,isRegisterOpen:false,addClass: false};
+        this.state = {isLoginmemberOpen: true,isLoginmechanicOpen:false,ismember: true,ismechanic:false};
     }
-    toggle() {
-        this.setState({addClass: !this.state.addClass});
-      }
+    showmember(){
+        this.setState({ismember: true,ismechanic:false})
+    }
+    showmechanic(){
+        this.setState({ismember: false,ismechanic:true})
+    }
     
-    showLoginBox(){
-        this.setState({isLoginOpen: true,isRegisterOpen:false})
+    showLoginmemberBox(){
+        this.setState({isLoginmemberOpen: true,isLoginmechanicOpen:false})
     }
-    showRegisterBox(){
-        this.setState({isLoginOpen: false,isRegisterOpen:true})
+    showLoginmechanicBox(){
+        this.setState({isLoginmemberOpen: false,isLoginmechanicOpen:true})
     }
     render() {
-        let boxClass = ["box"];
-        if(this.state.addClass) {
-          boxClass.push('green');
-        }
+        
         return (
             <div className="login">
                 <div className="man_landing">
@@ -36,17 +36,19 @@ class Login extends Component {
                                 ยินดีต้อนรับเข้าสู่เว็บไซต์ Payang Online
                             </span>
                             <div className="block_container">
-                            <div className="bloc1" onClick={this.showLoginBox.bind(this) }>
-                                <button className="login100-form-btn2" >
+                            <div className="bloc1" onClick={this.showLoginmemberBox.bind(this) }>
+                                <button className={this.state.ismember?"login100-form-btn2":"login100-form-btn3"} onClick={this.showmember.bind(this) } >
                                     Member
 						    </button></div>
-                            <div className="bloc2" onClick={this.showRegisterBox.bind(this)}>
-                                <button className="login100-form-btn3" >
+                            <div className="bloc2" onClick={this.showLoginmechanicBox.bind(this)}>
+                                <button className={this.state.ismechanic ?"login100-form-btn2":"login100-form-btn3"} onClick={this.showmechanic.bind(this) }>
                                     Mechanic
 						    </button></div>
                             <div className="title-text"> 
-                            {this.state.isLoginOpen && <Login_member />}
-                            {this.state.isRegisterOpen && <Login_mechanic />}
+                            {this.state.isLoginmemberOpen && <Login_member />}
+                            {this.state.isLoginmechanicOpen && <Login_mechanic />}
+                            </div><div>
+                                <span>ยังไม่เป็นสมัครสมาชิกใช่หรือไม่<button className="login100-form-btn6">สมัครสมาชิก</button></span>
                             </div>
                             </div>
 

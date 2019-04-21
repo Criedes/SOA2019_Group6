@@ -28,6 +28,7 @@ button {
     right: 12%;
     z-index: -1;
 }
+
 .login100-form-btn {
     text-transform: uppercase;
     display: flex;
@@ -55,6 +56,26 @@ button {
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
+  }
+
+  .login100-form-btn6 {
+   
+    
+    padding: 0.6rem;
+    
+    font-family: 'Prompt', sans-serif;
+    color:#9338D0;
+    background: white;
+    border-radius: 70px;
+    width: 30%;
+
+
+   
+    justify-content: center;
+    align-items: center;
+   
+  
+    
   }
   .block_container
 {
@@ -144,7 +165,7 @@ button {
 
 .title span{
     font-family: 'Prompt', sans-serif;
-    font-size:1.2rem;
+    font-size:1rem;
     color: #000000;
 }
 
@@ -152,7 +173,7 @@ button {
     margin-bottom: -0.2rem;
 }
 .title-text2{
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 .gt-findPage-btn{
     margin-top: 1rem;
@@ -176,7 +197,7 @@ button {
   }
   
   .input100 {
-    font-family: Poppins-Medium;
+    font-family: 'Prompt', sans-serif;
     font-size: 15px;
     line-height: 1.5;
     color: #666666;
