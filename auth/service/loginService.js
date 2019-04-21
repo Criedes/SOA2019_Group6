@@ -31,8 +31,6 @@ exports.authenUser = async (req, res) => {
     })
     
 }
-
-
 function validateUser(req){
     const schemaTestObj = {
         username: Joi.string().min(5).max(255).required(),
