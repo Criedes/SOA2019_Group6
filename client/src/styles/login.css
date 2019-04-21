@@ -1,0 +1,198 @@
+.man_landing{
+    height: 90vh;
+    max-height: 1080px;
+    overflow: hidden;
+    position: relative;
+}
+
+.Intro{
+    position: absolute;
+    top: 20%;
+    right: 10%;
+}
+button {
+
+    background: transparent;
+    border: none !important;
+    font-size:0;
+}
+.main-man img{
+    height: 80%;
+}
+.effect-front{
+    top: 30%;
+}
+
+.effect-back{
+    top: 10%;
+    right: 12%;
+    z-index: -1;
+}
+.login100-form-btn {
+    text-transform: uppercase;
+    display: flex;
+    padding: 0.6rem;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    color:white;
+    background: #9338D0;
+    border-radius: 70px;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  .block_container
+{
+    text-align:center;
+}
+.bloc1, .bloc2,.bloc3
+{
+    display:inline;
+}  .box {
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    color:white;
+    background: #9338D0;
+    border-radius: 70px;
+    width: 30%;
+    height: 50px;
+   
+  }
+  .box.green {
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    color:#666666;;
+    background: white;
+    border-radius: 70px;
+    width: 30%;
+    height: 50px;
+    
+  }
+  .login100-form-btn2 {
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    color:white;
+    background: #9338D0;
+    border-radius: 70px;
+    width: 30%;
+    height: 50px;
+   
+  }
+  .login100-form-btn3 {
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    color:#666666;;
+    background: white;
+    border-radius: 70px;
+    width: 30%;
+    height: 50px;
+    
+  }
+  
+  .login100-form-btn:hover {
+    background: #333333;
+  }
+.container-login100-form-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+  }
+.title{
+    position: absolute;
+    top:60%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.title h3{
+    font-family: 'Fredoka One', cursive;
+    font-size:3rem;
+    color: #9338D0;
+}
+
+.title h1{
+    font-family: 'Fredoka One', cursive;
+    font-size:2rem;
+    color: #000000;
+}
+
+.title span{
+    font-family: 'Prompt', sans-serif;
+    font-size:1.2rem;
+    color: #000000;
+}
+
+.title-text{
+    margin-bottom: -0.2rem;
+}
+.title-text2{
+    margin-bottom: 1rem;
+}
+.gt-findPage-btn{
+    margin-top: 1rem;
+    display: flex;
+    padding: 0.6rem;
+    width: 120px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    color:white;
+    background: #9338D0;
+    border-radius: 70px;
+}
+.wrap-input100 {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 10px;
+    
+  }
+  
+  .input100 {
+    font-family: Poppins-Medium;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+    
+    display: block;
+    width: 100%;
+    background: #e6e6e6;
+    height: 50px;
+    border-radius: 25px;
+    
+  }
+  .validate-input {
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  input {
+	outline: none;
+	border: none;
+}
