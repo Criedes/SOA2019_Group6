@@ -1,4 +1,4 @@
-const mongoose = require('../config/db')
+const mongoose = require('../util/db')
 
 const mechanicSchema = mongoose.Schema({
     username: {type:String, required: true},
