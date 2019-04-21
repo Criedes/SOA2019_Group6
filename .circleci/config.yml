@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout:
       #Error
-          path: ~/SOA2019_Group6
+          path: ~/SOA2019_Group6/api
       # Download and cache dependencies
       - restore_cache:
           keys:
