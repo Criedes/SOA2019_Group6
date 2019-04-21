@@ -2,7 +2,8 @@ const fs = require('fs');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const customerSchema = require('../model/customerSchema')
-// const loginSchema = require('../model/loginSchema')
+const jwt = require('jsonwebtoken')
+const config = require('config')
 
 
 exports.authenUser = async (req, res) => {
@@ -19,7 +20,15 @@ exports.authenUser = async (req, res) => {
 
     if(!validPassword) return res.status(400).send("Invalid email or password")
 
-    res.json(true)
+    const payload = {
+        _id: user._id,
+        username: user.username,
+        role: 'customer'
+    }
+    
+    jwt.sign(payload, config.get('jwtPrivateKey'), {expiresIn:'1h'} , (err, token)=>{
+        res.header('Authorization', `Bearer ${token}`).status(201).json("log in success")
+    })
     
 }
 
