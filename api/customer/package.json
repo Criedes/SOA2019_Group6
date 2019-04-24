@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest --coverage --detectOpenHandles",
+    "test": "jest --coverage --ci --verbose --forceExit --detectOpenHandles",
     "start": "node server.js"
   },
   "author": "",
