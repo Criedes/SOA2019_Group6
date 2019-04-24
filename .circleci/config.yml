@@ -1,27 +1,27 @@
 version: 2
 jobs:
-# Database
-    mongo:
-        working_directory: ~/SOA2019_Group/api/
-        docker:
-            - image: mongo:3.4.4
-        steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group6
-            - run:
-                name: seed Data
-                command: |
-                    mongoimport --host mongo --db payang --collection customers --file /api/customers.json
-                    mongoimport --host mongo --db payang --collection mechanics --file /api/mechanics.json
-                    mongoimport --host mongo --db notification --collection mechanics --file /api/notification.json
-            - run:
-                name: Build Docker Image
-                command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/mongo .
-                    docker push $DOCKER_USERNAME/mongo
+# Database (Can't Seed Data)
+    # mongo:
+    #     working_directory: ~/SOA2019_Group/api/
+    #     docker:
+    #         - image: mongo:3.4.4
+    #     steps:
+    #         - setup_remote_docker:
+    #             docker_layer_caching: true
+    #         - checkout:
+    #             path: ~/SOA2019_Group6
+    #         - run:
+    #             name: seed Data
+    #             command: |
+    #                 mongoimport --host mongo --db payang --collection customers --file customers.json
+    #                 mongoimport --host mongo --db payang --collection mechanics --file mechanics.json
+    #                 mongoimport --host mongo --db notification --collection mechanics --file notification.json
+    #         - run:
+    #             name: Build Docker Image
+    #             command: |
+    #                 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    #                 docker build -t $DOCKER_USERNAME/mongo .
+    #                 docker push $DOCKER_USERNAME/mongo
 # Customer Service
     customer:
         working_directory: ~/SOA2019_Group6/api/customer/
@@ -32,33 +32,84 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            - run:
-                name: Install Library
-                command: |
-                    npm install
-            - run:
-                name: Test Customer Service
-                command: |
-                    npm test
+            # - run:
+            #     name: Install Library
+            #     command: |
+            #         npm install
+            # - run:
+            #     name: Test Customer Service
+            #     command: |
+            #         npm test #wait for mongodb
             - run:
                 name: Build Docker Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/customer_service .
                     docker push $DOCKER_USERNAME/customer_service
+# Mechanics Service
+    mechanics:
+        working_directory: ~/SOA2019_Group6/api/mechanics/
+        docker:
+            - image: circleci/node:11.13.0
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group6
+            # - run:
+            #     name: Install Library
+            #     command: |
+            #         npm install
+            # - run:
+            #     name: Test Mechanics Service
+            #     command: |
+            #         npm test #wait for mongodb
+            - run:
+                name: Build Docker Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker build -t $DOCKER_USERNAME/mechanics_service .
+                    docker push $DOCKER_USERNAME/mechanics_service
+# Request Mechanics Service
+    request:
+        working_directory: ~/SOA2019_Group6/api/request/
+        docker:
+            - image: circleci/node:11.13.0
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group6
+            # - run:
+            #     name: Install Library
+            #     command: |
+            #         npm install
+            # - run:
+            #     name: Test Request Service
+            #     command: |
+            #         npm test #wait for mongodb
+            - run:
+                name: Build Docker Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker build -t $DOCKER_USERNAME/request_service .
+                    docker push $DOCKER_USERNAME/request_service
 
 workflows:
     version: 2
     complie:
         jobs:
-            - mongo:
+            - customer:
                 filters:
                     branches:
                         only:
                             - master
-            - customer:
-                requires:
-                    - mongo
+            - mechanics:
+                filters:
+                    branches:
+                        only:
+                            - master
+            - request:
                 filters:
                     branches:
                         only:
