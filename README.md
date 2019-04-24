@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/Criedes/SOA2019_Group6.svg?style=svg)](https://circleci.com/gh/Criedes/SOA2019_Group6)
 # SOA_Group6
 ### Technology ที่ใช้ในระบบ
 - React.js
