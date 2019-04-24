@@ -13,9 +13,9 @@ jobs:
             - run:
                 name: seed Data
                 command: |
-                    mongoimport --host mongo --db payang --collection customers --file customers.json
-                    mongoimport --host mongo --db payang --collection mechanics --file mechanics.json
-                    mongoimport --host mongo --db notification --collection mechanics --file notification.json
+                    mongoimport --host mongo --db payang --collection customers --file /SOA2019_Group/api/customers.json
+                    mongoimport --host mongo --db payang --collection mechanics --file /SOA2019_Group/api/mechanics.json
+                    mongoimport --host mongo --db notification --collection mechanics --file /SOA2019_Group/api/notification.json
             - run:
                 name: Build Docker Image
                 command: |
