@@ -51,7 +51,14 @@ workflows:
     version: 2
     complie:
         jobs:
+            - mongo:
+                filters:
+                    branches:
+                        only:
+                            - master
             - customer:
+                requires:
+                    - mongo
                 filters:
                     branches:
                         only:
