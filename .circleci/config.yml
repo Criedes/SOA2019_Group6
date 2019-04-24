@@ -1,42 +1,20 @@
 version: 2
 jobs:
   customer:
-    docker:
-      - image: circleci/node:11.13.0
-    environment:
-        WAIT_HOSTS: mongo:27017
     working_directory: ~/SOA2019_Group6/api/customer/
+    docker:
+      - image: google/cloud-sdk
     steps:
-      - checkout:
-      #Error
-          path: ~/SOA2019_Group6/api
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-      - run: 
-          name: Install Library
-          command: |
-                  npm install
-      # run tests!
-      - run: 
-          name: run test
-          command: |
-                  npm test
       - setup_remote_docker:
           docker_layer_caching: true
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      - checkout:
+          path: ~/SOA2019_Group6
       - run:
-                name: build image and push to docker hub
-                command: |
-                    docker login -u tomtan05 -p it59070062
-                    docker build -t tomtan05/customer_service
-                    docker push tomtan05/customer_service
+          name: Config gcloud credentials
+          command: |
+            echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
+            gcloud auth configure-docker
 
 workflows:
     version: 2
