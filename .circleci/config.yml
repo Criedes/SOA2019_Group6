@@ -1,20 +1,26 @@
 version: 2
 jobs:
-  customer:
-    working_directory: ~/SOA2019_Group6/api/customer/
-    docker:
-      - image: google/cloud-sdk
-    steps:
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - checkout:
-          path: ~/SOA2019_Group6
-      - run:
-          name: Config gcloud credentials
-          command: |
-            echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-            gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
-            gcloud auth configure-docker
+    customer:
+        working_directory: ~/SOA2019_Group6/api/customer/
+        docker:
+            - image: google/cloud-sdk
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group6
+            - run:
+                name: Config gcloud credentials
+                command: |
+                    echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+                    gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
+                    gcloud auth configure-docker
+            - run:
+                name: Build Docker Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker build -t $DOCKER_USERNAME/customer_service .
+                    docker push $DOCKER_USERNAME/customer_service
 
 workflows:
     version: 2
