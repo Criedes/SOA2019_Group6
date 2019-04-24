@@ -1,5 +1,28 @@
 version: 2
 jobs:
+# Database
+    mongo:
+        working_directory: ~/SOA2019_Group/api/
+        docker:
+            - image: mongo:3.4.4
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group6
+            - run:
+                name: seed Data
+                command: |
+                mongoimport --host mongo --db payang --collection customers --file /seed-data/customers.json
+                mongoimport --host mongo --db payang --collection mechanics --file /seed-data/mechanics.json
+                mongoimport --host mongo --db notification --collection mechanics --file /seed-data/notification.json
+            - run:
+                name: Build Docker Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker build -t $DOCKER_USERNAME/mongo .
+                    docker push $DOCKER_USERNAME/mongo
+# Customer Service
     customer:
         working_directory: ~/SOA2019_Group6/api/customer/
         docker:
