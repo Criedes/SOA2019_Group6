@@ -3,18 +3,20 @@ jobs:
     customer:
         working_directory: ~/SOA2019_Group6/api/customer/
         docker:
-            - image: google/cloud-sdk
+            - image: circleci/node:11.13.0
         steps:
             - setup_remote_docker:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
             - run:
-                name: Config gcloud credentials
+                name: Install Library
                 command: |
-                    echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-                    gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
-                    gcloud auth configure-docker
+                    npm install
+            - run:
+                name: Test Customer Service
+                command: |
+                    npm test
             - run:
                 name: Build Docker Image
                 command: |
