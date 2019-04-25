@@ -1,0 +1,16 @@
+.call-warpper{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    margin-top:-1em;
+}
+
+.call_mechanic-btn{
+    border-radius: 2em;
+    border:none;
+    background-color:#9338D0;
+    padding:0.5em 1em;
+    color:white;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+}

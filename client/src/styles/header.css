@@ -2,7 +2,12 @@
     width: 100%;
     height: 80px;
     background: white;
-    position: fixed;
+    /* position: fixed; */
+    z-index: 200;
+}
+
+a span{
+    color: grey;
 }
 
 .nav-wrapper{
@@ -36,7 +41,7 @@
 .navbar-r h6{
     margin-bottom: -4px;
     font-weight: bold;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     color: #9338D0;
 }
 

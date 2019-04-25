@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles/login.css'
-import Login_member from'../Login/Login_member.js'
-import Login_mechanic from'../Login/Login_mechanic.js'
+import Login_member from'./Login_member'
+import Login_mechanic from'./Login_mechanic'
 class Login extends Component {
     
     constructor(props) {

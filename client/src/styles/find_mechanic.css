@@ -1,0 +1,152 @@
+.map{
+    width: 100%;
+    height: 460px;
+    background: grey;
+}
+
+.search-row{
+    width: 60%;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.search-wrapper{
+    margin-top:2rem;
+    display: flex;
+    justify-content:center;
+    width: 100%;
+    
+}
+.from-search{
+    width:100%;
+    display: flex;
+    align-items: center;
+}
+
+.submit_btn{
+    flex-grow: 3;
+    height: 100%;
+}
+
+.search_input{
+    border-radius: 2rem;
+    border:none;
+    background: #FFFFFF;
+    box-shadow: 0 2px 19px 0 rgba(0,0,0,0.12);
+    
+    padding: 1rem;
+    padding-left:1.4rem;
+    font-family: 'Prompt', sans-serif;
+    margin-right:8px;
+    width: 66%;
+}
+
+.search_input:focus{
+    outline: none;
+}
+
+.submit_btn{
+    box-shadow: 0 2px 19px 0 rgba(0,0,0,0.12);
+    background: linear-gradient(-90deg, #8828C7, #AC5AE2);
+    border-radius: 2em;
+    border:none;
+    font-size:1.1rem;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.warn-text{
+    margin-top: 1.5rem;
+    font-family: 'Prompt', sans-serif;
+    font-size:0.7em;
+    text-align: center;
+}
+
+.icon-warn{
+    font-size: 1.5em;
+    color:#8828C7;
+    margin-right:5px;
+}
+.mechanic{
+    display: flex;
+}
+.mechanic-wrapper{
+    margin-top:2em;
+}
+
+.mechanic-info{
+    padding-left: 1em;
+}
+
+.img_profile{
+    border-radius: 5%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.288);
+}
+
+.header-info{
+    font-family: 'Prompt', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.header-info h6{
+    color:grey;
+    font-style: italic;
+    padding-left: 1em;
+}
+
+.price{
+    font-family: 'Prompt', sans-serif;
+    display: flex;
+}
+
+.price>h6{
+    margin-right:10px;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.tel>h6{
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.icon{
+    margin-right:10px;
+    font-size: 20px;
+}
+
+.tel{
+    font-family: 'Prompt', sans-serif;
+}
+
+.select_mechanic_btn{
+    box-shadow: 0 2px 19px 0 rgba(0,0,0,0.12);
+    background: linear-gradient(-90deg, #8828C7, #AC5AE2);
+    border-radius: 2em;
+    font-size:0.6em;
+    border:none;
+    color:white;
+}
+
+.title_of_mechanic_list{
+    width: 100%;
+    border-bottom:solid 2px #8828C7;
+    /* border-top:solid 2px #8828C7; */
+    margin-top:1.25em;
+}
+
+.title_of_mechanic_list span{
+    font-size:60px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+.title_of_mechanic_list p{
+    margin-top:-1.25em;
+}

@@ -35,7 +35,7 @@ button {
     padding: 0.6rem;
     align-items: center;
     justify-content: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     color:white;
     background: #9338D0;
     border-radius: 70px;
@@ -87,7 +87,7 @@ button {
 }  .box {
     align-items: center;
     justify-content: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     color:white;
     background: #9338D0;
     border-radius: 70px;
@@ -98,7 +98,7 @@ button {
   .box.green {
     align-items: center;
     justify-content: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     color:#666666;;
     background: white;
     border-radius: 70px;
@@ -109,7 +109,7 @@ button {
   .login100-form-btn2 {
     align-items: center;
     justify-content: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     color:white;
     background: #9338D0;
     border-radius: 70px;
@@ -120,7 +120,7 @@ button {
   .login100-form-btn3 {
     align-items: center;
     justify-content: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     color:#666666;;
     background: white;
     border-radius: 70px;
@@ -152,13 +152,13 @@ button {
 }
 
 .title h3{
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     font-size:3rem;
     color: #9338D0;
 }
 
 .title h1{
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     font-size:2rem;
     color: #000000;
 }
@@ -183,7 +183,7 @@ button {
     height: 35px;
     align-items: center;
     justify-content: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     color:white;
     background: #9338D0;
     border-radius: 70px;
