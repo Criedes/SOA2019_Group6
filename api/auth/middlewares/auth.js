@@ -4,7 +4,7 @@ const config = require('config')
 exports.auth = (req, res, next) => {
     const token = req.header('Authorization')
     if(!token){
-        return res.status(401).json()
+        return res.status(401).json({msg:'Authorization denied'})
     }else{
         const accessToken = token.match(/Bearer (.*)/)[1]
         try{

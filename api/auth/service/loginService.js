@@ -14,11 +14,11 @@ exports.authenUser = async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     const user = await customerSchema.findOne({username:req.body.username})
-    if(!user) return res.status(400).send("Invalid email or password")
+    if(!user) return res.status(400).json({msg:"invalid email or password"})
 
     const validPassword = await bcrypt.compare(req.body.password, user.password)
 
-    if(!validPassword) return res.status(400).send("Invalid email or password")
+    if(!validPassword) return res.status(400).json({msg:"Password incorrect"})
 
     const payload = {
         _id: user._id,
@@ -26,8 +26,8 @@ exports.authenUser = async (req, res) => {
         role: 'customer'
     }
     
-    jwt.sign(payload, config.get('jwtPrivateKey'), {expiresIn:'1h'} , (err, token)=>{
-        res.header('Authorization', `Bearer ${token}`).status(201).json("log in success")
+    jwt.sign(payload, config.get('jwtPrivateKey'), {expiresIn:360000} , (err, token)=>{
+        res.header('Authorization', `Bearer ${token}`).status(201).json({token:token})
     })
     
 }

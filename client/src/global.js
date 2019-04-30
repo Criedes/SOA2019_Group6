@@ -1,0 +1,1 @@
+module.exports.REGISTER_PATH_CUSTOMER = 'http://localhost:3001/api/customers/register';
