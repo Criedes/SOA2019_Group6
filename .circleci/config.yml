@@ -41,7 +41,7 @@ jobs:
             #     command: |
             #         npm test #wait for mongodb
             - run:
-                name: Build Docker Image
+                name: Build Docker Customer service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/customer_service .
@@ -65,7 +65,7 @@ jobs:
             #     command: |
             #         npm test #wait for mongodb
             - run:
-                name: Build Docker Image
+                name: Build Docker mechanics service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/mechanics_service .
@@ -89,7 +89,7 @@ jobs:
             #     command: |
             #         npm test #wait for mongodb
             - run:
-                name: Build Docker Image
+                name: Build Docker request service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/request_service .

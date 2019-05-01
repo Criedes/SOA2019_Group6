@@ -19,6 +19,7 @@
     "mongoose": "^5.4.20",
     "nodemon": "^1.18.10",
     "supertest": "^4.0.2"
+   
   },
   "devDependencies": {
     "jest": "^24.5.0"

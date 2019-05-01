@@ -20,6 +20,7 @@
     "express-validator": "^5.3.1",
     "mongoose": "^5.0.1",
     "nodemon": "^1.18.10"
+   
   },
   "devDependencies": {
     "jest": "^24.5.0",

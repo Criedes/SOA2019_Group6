@@ -15,7 +15,9 @@
     "express": "^4.16.4",
     "mongoose": "^5.4.20",
     "nodemon": "^1.18.10",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "cors": "^2.8.5"
+   
   },
   "devDependencies": {
     "jest": "^24.5.0"
