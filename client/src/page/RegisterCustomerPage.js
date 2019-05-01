@@ -4,12 +4,14 @@ import '../styles/register.css'
 import Header2 from '../component/RegisterCustomer/Header'
 import axios from 'axios'
 import global from '../global'
+import {Redirect} from "react-router-dom"
 class RegisterCustomerPage extends Component {
     state = {
         name: '',
         username: '',
         password: '',
-        phone: ''
+        phone: '',
+        isRegistered: false
     }
 
     handleSubmit = async (e) => {
@@ -31,9 +33,14 @@ class RegisterCustomerPage extends Component {
             // const body = JSON.stringify(newUser)
             console.log(newUser)
             const res = await axios.post(global.REGISTER_PATH_CUSTOMER, newUser, config)
-            console.log(res.data)
+            // console.log(res.data)
+            if(res.data){
+                this.setState({isRegistered:true})
+                // console.log(this.state.isRegistered)
+            }
         } catch (e) {
             console.log(e.response.data)
+            this.setState({isRegistered:false})
         }
     }
 
@@ -41,7 +48,13 @@ class RegisterCustomerPage extends Component {
         this.setState({ ...this.state, [e.target.name]: e.target.value })
     }
 
+    
     render() {
+        const {isRegistered} = this.state
+        if (isRegistered){
+            console.log('true register')
+            return  <Redirect push to={'/'} />
+        }
         return (
             <div>
                 <Header />

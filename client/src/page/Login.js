@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import '../../styles/login.css'
-import Login_member from'./Login_member'
-import Login_mechanic from'./Login_mechanic'
+import '../styles/login.css'
+import LoginMember from '../component/Login/Login_member'
+import LoginMechanic from '../component/Login/Login_mechanic'
+import Header from '../component/Header'
 class Login extends Component {
     
     constructor(props) {
@@ -24,10 +25,11 @@ class Login extends Component {
     render() {
         
         return (
+            
             <div className="login">
+            <Header />
                 <div className="man_landing">
                     <div className="container">
-
                         <div className="title">
                             <h1 className="title-text">
                                 Welcome to Payang Online
@@ -45,8 +47,8 @@ class Login extends Component {
                                     Mechanic
 						    </button></div>
                             <div className="title-text"> 
-                            {this.state.isLoginmemberOpen && <Login_member />}
-                            {this.state.isLoginmechanicOpen && <Login_mechanic />}
+                            {this.state.isLoginmemberOpen && <LoginMember />}
+                            {this.state.isLoginmechanicOpen && <LoginMechanic />}
                             </div><div>
                                 <span>ยังไม่เป็นสมัครสมาชิกใช่หรือไม่<button className="login100-form-btn6">สมัครสมาชิก</button></span>
                             </div>

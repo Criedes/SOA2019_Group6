@@ -28,7 +28,7 @@ class Header extends Component {
                             </Link>
                         </div>
                         <div>
-                            <Link to="/">
+                            <Link to="/login">
                                 <h6>Sign in</h6>
                                 <span>เข้าสู่ระบบ</span>
                             </Link>

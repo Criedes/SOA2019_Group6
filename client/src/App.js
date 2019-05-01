@@ -5,6 +5,7 @@ import FindMechanic from './page/FindMechanic'
 import MechanicProfile from './page/MechanicProfile'
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import RegisterCustomerPage from './page/RegisterCustomerPage'
+import Login from './page/Login'
 
 class App extends Component {
   renderRouter () {
@@ -15,6 +16,7 @@ class App extends Component {
                 <Route path="/search" component={FindMechanic} />
                 <Route path="/mechanic/:id" component={MechanicProfile} />
                 <Route path="/register/customer" component={RegisterCustomerPage} />
+                <Route path="/login" component={Login} />
             </div>
         </Router>
       )

@@ -12,7 +12,7 @@ class Login_mechanic extends Component {
         <div className="title-text">
         <br />
             <div className="wrap-input100 validate-input">
-                <input className="input100" type="text" name="user2" placeholder="   ชื่อผู้ใช้ / Username2" />
+                <input className="input100" type="text" name="user2" placeholder="ชื่อผู้ใช้ / Username2" />
             </div>
             <div className="wrap-input100 validate-input">
                 <input className="input100" type="password" name="pass2" placeholder="   Password" />
@@ -21,7 +21,7 @@ class Login_mechanic extends Component {
             <div className="container-login100-form-btn title-text">
                 <button className="login100-form-btn title-text2" >
                     Sign in
-						    </button>
+				</button>
             </div>
         </div>
         </form>
