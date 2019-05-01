@@ -3,6 +3,7 @@ services:
 # Customer Service
   customer:
     image: customer_service:1.0
+    container_name: customer
     links:
         - mongo
     environment:
@@ -12,6 +13,7 @@ services:
 # Mechanics Service
   mechanic:
     image: mechanic_service:1.0
+    container_name: mechanic
     links:
         - mongo
     environment:
@@ -21,6 +23,7 @@ services:
 # Notification Service
   request:
     image: request_service:1.0
+    container_name: request
     links:
         - mongo
     environment:
@@ -35,6 +38,7 @@ services:
       - '27017:27017'
 # Seed data
   mongo-seed-customer:
+    container_name: seed-data
     image: mongo
     links:
       - mongo
@@ -52,6 +56,7 @@ services:
 # Prometheus
   prometheus:
       image: prom/prometheus:latest
+      container_name: prometheus
       volumes:
         - ./etc/prometheus.yml:/etc/prometheus/prometheus.yml
       command:
@@ -66,6 +71,7 @@ services:
 # ApiGateWay
   nginx:
     image: nginx:latest
+    container_name: nginx
     ports:
       - "4200:8080"
     volumes:
