@@ -2,8 +2,9 @@ version: '3'
 services:
 # Customer Service
   customer:
-    image: customer_service:1.0
+    image: tomtan05/customer_service:1.0
     container_name: customer
+    restart: on-failure
     links:
         - mongo
     environment:
@@ -12,8 +13,9 @@ services:
       - "3000:3000"
 # Mechanics Service
   mechanic:
-    image: mechanic_service:1.0
+    image: tomtan05/mechanic_service:1.0
     container_name: mechanic
+    restart: on-failure
     links:
         - mongo
     environment:
@@ -22,8 +24,9 @@ services:
       - "3001:3000"
 # Notification Service
   request:
-    image: request_service:1.0
+    image: tomtan05/request_service:1.0
     container_name: request
+    restart: on-failure
     links:
         - mongo
     environment:
@@ -40,6 +43,7 @@ services:
   mongo-seed-customer:
     container_name: seed-data
     image: mongo
+    restart: on-failure
     links:
       - mongo
     volumes:
@@ -72,6 +76,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx
+    restart: on-failure
     ports:
       - "4200:8080"
     volumes:
