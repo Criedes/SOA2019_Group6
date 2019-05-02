@@ -58,7 +58,7 @@ services:
     links:
       - mongo
     volumes:
-      - ./api:/seed-data
+      - ./api/mockdata:/seed-data
     environment:
       WAIT_HOSTS: mongo:27017
     command:
