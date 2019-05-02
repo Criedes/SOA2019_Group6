@@ -125,7 +125,8 @@ jobs:
             - run:
                 name: SSH
                 command: |
-                    ssh ${SSH_USER}@${SSH_HOST} "itsoa2019"                    
+                    apt-get install sshpass
+                    sshpass -p itsoa2019 ssh ${SSH_USER}@${SSH_HOST}                  
             - run:
                 name: change Directory
                 command: |
