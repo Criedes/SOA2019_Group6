@@ -150,7 +150,7 @@ workflows:
                         only:
                             - master
             - service-deploy:
-                require:
+                requires:
                     - customer
                     - mechanics
                     - request
