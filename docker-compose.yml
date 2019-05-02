@@ -34,16 +34,16 @@ services:
     ports:
       - "3002:3000"
 # Authentication Service
-  authen:
-    image: tomtan05/authen_service:1.0
-    container_name: authen
-    restart: on-failure
-    links:
-      - mongo
-    environment:
-      WAIT_HOSTS: mongo:27017
-    ports:
-      - "3003:3000"
+#  authen:
+#    image: tomtan05/authen_service
+#    container_name: authen
+#    restart: on-failure
+#    links:
+#      - mongo
+#    environment:
+#      WAIT_HOSTS: mongo:27017
+#    ports:
+#      - "3003:3000"
 # Database
   mongo:
     container_name: mongo
