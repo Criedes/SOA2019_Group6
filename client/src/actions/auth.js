@@ -1,5 +1,12 @@
 import axios from 'axios'
-import { REGISTER_SUCCESS, REGISTER_FAIL, REGISTER_CLEAR , LOGIN_SUCCESS , LOGIN_FAIL, USER_LOADED, AUTH_ERROR } from './type'
+import { 
+    REGISTER_SUCCESS, 
+    REGISTER_FAIL, 
+    REGISTER_CLEAR , 
+    LOGIN_SUCCESS , 
+    LOGIN_FAIL, 
+    USER_LOADED, 
+    AUTH_ERROR } from './type'
 import global from '../global'
 import setAuthToken from '../utils/setAuthToken'
 
@@ -8,7 +15,6 @@ export const loadUser = () => async dispatch =>{
 
     if(localStorage.token){
         setAuthToken(localStorage.token)
-        console.log(axios.defaults.headers.common['Authorization'])
     }
 
     try{

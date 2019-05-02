@@ -31,11 +31,10 @@ class RegisterCustomerPage extends Component {
 
     
     render() {
-        const {isRegistered} = this.props.auth
-        if (isRegistered){
-            console.log('test')
-            return  <Redirect push to={'/'} />
-        }
+        
+        if(this.props.auth.isAuth){
+            return <Redirect to="/" />
+         }
         return (
             <div>
                 <Header />

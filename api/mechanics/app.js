@@ -6,9 +6,10 @@ var cors = require('cors')
 var jsonParser = bodyParser.json()
 app.use(urlencodedParser = bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+app.use(cors())
 
 const mechanicsController = require('./controller/mechanicsController')
 
 app.use('/api/mechanics',mechanicsController)
-app.use(cors())
+
 module.exports = app

@@ -3,7 +3,7 @@ class Content extends Component {
     state = {  }
     render() { 
         return ( 
-            <div class="container wrapper">
+            <div className="container wrapper">
                 <div className="content">
                         <div className="sub-content left">
                             <h2>Our Service</h2>

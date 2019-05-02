@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../styles/login.css'
 import {connect} from 'react-redux'
 import {loginCustomer} from '../../actions/auth'
+import {Redirect} from 'react-router-dom'
 
 class Login_member extends Component {
     constructor(props) {
@@ -22,6 +23,9 @@ class Login_member extends Component {
     }
 
     render() {
+        if(this.props.auth.isAuth){
+           return <Redirect to="/" />
+        }
         return (
             <form className="login100-form" onSubmit={this.submitLogin}>
                 <div className="title-text ">
@@ -43,4 +47,8 @@ class Login_member extends Component {
         );
     }
 }
-export default connect(null , {loginCustomer})(Login_member);
+const mapStateToProps = (state)=>({
+    auth : state.auth
+})
+
+export default connect(mapStateToProps, {loginCustomer})(Login_member);
