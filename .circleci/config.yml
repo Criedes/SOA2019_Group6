@@ -122,9 +122,22 @@ jobs:
         machine:
             enabled: true
         steps:
-        - run:
-            command: |
-                ssh ${SSH_USER}@${SSH_HOST}
+            - run:
+                name: SSH
+                command: |
+                    ssh ${SSH_USER}@${SSH_HOST}
+            - run:
+                name: add password
+                command: |
+                    itsoa2019
+            - run:
+                name: change Directory
+                command: |
+                    cd SOA2019_Group6
+            - run:
+                name: deploy
+                command: |
+                    docker-compose stop && docker-compose rm -f && docker-compose pull && docker-compose up -d
 
 
 workflows:
