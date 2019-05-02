@@ -94,6 +94,31 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/request_service .
                     docker push $DOCKER_USERNAME/request_service
+# Authentication Service
+    authen:
+        working_directory: ~/SOA2019_Group6/api/auth/
+        docker:
+            - image: circleci/node:11.13.0
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group6
+            # - run:
+            #     name: Install Library
+            #     command: |
+            #         npm install
+            # - run:
+            #     name: Test Request Service
+            #     command: |
+            #         npm test #wait for mongodb
+            - run:
+                name: Build Docker request service Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker build -t $DOCKER_USERNAME/authen_service .
+                    docker push $DOCKER_USERNAME/authen_service
+
 
 workflows:
     version: 2
@@ -110,6 +135,11 @@ workflows:
                         only:
                             - master
             - request:
+                filters:
+                    branches:
+                        only:
+                            - master
+            - authen:
                 filters:
                     branches:
                         only:
