@@ -2,7 +2,7 @@ version: '3'
 services:
 # Customer Service
   customer:
-    image: tomtan05/customer_service:1.0
+    image: tomtan05/customer_service
     container_name: customer
     restart: on-failure
     links:
@@ -13,7 +13,7 @@ services:
       - "3000:3000"
 # Mechanics Service
   mechanic:
-    image: tomtan05/mechanic_service:1.0
+    image: tomtan05/mechanic_service
     container_name: mechanic
     restart: on-failure
     links:
@@ -24,7 +24,7 @@ services:
       - "3001:3000"
 # Notification Service
   request:
-    image: tomtan05/request_service:1.0
+    image: tomtan05/request_service
     container_name: request
     restart: on-failure
     links:
