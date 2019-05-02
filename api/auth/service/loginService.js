@@ -34,8 +34,8 @@ exports.authenUser = async (req, res) => {
     }
     
     jwt.sign(payload, config.get('jwtPrivateKey'), {expiresIn:360000} , (err, token)=>{
-        console.log(token)
-        // res.header('Authorization', token).status(201).json({token})
+        // console.log(token)
+        res.header('Authorization', token).status(201).json({token})
     })
     
     
