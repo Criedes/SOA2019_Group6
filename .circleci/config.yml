@@ -119,6 +119,8 @@ jobs:
                     docker build -t $DOCKER_USERNAME/authen_service .
                     docker push $DOCKER_USERNAME/authen_service
     service-deploy:
+        machine:
+            enabled: true
         steps:
         - run:
             command: |
