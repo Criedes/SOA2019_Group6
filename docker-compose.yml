@@ -13,7 +13,7 @@ services:
       - "3000:3000"
 # Mechanics Service
   mechanic:
-    image: tomtan05/mechanic_service
+    image: tomtan05/mechanics_service
     container_name: mechanic
     restart: on-failure
     links:
