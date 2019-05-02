@@ -125,11 +125,11 @@ jobs:
             - run:
                 name: SSH
                 command: |
-                    ssh ${SSH_USER}@${SSH_HOST}
+                    ssh ${SSH_USER}@${SSH_HOST} "itsoa2019"
             - run:
                 name: add password
                 command: |
-                    itsoa2019
+                    
             - run:
                 name: change Directory
                 command: |
