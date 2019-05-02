@@ -3,6 +3,7 @@ import '../styles/login.css'
 import LoginMember from '../component/Login/Login_member'
 import LoginMechanic from '../component/Login/Login_mechanic'
 import Header from '../component/Header'
+import {Link} from 'react-router-dom'
 class Login extends Component {
     
     constructor(props) {
@@ -50,7 +51,7 @@ class Login extends Component {
                             {this.state.isLoginmemberOpen && <LoginMember />}
                             {this.state.isLoginmechanicOpen && <LoginMechanic />}
                             </div><div>
-                                <span>ยังไม่เป็นสมัครสมาชิกใช่หรือไม่<button className="login100-form-btn6">สมัครสมาชิก</button></span>
+                                <Link to='/register/customer' ><span>ยังไม่เป็นสมัครสมาชิกใช่หรือไม่<button className="login100-form-btn6">สมัครสมาชิก</button></span></Link>
                             </div>
                             </div>
 

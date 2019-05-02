@@ -1,33 +1,3 @@
-.man_landing{
-    height: 90vh;
-    max-height: 1080px;
-    overflow: hidden;
-    position: relative;
-}
-
-.Intro{
-    position: absolute;
-    top: 20%;
-    right: 10%;
-}
-button {
-
-    background: transparent;
-    border: none !important;
-    font-size:0;
-}
-.main-man img{
-    height: 80%;
-}
-.effect-front{
-    top: 30%;
-}
-
-.effect-back{
-    top: 10%;
-    right: 12%;
-    z-index: -1;
-}
 
 .login100-form-btn {
     text-transform: uppercase;
@@ -175,19 +145,7 @@ button {
 .title-text2{
     margin-bottom: 0.5rem;
 }
-.gt-findPage-btn{
-    margin-top: 1rem;
-    display: flex;
-    padding: 0.6rem;
-    width: 120px;
-    height: 35px;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Nunito', sans-serif;
-    color:white;
-    background: #9338D0;
-    border-radius: 70px;
-}
+
 .wrap-input100 {
     position: relative;
     width: 100%;

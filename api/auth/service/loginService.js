@@ -10,7 +10,14 @@ exports.authenUser = async (req, res) => {
     
     const {error} = validateUser(req.body)
 
-    if(error) return res.status(400).send(error.details[0].message)
+    if(error) {
+        console.log(req.body.username)
+        console.log(req.body.password)
+        console.log(error)
+        return res.status(400).send(error.details[0].message)
+
+    }
+    
     const username = req.body.username;
     const password = req.body.password;
     const user = await customerSchema.findOne({username:req.body.username})
@@ -27,8 +34,10 @@ exports.authenUser = async (req, res) => {
     }
     
     jwt.sign(payload, config.get('jwtPrivateKey'), {expiresIn:360000} , (err, token)=>{
-        res.header('Authorization', `Bearer ${token}`).status(201).json({token:token})
+        console.log(token)
+        // res.header('Authorization', token).status(201).json({token})
     })
+    
     
 }
 function validateUser(req){

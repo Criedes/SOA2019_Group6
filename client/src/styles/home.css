@@ -24,7 +24,7 @@
     z-index: -1;
 }
 
-.title{
+.title-2{
     position: absolute;
     top:50%;
     transform: translateY(-50%);
@@ -32,13 +32,13 @@
     flex-direction: column;
 }
 
-.title h3{
+.top-topic{
     font-family: 'Nunito', sans-serif;
     font-size:4rem;
     color: #9338D0;
 }
 
-.title h1{
+.middle-topic{
     font-family: 'Nunito', sans-serif;
     font-size:6rem;
     color: #545156;
@@ -48,7 +48,7 @@
     margin-right:5px;
 }
 
-.title span{
+.title-2 span{
     font-family: 'Prompt', sans-serif;
     font-size:1.2rem;
     color: #545156;
@@ -61,8 +61,8 @@
     margin-top: 1rem;
     display: flex;
     padding: 0.2rem;
-    width: 200px;
-    height: 60px;
+    width:200px;
+    height: 70px;
     align-items: center;
     font-size: 1.2em;
     justify-content: center;

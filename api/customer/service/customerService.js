@@ -2,7 +2,7 @@ const customerSchema = require('../model/customerSchema');
 const bcrypt = require('bcrypt');
 
 exports.registerCustomer = (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     async function registCustomer() {
         const saltRounds = 10;
         await bcrypt.genSalt(saltRounds, function (err, getsalt) {
@@ -21,9 +21,7 @@ exports.registerCustomer = (req, res) => {
                             success: err
                         });
                     };
-                    res.status(201).json({
-                        success: true
-                    });
+                    res.status(201).json(customerInfo);
                 });
             })
         })

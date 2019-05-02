@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Header from '../component/Header'
 import '../styles/register.css'
 import Header2 from '../component/RegisterCustomer/Header'
-import axios from 'axios'
-import global from '../global'
+import {register} from '../actions/auth'
+import {connect} from 'react-redux'
 import {Redirect} from "react-router-dom"
 class RegisterCustomerPage extends Component {
     state = {
@@ -17,31 +17,12 @@ class RegisterCustomerPage extends Component {
     handleSubmit = async (e) => {
 
         e.preventDefault();
-        const newUser = {
+
+        this.props.register({
             name: this.state.name,
             username: this.state.username,
             password: this.state.password,
-            phone: this.state.phone
-        }
-
-        try {
-            const config = {
-                header: {
-                    'Content-type': 'Application/json'
-                }
-            }
-            // const body = JSON.stringify(newUser)
-            console.log(newUser)
-            const res = await axios.post(global.REGISTER_PATH_CUSTOMER, newUser, config)
-            // console.log(res.data)
-            if(res.data){
-                this.setState({isRegistered:true})
-                // console.log(this.state.isRegistered)
-            }
-        } catch (e) {
-            console.log(e.response.data)
-            this.setState({isRegistered:false})
-        }
+            phone: this.state.phone})
     }
 
     onChanged = (e) => {
@@ -50,9 +31,9 @@ class RegisterCustomerPage extends Component {
 
     
     render() {
-        const {isRegistered} = this.state
+        const {isRegistered} = this.props.auth
         if (isRegistered){
-            console.log('true register')
+            console.log('test')
             return  <Redirect push to={'/'} />
         }
         return (
@@ -72,9 +53,12 @@ class RegisterCustomerPage extends Component {
                         <input type="submit" value="Submit" />
                     </form>
                 </div>
-
             </div>);
     }
 }
 
-export default RegisterCustomerPage;
+const mapStateToProps = (state)=> ({
+    auth: state.auth
+})
+
+export default connect(mapStateToProps , {register})(RegisterCustomerPage);

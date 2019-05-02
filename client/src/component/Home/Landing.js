@@ -23,12 +23,12 @@ class Landing extends Component {
                             <Fade bottom><img src={EffectFront} alt=""></img></Fade>
                         </div>
                         
-                        <div className="title">
+                        <div className="title-2">
                             <Fade bottom>
-                                <h3 className="title-text">
+                                <h3 className="top-topic title-text">
                                     Find Your
                                 </h3>
-                                <h1 className="title-text">
+                                <h1 className="middle-topic title-text">
                                     Mechanic
                                 </h1>
                                 <span >
