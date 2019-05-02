@@ -14,16 +14,16 @@ class MechanicListItem extends Component {
                     </div>
                     <div className="mechanic-info">
                         <div className="header-info">
-                            <h3>{data.name}</h3>
+                            <h3>{data.machanic_name}</h3>
                             <h6>{`ระยะทาง ${data.howFar} กิโลเมตร`}</h6>
                         </div>
                         <div className="info">
                             <div className="price">
-                                <h6> <i className="fa fa-futbol-o icon" aria-hidden="true"></i> {`ปะยางรถยนต์ ${data.price.price1} บาท  `}</h6>
-                                <h6> <i className="fa fa-wrench icon" aria-hidden="true"></i> {`เปลี่ยนยางรถยนต์ ${data.price.price2} บาท  `}</h6>
+                                <h6> <i className="fa fa-futbol-o icon" aria-hidden="true"></i> {`ปะยางรถยนต์ ${data.price.patch_rubber} บาท  `}</h6>
+                                <h6> <i className="fa fa-wrench icon" aria-hidden="true"></i> {`เปลี่ยนยางรถยนต์ ${data.price.change_rubber} บาท  `}</h6>
                             </div>
                             <div className="tel">
-                                <h6> <i className="fa fa-phone icon" aria-hidden="true"></i>{`โทรศัพท์ ${data.tel}`}</h6>
+                                <h6> <i className="fa fa-phone icon" aria-hidden="true"></i>{`โทรศัพท์ ${data.contact}`}</h6>
                             </div>
                         </div>
                         <div className="select_mechanic_btn_wrapper">

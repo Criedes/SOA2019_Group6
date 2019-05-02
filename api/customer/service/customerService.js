@@ -13,7 +13,9 @@ exports.registerCustomer = (req, res) => {
                     name: req.body.name,
                     username: req.body.username,
                     password: hash,
-                    phone_number: req.body.phone
+                    phone_number: req.body.phone,
+                    status: 'none',
+                    mechanic_id : 'id',
                 });
                 customerInfo.save((err) => {
                     if (err) {

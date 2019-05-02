@@ -32,7 +32,7 @@ class RegisterCustomerPage extends Component {
     
     render() {
         
-        if(this.props.auth.isAuth){
+        if(this.props.auth.isRegistered){
             return <Redirect to="/" />
          }
         return (
