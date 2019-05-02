@@ -5,6 +5,8 @@ import Map from '../component/SearchMechanic/Map'
 import SearchBar from '../component/SearchMechanic/SearchBar';
 import WarnText from '../component/SearchMechanic/WarnText'
 import MechanicLists from '../component/SearchMechanic/MechanicLists'
+import {connect} from 'react-redux'
+import {loadMechanic} from '../actions/mechanic'
 class FindMechanic extends Component {
     state = { 
         list:[{
@@ -17,28 +19,19 @@ class FindMechanic extends Component {
             },
             tel: '0970699999',
             howFar: 0.9
-        },{
-            _id: '12432dsdasd54321dsasdsavasrew',
-            name : 'ช่างใหญ่บางขุนพลี',
-            imgProfile : 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg',
-            price:{
-                price1 : 90,
-                price2 : 2000
-            },
-            tel: '0970699999',
-            howFar: 0.9
-        },{
-            _id: '12432dsdaasdsd54321dsasdsavasrew',
-            name : 'ช่างใหญ่บางขุนพลี',
-            imgProfile : 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg',
-            price:{
-                price1 : 90,
-                price2 : 2000
-            },
-            tel: '0970699999',
-            howFar: 0.9
         }]
-     }
+    }
+
+    componentDidMount(){
+        this.loadMechanicList()
+    }
+
+    loadMechanicList = async () =>{
+        await this.props.loadMechanic()
+        await this.setState({list:this.props.mechanic.mechanic})
+    }
+
+   
     render() { 
         return ( 
             <div className="find_mechanic">
@@ -53,5 +46,9 @@ class FindMechanic extends Component {
         );
     }
 }
- 
-export default FindMechanic;
+
+const mapStateToProps = (state)=>({
+    mechanic : state.mechanic
+})
+
+export default connect(mapStateToProps, {loadMechanic})(FindMechanic);
