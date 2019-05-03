@@ -21,16 +21,11 @@ jobs:
         working_directory: ~/SOA2019_Group6/api/customer/
         docker:
             - image: circleci/node:11.13.0
-            - image: mongo:3.4.4
         steps:
             - setup_remote_docker:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            - run:
-                name: seed Data
-                command: |
-                    mongoimport --host mongo --db payang --collection customers --file customers.json
             - run:
                 name: Install Library
                 command: |
