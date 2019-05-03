@@ -1,29 +1,27 @@
 version: 2
 jobs:
 # Database (Can't Seed Data)
-    # mongo:
-    #     working_directory: ~/SOA2019_Group/api/
-    #     docker:
-    #         - image: mongo:3.4.4
-    #     steps:
-    #         - setup_remote_docker:
-    #             docker_layer_caching: true
-    #         - checkout:
-    #             path: ~/SOA2019_Group6
-    #         - run:
-    #             name: seed Data
-    #             command: |
-    #                 mongoimport --host mongo --db payang --collection customers --file customers.json
-    #                 mongoimport --host mongo --db payang --collection mechanics --file mechanics.json
-    #                 mongoimport --host mongo --db notification --collection mechanics --file notification.json
-    #         - run:
-    #             name: Build Docker Image
-    #             command: |
-    #                 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    #                 docker build -t $DOCKER_USERNAME/mongo .
-    #                 docker push $DOCKER_USERNAME/mongo
+    mongo:
+        machine:
+            enabled: true
+        working_directory: ~/SOA2019_Group/api/
+        docker:
+            - image: mongo:3.4.4
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group6
+            - run:
+                name: seed Data
+                command: |
+                    mongoimport --host mongo --db payang --collection customers --file customers.json
+                    mongoimport --host mongo --db payang --collection mechanics --file mechanics.json
+                    mongoimport --host mongo --db notification --collection mechanics --file notification.json
 # Customer Service
     customer:
+        machine:
+            enabled: true
         working_directory: ~/SOA2019_Group6/api/customer/
         docker:
             - image: circleci/node:11.13.0
@@ -48,6 +46,8 @@ jobs:
                     docker push $DOCKER_USERNAME/customer_service
 # Mechanics Service
     mechanics:
+        machine:
+            enabled: true
         working_directory: ~/SOA2019_Group6/api/mechanics/
         docker:
             - image: circleci/node:11.13.0
@@ -72,6 +72,8 @@ jobs:
                     docker push $DOCKER_USERNAME/mechanics_service
 # Request Mechanics Service
     request:
+        machine:
+            enabled: true
         working_directory: ~/SOA2019_Group6/api/request/
         docker:
             - image: circleci/node:11.13.0
@@ -96,6 +98,8 @@ jobs:
                     docker push $DOCKER_USERNAME/request_service
 # Authentication Service
     authen:
+        machine:
+            enabled: true
         working_directory: ~/SOA2019_Group6/api/auth/
         docker:
             - image: circleci/node:11.13.0
@@ -133,22 +137,35 @@ workflows:
     version: 2
     complie:
         jobs:
+            - mongo:
+                filters:
+                    branches:
+                        only:
+                            - master
             - customer:
+                requires:
+                    - mongo
                 filters:
                     branches:
                         only:
                             - master
             - mechanics:
+                requires:
+                    - mongo
                 filters:
                     branches:
                         only:
                             - master
             - request:
+                 requires:
+                    - mongo
                 filters:
                     branches:
                         only:
                             - master
             - authen:
+                requires:
+                    - mongo
                 filters:
                     branches:
                         only:
