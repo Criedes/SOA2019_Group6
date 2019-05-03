@@ -40,6 +40,26 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/customer_service .
                     docker push $DOCKER_USERNAME/customer_service
+    customer-deploy:
+        working_directory: ~/SOA2019_Group6/api/customer/
+        docker:
+            - image: google/cloud-sdk
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group6
+            - run:
+                name: Config gcloud credentials
+                command: |
+                    echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+                    gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
+                    gcloud auth configure-docker
+            - run:
+                name: SSH
+                command: |
+                    gcloud compute ssh customer-service --zone asia-southeast1-b \
+                    --command "docker ps"
 # Mechanics Service
     mechanics:
         working_directory: ~/SOA2019_Group6/api/mechanics/
@@ -135,6 +155,13 @@ workflows:
             - customer:
                 # requires:
                 #     - mongo
+                filters:
+                    branches:
+                        only:
+                            - master
+            - customer-deploy:
+                requires:
+                    - customer
                 filters:
                     branches:
                         only:
