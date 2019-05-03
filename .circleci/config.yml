@@ -61,11 +61,7 @@ jobs:
             - run:
                 name: SSH
                 command: |
-                    gcloud \
-                    --quiet \
-                    --project="${GCLOUD_PROJECT_ID}" \
-                    compute ssh customer-service \
-                    --zone asia-southeast1-b\
+                    gcloud --quiet compute ssh customer-service --zone asia-southeast1-b \
                     --command "echo works"
 # Mechanics Service
     mechanics:
