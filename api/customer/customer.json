@@ -1,0 +1,3 @@
+{"_id":{"$oid":"5ccb13b70dc4b5a9126a1210"},"name":"tester01","username":"tester01","password":"$2b$10$raP5ckhDxsPGLKC2KzxEgu9AGyjrZgoTMFFJpvA07ZHBfu370Tk8i","phone_number":"0986543445","status":"none","mechanic_id":"id","__v":0}
+{"_id":{"$oid":"5ccb13c70dc4b5a9126a1211"},"name":"tester02","username":"tester02","password":"$2b$10$sX7Wswl7p7qvbjHZ5oSnxeflER5jUjtpB9ElTdk2vSJs38G20lFdi","phone_number":"0876785443","status":"none","mechanic_id":"id","__v":0}
+{"_id":{"$oid":"5ccb13d80dc4b5a9126a1212"},"name":"tester03","username":"tester03","password":"$2b$10$SLppngeEhJvGUj7Hv66NFes1.DVghzz0pf0D4s6QdUg83y0l4Ju5C","phone_number":"0876543344","status":"none","mechanic_id":"id","__v":0}

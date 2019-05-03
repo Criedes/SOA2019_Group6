@@ -27,14 +27,18 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Customer Service
-            #     command: |
-            #         npm test #wait for mongodb
+            - run:
+                name: seed Data
+                command: |
+                    mongoimport --host mongo --db payang --collection customers --file customers.json
+            - run:
+                name: Install Library
+                command: |
+                    npm install
+            - run:
+                name: Test Customer Service
+                command: |
+                    npm test #wait for mongodb
             - run:
                 name: Build Docker Customer service Image
                 command: |
