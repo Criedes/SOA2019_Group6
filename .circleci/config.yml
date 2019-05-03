@@ -1,30 +1,27 @@
 version: 2
 jobs:
 # Database (Can't Seed Data)
-    mongo:
-        machine:
-            enabled: true
-        working_directory: ~/SOA2019_Group/api/
-        docker:
-            - image: mongo:3.4.4
-        steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group6
-            - run:
-                name: seed Data
-                command: |
-                    mongoimport --host mongo --db payang --collection customers --file customers.json
-                    mongoimport --host mongo --db payang --collection mechanics --file mechanics.json
-                    mongoimport --host mongo --db notification --collection mechanics --file notification.json
+    # mongo:
+    #     working_directory: ~/SOA2019_Group/api/
+    #     docker:
+    #         - image: mongo:3.4.4
+    #     steps:
+    #         - setup_remote_docker:
+    #             docker_layer_caching: true
+    #         - checkout:
+    #             path: ~/SOA2019_Group6
+    #         - run:
+    #             name: seed Data
+    #             command: |
+    #                 mongoimport --host mongo --db payang --collection customers --file customers.json
+    #                 mongoimport --host mongo --db payang --collection mechanics --file mechanics.json
+    #                 mongoimport --host mongo --db notification --collection mechanics --file notification.json
 # Customer Service
     customer:
-        machine:
-            enabled: true
         working_directory: ~/SOA2019_Group6/api/customer/
         docker:
             - image: circleci/node:11.13.0
+            - image: mongo:3.4.4
         steps:
             - setup_remote_docker:
                 docker_layer_caching: true
@@ -46,8 +43,6 @@ jobs:
                     docker push $DOCKER_USERNAME/customer_service
 # Mechanics Service
     mechanics:
-        machine:
-            enabled: true
         working_directory: ~/SOA2019_Group6/api/mechanics/
         docker:
             - image: circleci/node:11.13.0
@@ -72,8 +67,6 @@ jobs:
                     docker push $DOCKER_USERNAME/mechanics_service
 # Request Mechanics Service
     request:
-        machine:
-            enabled: true
         working_directory: ~/SOA2019_Group6/api/request/
         docker:
             - image: circleci/node:11.13.0
@@ -98,8 +91,6 @@ jobs:
                     docker push $DOCKER_USERNAME/request_service
 # Authentication Service
     authen:
-        machine:
-            enabled: true
         working_directory: ~/SOA2019_Group6/api/auth/
         docker:
             - image: circleci/node:11.13.0
@@ -130,42 +121,42 @@ jobs:
                 name: SSH
                 command: |
                     sudo apt-get install sshpass
-                    sshpass -p itsoa2019 ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
+                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
 
 
 workflows:
     version: 2
     complie:
         jobs:
-            - mongo:
-                filters:
-                    branches:
-                        only:
-                            - master
+            # - mongo:
+            #     filters:
+            #         branches:
+            #             only:
+            #                 - master
             - customer:
-                requires:
-                    - mongo
+                # requires:
+                #     - mongo
                 filters:
                     branches:
                         only:
                             - master
             - mechanics:
-                requires:
-                    - mongo
+                # requires:
+                #     - mongo
                 filters:
                     branches:
                         only:
                             - master
             - request:
-                requires:
-                    - mongo
+                # requires:
+                #     - mongo
                 filters:
                     branches:
                         only:
                             - master
             - authen:
-                requires:
-                    - mongo
+                # requires:
+                #     - mongo
                 filters:
                     branches:
                         only:
