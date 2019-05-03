@@ -49,9 +49,6 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            - add_ssh_keys:
-                fingerprints:
-                    - "b7:35:a6:4e:9b:0d:6d:d4:78:1e:9a:97:2a:66:6b:be"
             - run:
                 name: Config gcloud credentials
                 command: |
@@ -62,7 +59,7 @@ jobs:
                 name: SSH
                 command: |
                     gcloud --quiet compute ssh customer-service --zone asia-southeast1-b \
-                    --command "echo works"
+                    --command "docker pull tomtan05/customer_service && docker run -p 3001:3000 -d tomtan05/customer_service"
 # Mechanics Service
     mechanics:
         working_directory: ~/SOA2019_Group6/api/mechanics/
