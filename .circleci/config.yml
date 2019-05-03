@@ -157,7 +157,7 @@ workflows:
                         only:
                             - master
             - request:
-                 requires:
+                requires:
                     - mongo
                 filters:
                     branches:
