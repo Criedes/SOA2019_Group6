@@ -61,8 +61,13 @@ jobs:
             - run:
                 name: SSH
                 command: |
-                    gcloud compute ssh customer-service --zone asia-southeast1-b \
-                    --command "docker ps"
+                    gcloud \
+                    --quiet \
+                    --project="${GCLOUD_PROJECT_ID}" \
+                    compute ssh customer-service \
+                    --zone asia-southeast1-b\
+                    --strict-host-key-checking=no \
+                    --command "echo works"
 # Mechanics Service
     mechanics:
         working_directory: ~/SOA2019_Group6/api/mechanics/
