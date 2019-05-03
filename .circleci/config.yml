@@ -126,15 +126,7 @@ jobs:
                 name: SSH
                 command: |
                     sudo apt-get install sshpass
-                    sshpass -p itsoa2019 ssh ${SSH_USER}@${SSH_HOST}                  
-            - run:
-                name: change Directory
-                command: |
-                    cd SOA2019_Group6
-            - run:
-                name: deploy
-                command: |
-                    docker-compose stop && docker-compose rm -f && docker-compose pull && docker-compose up -d
+                    sshpass -p itsoa2019 ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
 
 
 workflows:
