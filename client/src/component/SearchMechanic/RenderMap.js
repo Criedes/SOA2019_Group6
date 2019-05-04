@@ -22,7 +22,7 @@ class RenderMap extends Component {
             username: "jameonline",
             _id: "5c9001f5cf9f9075a756e419"
         }],
-        nextPage:'',
+        next_page:'',
         isRedirect:false
     }
 
@@ -48,16 +48,17 @@ class RenderMap extends Component {
 
     _onChildClick = (key, childProps) => {
         if(key){
-            this.setState({isRedirect:true,nextPage:this.key})
+            // console.log(key)
+            this.setState({isRedirect:true})
+            this.setState({next_page:key})
         }
     }
 
-
-
     render() {
         const listmechanic = this.state.list
+        // console.log(this.state.next_page)
         if(this.state.isRedirect){
-            return <Redirect to={`/mechanic/${this.state.nextPage}`} />
+            return <Redirect to={`/mechanic/${this.state.next_page}`} />
         }
 
         return (
@@ -77,14 +78,15 @@ class RenderMap extends Component {
                     />
 
                     {
-                        listmechanic.map(item => (
-                            <MechanicLabel
+                        listmechanic.map(item => {
+                            // console.log(item._id)
+                            return <MechanicLabel
                                 key={item._id}
                                 lat={item.coordinate.lat}
                                 lng={item.coordinate.lng}
                                 text={item.machanic_name}
                             />
-                        ))
+                        })
                     }
 
                 </GoogleMapReact>
