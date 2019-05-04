@@ -4,7 +4,7 @@ class Map extends Component {
     render() { 
         return ( 
         <div className="map-mechanic-profile">
-
+            
         </div> );
     }
 }

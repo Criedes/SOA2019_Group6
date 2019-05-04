@@ -9,6 +9,7 @@ import {connect} from 'react-redux'
 import {loadMechanic} from '../actions/mechanic'
 class FindMechanic extends Component {
     state = { 
+        //defualt
         list:[{
             _id: '12432dasd54321dsasdsavasrew',
             name : 'ช่างใหญ่บางขุนพลี',
@@ -28,7 +29,7 @@ class FindMechanic extends Component {
 
     loadMechanicList = async () =>{
         await this.props.loadMechanic()
-        await this.setState({list:this.props.mechanic.mechanic})
+        await this.setState({list:this.props.mechanic.mechanic_list})
     }
 
    
