@@ -51,16 +51,18 @@ services:
 # Database
   mongo:
     container_name: mongo
-    image: mongo
+    image: mongo:latest
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
     volumes:
-      - "./data:/data/db"
+      - /data/db:/data/db
     ports:
       - '27017:27017'
 # Seed data
   mongo-seed-customer:
     container_name: seed-data
     image: mongo
-    restart: on-failure
     links:
       - mongo
     volumes:
@@ -68,7 +70,7 @@ services:
     environment:
       WAIT_HOSTS: mongo:27017
     command:
-      'bash -c "mongoimport --host mongo --db payang --collection customers --file /seed-data/customers.json
+      'bash -c "mongoimport --host mongo --db payang --collection customers --file /seed-data/customer.json
       &&
       mongoimport --host mongo --db payang --collection mechanics --file /seed-data/mechanics.json
       &&
