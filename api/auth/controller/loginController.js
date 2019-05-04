@@ -7,8 +7,13 @@ const mechanicSchema = require('../model/mechanicSchema')
 
 router.get('/authentication/customer', auth , async (req,res) => {
     try{
-        const customer = await customerSchema.findById(req.user._id).select('-password')
-        res.status(200).json(customer)
+        if(req.user.role == 'customer'){
+            const user = await customerSchema.findById(req.user._id).select('-password')
+        }else{
+            const user = await mechanicSchema.findById(req.user._id).select('-password')
+        }
+        
+        res.status(200).json(user)
         
     }catch(e){
         console.log(e.message)
