@@ -34,10 +34,11 @@ class FindMechanic extends Component {
 
    
     render() { 
+        console.log(this.state.list)
         return ( 
             <div className="find_mechanic">
                 <Header></Header>
-                <Map></Map>
+                <Map list={this.state.list}></Map>
                 <SearchBar />
                 <WarnText />
                 <div className="container">

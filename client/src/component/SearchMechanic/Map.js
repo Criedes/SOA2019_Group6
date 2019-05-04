@@ -25,11 +25,11 @@ class Maps extends Component {
         }
     }
     render() {
+        
+        
         return (
             <div className="map" id="map">
-                {`lat : ${this.state.currentLocation.lat}`}
-                {`lng : ${this.state.currentLocation.lng}`}
-                <RenderMap center={this.state.currentLocation} />
+                <RenderMap center={this.state.currentLocation} list={this.props.list}/>
             </div>);
     }
 }
