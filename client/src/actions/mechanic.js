@@ -14,6 +14,23 @@ export const loadMechanic = () => async dispatch =>{
     }
 }
 
+export const searchMechanic = (name) => async dispatch => {
+    try{
+        const config = {
+            header: {
+                'Content-type': 'Application/json'
+            }
+        }
+        const res = await axios.post(global.SEARCH_MECHANIC_BY_NAME,{name}, config)
+        dispatch({
+            type:LIST_MECHANIC,
+            payload:res.data
+        })
+    }catch(e){
+        console.log(e)
+    }
+}
+
 export const loadProfileMechanic = ({id}) => async dispatch =>{
     try{
         // console.log(`${global.GET_PROFILE_MECHANIC}`+'/'+`${id}`)

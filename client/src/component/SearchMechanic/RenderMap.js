@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import { Redirect } from 'react-router-dom'
 
 class RenderMap extends Component {
     state = {
@@ -20,7 +21,9 @@ class RenderMap extends Component {
             status: false,
             username: "jameonline",
             _id: "5c9001f5cf9f9075a756e419"
-        }]
+        }],
+        nextPage:'',
+        isRedirect:false
     }
 
     static defaultProps = {
@@ -43,8 +46,19 @@ class RenderMap extends Component {
         }
     }
 
+    _onChildClick = (key, childProps) => {
+        if(key){
+            this.setState({isRedirect:true,nextPage:this.key})
+        }
+    }
+
+
+
     render() {
         const listmechanic = this.state.list
+        if(this.state.isRedirect){
+            return <Redirect to={`/mechanic/${this.state.nextPage}`} />
+        }
 
         return (
             // Important! Always set the container height explicitly
@@ -54,6 +68,7 @@ class RenderMap extends Component {
                     bootstrapURLKeys={{ key: "AIzaSyDj-dApaoMjhBBrhL5EN64wP81cWAlnAZs" }}
                     center={this.state.center}
                     defaultZoom={this.props.zoom}
+                    onChildClick={this._onChildClick}
                 >
                     <CurrentLocation
                         lat={this.state.center.lat}
@@ -109,7 +124,7 @@ const MechanicLabel = ({ text }) => (
         {`ช่าง ${text}`}
     </div>
 
-    
+
 )
 
 

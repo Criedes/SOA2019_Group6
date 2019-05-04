@@ -12,6 +12,7 @@ router.get('/find', mechanicService.findMechanic)
 //get mechanic information
 router.get('/find/:id', mechanicService.findMechanicById)
 
+router.post('/search', mechanicService.queryMechanicByName)
 
 //get mechanic infomation by shop ' s name
 router.get('/find/garage/:shopname', mechanicService.findMechanicByShopName)

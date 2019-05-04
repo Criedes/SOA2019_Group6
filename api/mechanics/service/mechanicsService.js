@@ -17,6 +17,15 @@ exports.findMechanicById = (req, res) => {
     getMechanicById()
 }
 
+exports.queryMechanicByName = (req, res) => {
+    async function getMechanicById() {
+        const name = req.body.name
+        const mechanic = await findMechanicSchema.find({'machanic_name': {'$regex': new RegExp('^' + name, 'i')}})
+        res.status(200).json(mechanic)
+    }
+    getMechanicById()
+}
+
 exports.findMechanicByShopName = (req, res) => {
     async function getMechanicByShopName() {
         const shop_name = req.params.shopname
@@ -87,7 +96,8 @@ exports.registerMechanic = (req, res) => {
                     },
                     request_status_service : false,
                     request_user_id: "",
-                    role: "mechanic"
+                    role: "mechanic",
+                    imgUrl:""
                 })
                 newMechanic.save(function (err, post) {
                     if (err) { 

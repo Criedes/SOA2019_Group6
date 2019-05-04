@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import {loginMechanic} from '../../actions/auth'
 class Login_mechanic extends Component {
     constructor(props) {
         super(props);
@@ -14,8 +16,9 @@ class Login_mechanic extends Component {
 
     submitLogin = (e) => {
         e.preventDefault();
-        
+        this.props.loginMechanic({username:this.state.username, password:this.state.password})
     }
+
     render() {
         return (<form className="login100-form ">
             <div className="title-text">
@@ -37,4 +40,8 @@ class Login_mechanic extends Component {
         );
     }
 }
-export default Login_mechanic;
+
+const mapStateToProps = (state)=>({
+    auth : state.auth
+})
+export default connect(mapStateToProps, {loginMechanic})(Login_mechanic);

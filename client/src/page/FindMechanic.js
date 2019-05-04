@@ -6,7 +6,7 @@ import SearchBar from '../component/SearchMechanic/SearchBar';
 import WarnText from '../component/SearchMechanic/WarnText'
 import MechanicLists from '../component/SearchMechanic/MechanicLists'
 import {connect} from 'react-redux'
-import {loadMechanic} from '../actions/mechanic'
+import {loadMechanic ,searchMechanic} from '../actions/mechanic'
 class FindMechanic extends Component {
     state = { 
         //defualt
@@ -20,7 +20,12 @@ class FindMechanic extends Component {
             },
             tel: '0970699999',
             howFar: 0.9
-        }]
+        }],
+        search:''
+    }
+
+    setSearchText = (text) => {
+        this.setState({search:text})
     }
 
     componentDidMount(){
@@ -32,14 +37,26 @@ class FindMechanic extends Component {
         await this.setState({list:this.props.mechanic.mechanic_list})
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.search !== this.state.search){
+            console.log(this.state.search)
+           this.searchMechanicMethod(this.state.search)
+        }
+    }
+
+    searchMechanicMethod = async (text) => {
+        await this.props.searchMechanic(text)
+        await this.setState({list:this.props.mechanic.mechanic_list})
+    }
+
    
     render() { 
-        console.log(this.state.list)
+        console.log(this.state.search)
         return ( 
             <div className="find_mechanic">
                 <Header></Header>
                 <Map list={this.state.list}></Map>
-                <SearchBar />
+                <SearchBar setSearchText={this.setSearchText}/>
                 <WarnText />
                 <div className="container">
                     <MechanicLists list={this.state.list} />
@@ -53,4 +70,4 @@ const mapStateToProps = (state)=>({
     mechanic : state.mechanic
 })
 
-export default connect(mapStateToProps, {loadMechanic})(FindMechanic);
+export default connect(mapStateToProps, {loadMechanic,searchMechanic})(FindMechanic);

@@ -20,7 +20,8 @@ const mechanicSchema = mongoose.Schema({
     },
     role:{type:String , require: true},
     request_status_service : {type:Boolean, require:true},
-    request_user_id: {type:String, require:true}
+    request_user_id: {type:String, required:true},
+    imgUrl:{type:String, required:true}
 })
 
 const Mechanic = mongoose.model('mechanics', mechanicSchema)

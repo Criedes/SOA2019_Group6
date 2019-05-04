@@ -5,6 +5,7 @@ class SearchBar extends Component {
 
     handleChange = (event) => {
         this.setState({search_text: event.target.value});
+        this.props.setSearchText(event.target.value)
     }
     
     handleSubmit = (event) => {
