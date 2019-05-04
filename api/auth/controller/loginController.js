@@ -5,15 +5,16 @@ const {auth} = require('../middlewares/auth')
 const customerSchema = require('../model/customerSchema')
 const mechanicSchema = require('../model/mechanicSchema')
 
-router.get('/authentication/customer', auth , async (req,res) => {
+router.get('/authentication', auth , async (req,res) => {
     try{
-        if(req.user.role == 'customer'){
-            const user = await customerSchema.findById(req.user._id).select('-password')
+        let user2= ''
+        if(req.user.role == "customer"){
+            user2 = await customerSchema.findById(req.user._id).select('-password')
         }else{
-            const user = await mechanicSchema.findById(req.user._id).select('-password')
+            user2 = await mechanicSchema.findById(req.user._id).select('-password')
         }
         
-        res.status(200).json(user)
+        res.status(200).json(user2)
         
     }catch(e){
         console.log(e.message)
@@ -21,15 +22,6 @@ router.get('/authentication/customer', auth , async (req,res) => {
     }
 })
 
-router.get('/authentication/mechanic', auth , async(req,res)=>{
-    try{
-        const mechanic = await mechanicSchema.findById(req.user._id).select('-password')
-        res.status(200).json(mechanic)
-    }catch(e){
-        console.log(e.message)
-        res.status(500).send("server error")
-    }
-})
 router.post('/customer', loginService.authenUser)
 router.post('/mechanic', loginService.authenMechanic)
 

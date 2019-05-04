@@ -1,6 +1,6 @@
 module.exports.REGISTER_PATH_CUSTOMER = 'http://139.162.25.245/api/customers/register';
-module.exports.LOGIN_PATH_CUSTOMER = 'http://139.162.25.245/api/auth/customer'
-module.exports.AUTH_PATH = 'http://139.162.25.245/api/auth/authentication/customer'
+module.exports.LOGIN_PATH_CUSTOMER = 'http://localhost:3004/api/auth/customer'
+module.exports.AUTH_PATH = 'http://localhost:3004/api/auth/authentication/customer'
 
 module.exports.LOGIN_PATH_MECHANIC = 'http://139.162.25.245/api/auth/mechanic'
 
