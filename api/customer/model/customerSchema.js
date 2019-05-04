@@ -6,8 +6,8 @@ const customerSchema = mongoose.Schema({
     password : {type:String, required: true},
     phone_number : {type:String, required: true},
     status : {type:String , require: true},
-    role: "customer",
-    mechanic_id : {type: String , require: true},
+    role: {type:String , require: true},
+    request_mechanic_id : {type: String , require: true},
 });
 
 const Customer = mongoose.model('customers', customerSchema);

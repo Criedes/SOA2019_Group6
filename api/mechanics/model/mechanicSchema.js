@@ -17,7 +17,10 @@ const mechanicSchema = mongoose.Schema({
     price: {
         patch_rubber: {type:Number, required: true},
         change_rubber: {type:Number, required: true}
-    }
+    },
+    role:{type:String , require: true},
+    request_status_service : {type:Boolean, require:true},
+    request_user_id: {type:String, require:true}
 })
 
 const Mechanic = mongoose.model('mechanics', mechanicSchema)

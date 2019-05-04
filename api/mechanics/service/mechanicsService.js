@@ -85,6 +85,9 @@ exports.registerMechanic = (req, res) => {
                         patch_rubber: req.body.price.patch_rubber,
                         change_rubber: req.body.price.change_rubber
                     },
+                    request_status_service : false,
+                    request_user_id: "",
+                    role: "mechanic"
                 })
                 newMechanic.save(function (err, post) {
                     if (err) { 
