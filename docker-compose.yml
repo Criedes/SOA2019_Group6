@@ -9,6 +9,7 @@ services:
         - mongo
     environment:
       WAIT_HOSTS: mongo:27017
+      MONGOURL: mongodb://mongo:27017/payang
     ports:
       - "3000:3000"
 # Mechanics Service
@@ -20,6 +21,7 @@ services:
         - mongo
     environment:
       WAIT_HOSTS: mongo:27017
+      MONGOURL: mongodb://mongo:27017/payang
     ports:
       - "3001:3000"
 # Notification Service
@@ -31,6 +33,7 @@ services:
         - mongo
     environment:
       WAIT_HOSTS: mongo:27017
+      MONGOURL: mongodb://mongo:27017/notification
     ports:
       - "3002:3000"
 # Authentication Service
@@ -42,6 +45,7 @@ services:
 #      - mongo
 #    environment:
 #      WAIT_HOSTS: mongo:27017
+#      MONGOURL: mongodb://mongo:27017/payang
 #    ports:
 #      - "3003:3000"
 # Database
