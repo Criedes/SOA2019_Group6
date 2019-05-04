@@ -1,21 +1,6 @@
 version: 2
 jobs:
-# Database (Can't Seed Data)
-    # mongo:
-    #     working_directory: ~/SOA2019_Group/api/
-    #     docker:
-    #         - image: mongo:3.4.4
-    #     steps:
-    #         - setup_remote_docker:
-    #             docker_layer_caching: true
-    #         - checkout:
-    #             path: ~/SOA2019_Group6
-    #         - run:
-    #             name: seed Data
-    #             command: |
-    #                 mongoimport --host mongo --db payang --collection customers --file customers.json
-    #                 mongoimport --host mongo --db payang --collection mechanics --file mechanics.json
-    #                 mongoimport --host mongo --db notification --collection mechanics --file notification.json
+
 # Customer Service
     customer:
         working_directory: ~/SOA2019_Group6/api/customer/
@@ -132,6 +117,30 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/authen_service .
                     docker push $DOCKER_USERNAME/authen_service
+    payang_frontend:
+        working_directory: ~/SOA2019_Group6/client/
+        docker:
+            - image: circleci/node:11.13.0
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group6
+            # - run:
+            #     name: Install Library
+            #     command: |
+            #         npm install
+            # - run:
+            #     name: Test Request Service
+            #     command: |
+            #         npm test #wait for mongodb
+            - run:
+                name: Build Docker request service Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker build -t $DOCKER_USERNAME/payang_frontend .
+                    docker push $DOCKER_USERNAME/payang_frontend
+#deploy
     service-deploy:
         machine:
             enabled: true
@@ -141,6 +150,16 @@ jobs:
                 command: |
                     sudo apt-get install sshpass
                     sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
+    
+#Test
+    # machine:
+    #         enabled: true
+    #     steps:
+    #         - run:
+    #             name: SSH
+    #             command: |
+    #                 sudo apt-get install sshpass
+    #                 sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6/api; npm test"
 
 
 workflows:
@@ -187,14 +206,29 @@ workflows:
                     branches:
                         only:
                             - master
+            - payang_frontend:
+                # requires:
+                #     - mongo
+                filters:
+                    branches:
+                        only:
+                            - master
             - service-deploy:
                 requires:
                     - customer
                     - mechanics
                     - request
                     - authen
+                    - frontend
                 filters:
                     branches:
                         only:
                             - master
+            # - api-test:
+            #     requires:
+            #         - service-deploy:
+            #     filters:
+            #         branches:
+            #             only:
+            #                 - master
             
