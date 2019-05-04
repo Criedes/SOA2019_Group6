@@ -219,7 +219,7 @@ workflows:
                     - mechanics
                     - request
                     - authen
-                    - frontend
+                    - payang_frontend
                 filters:
                     branches:
                         only:
