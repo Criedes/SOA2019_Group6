@@ -12,13 +12,12 @@ import setAuthToken from '../utils/setAuthToken'
 
 //Load User
 export const loadUser = () => async dispatch =>{
-
     if(localStorage.token){
         setAuthToken(localStorage.token)
     }
 
     try{
-        const res = await axios.get(global.AUTH_PATH_CUSTOMER)
+        const res = await axios.get(global.AUTH_PATH)
         dispatch({
             type:USER_LOADED,
             payload:res.data
@@ -42,6 +41,28 @@ export const loginCustomer = ({ username, password }) => async dispatch => {
             }
         }
         const res = await axios.post(global.LOGIN_PATH_CUSTOMER, {username,password}, config)
+        // console.log(res.data)
+        await dispatch({
+            type:LOGIN_SUCCESS,
+            payload:res.data
+        })
+
+        dispatch(loadUser())
+    } catch (e) {
+        dispatch({
+            type:LOGIN_FAIL
+        })
+    }
+}
+
+export const loginMechanic = ({username, password}) => async dispatch =>{
+    try {
+        const config = {
+            header: {
+                'Content-type': 'Application/json'
+            }
+        }
+        const res = await axios.post(global.LOGIN_PATH_MECHANIC, {username,password}, config)
         // console.log(res.data)
         await dispatch({
             type:LOGIN_SUCCESS,

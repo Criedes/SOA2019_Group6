@@ -4,7 +4,7 @@ const initialState = {
     isRegistered : null,
     isAuth : false,
     loading: true,
-    customer: null
+    user: null
 }
 
 export default function(state=initialState , action){
@@ -29,7 +29,7 @@ export default function(state=initialState , action){
                 ...state,
                 isAuth:true,
                 loading:false,
-                customer: payload
+                user: payload
             }
         case LOGIN_FAIL:
         case AUTH_ERROR :
