@@ -149,7 +149,7 @@ jobs:
                 name: SSH
                 command: |
                     sudo apt-get install sshpass
-                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;git pull;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
+                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;git reset --hard;git pull;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
     
 #Test
     # machine:
