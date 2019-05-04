@@ -2,7 +2,8 @@ version: '3.1'
 services:
 # Customer Service
   customer:
-    image: tomtan05/customer_service
+    # image: tomtan05/customer_service
+    image: customer_service
     container_name: customer
     restart: on-failure
     links:
@@ -13,7 +14,8 @@ services:
       - "3001:3000"
 # Mechanics Service
   mechanic:
-    image: tomtan05/mechanics_service
+    # image: tomtan05/mechanics_service
+    image: mechanics_service
     container_name: mechanic
     restart: on-failure
     links:
@@ -24,7 +26,8 @@ services:
       - "3002:3000"
 # Notification Service
   request:
-    image: tomtan05/request_service
+    # image: tomtan05/request_service
+    image: request_service
     container_name: request
     restart: on-failure
     links:
@@ -35,7 +38,8 @@ services:
       - "3003:3000"
 #Authentication Service
   authen:
-    image: tomtan05/authen_service
+    # image: tomtan05/authen_service
+    image: authen_service
     container_name: authen
     restart: on-failure
     links:
@@ -46,7 +50,8 @@ services:
       - "3004:3000"
 #front-end
   payang_frontend:
-    image: tomtan05/payang_frontend
+    # image: tomtan05/payang_frontend
+    image: payang_frontend
     container_name: payang_frontend
     restart: on-failure
     ports:

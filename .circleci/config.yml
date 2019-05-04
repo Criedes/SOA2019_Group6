@@ -3,28 +3,36 @@ jobs:
 
 # Customer Service
     customer:
-        working_directory: ~/SOA2019_Group6/api/customer/
-        docker:
-            - image: circleci/node:11.13.0
+        # working_directory: ~/SOA2019_Group6/api/customer/
+        # docker:
+        #     - image: circleci/node:11.13.0
+        # steps:
+        #     - setup_remote_docker:
+        #         docker_layer_caching: true
+        #     - checkout:
+        #         path: ~/SOA2019_Group6
+        #     # - run:
+        #     #     name: Install Library
+        #     #     command: |
+        #     #         npm install
+        #     # - run:
+        #     #     name: Test Customer Service
+        #     #     command: |
+        #     #         npm test #wait for mongodb
+        #     - run:
+        #         name: Build Docker Customer service Image
+        #         command: |
+        #             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        #             docker build -t $DOCKER_USERNAME/customer_service .
+        #             docker push $DOCKER_USERNAME/customer_service
+        machine:
+            enabled: true
         steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Customer Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
-                name: Build Docker Customer service Image
+                name: SSH
                 command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/customer_service .
-                    docker push $DOCKER_USERNAME/customer_service
+                    sudo apt-get install sshpass
+                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6/api/customer;docker build image -t customer_service ."
     # customer-deploy:
     #     working_directory: ~/SOA2019_Group6/api/customer/
     #     docker:
@@ -47,99 +55,131 @@ jobs:
     #                 --command "docker pull tomtan05/customer_service && docker run -p 3001:3000 -d tomtan05/customer_service"
 # Mechanics Service
     mechanics:
-        working_directory: ~/SOA2019_Group6/api/mechanics/
-        docker:
-            - image: circleci/node:11.13.0
+        # working_directory: ~/SOA2019_Group6/api/mechanics/
+        # docker:
+        #     - image: circleci/node:11.13.0
+        # steps:
+        #     - setup_remote_docker:
+        #         docker_layer_caching: true
+        #     - checkout:
+        #         path: ~/SOA2019_Group6
+        #     # - run:
+        #     #     name: Install Library
+        #     #     command: |
+        #     #         npm install
+        #     # - run:
+        #     #     name: Test Mechanics Service
+        #     #     command: |
+        #     #         npm test #wait for mongodb
+        #     - run:
+        #         name: Build Docker mechanics service Image
+        #         command: |
+        #             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        #             docker build -t $DOCKER_USERNAME/mechanics_service .
+        #             docker push $DOCKER_USERNAME/mechanics_service
+        machine:
+            enabled: true
         steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Mechanics Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
-                name: Build Docker mechanics service Image
+                name: SSH
                 command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/mechanics_service .
-                    docker push $DOCKER_USERNAME/mechanics_service
+                    sudo apt-get install sshpass
+                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6/api/mechanic;docker build image -t mechanic_service ."
 # Request Mechanics Service
     request:
-        working_directory: ~/SOA2019_Group6/api/request/
-        docker:
-            - image: circleci/node:11.13.0
+        # working_directory: ~/SOA2019_Group6/api/request/
+        # docker:
+        #     - image: circleci/node:11.13.0
+        # steps:
+        #     - setup_remote_docker:
+        #         docker_layer_caching: true
+        #     - checkout:
+        #         path: ~/SOA2019_Group6
+        #     # - run:
+        #     #     name: Install Library
+        #     #     command: |
+        #     #         npm install
+        #     # - run:
+        #     #     name: Test Request Service
+        #     #     command: |
+        #     #         npm test #wait for mongodb
+        #     - run:
+        #         name: Build Docker request service Image
+        #         command: |
+        #             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        #             docker build -t $DOCKER_USERNAME/request_service .
+        #             docker push $DOCKER_USERNAME/request_service
+        machine:
+            enabled: true
         steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Request Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
-                name: Build Docker request service Image
+                name: SSH
                 command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/request_service .
-                    docker push $DOCKER_USERNAME/request_service
+                    sudo apt-get install sshpass
+                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6/api/request;docker build image -t request_service ."
 # Authentication Service
     authen:
-        working_directory: ~/SOA2019_Group6/api/auth/
-        docker:
-            - image: circleci/node:11.13.0
+        # working_directory: ~/SOA2019_Group6/api/auth/
+        # docker:
+        #     - image: circleci/node:11.13.0
+        # steps:
+        #     - setup_remote_docker:
+        #         docker_layer_caching: true
+        #     - checkout:
+        #         path: ~/SOA2019_Group6
+        #     # - run:
+        #     #     name: Install Library
+        #     #     command: |
+        #     #         npm install
+        #     # - run:
+        #     #     name: Test Request Service
+        #     #     command: |
+        #     #         npm test #wait for mongodb
+        #     - run:
+        #         name: Build Docker request service Image
+        #         command: |
+        #             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        #             docker build -t $DOCKER_USERNAME/authen_service .
+        #             docker push $DOCKER_USERNAME/authen_service
+        machine:
+            enabled: true
         steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Request Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
-                name: Build Docker request service Image
+                name: SSH
                 command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/authen_service .
-                    docker push $DOCKER_USERNAME/authen_service
+                    sudo apt-get install sshpass
+                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6/api/auth;docker build image -t authen_service ."
     payang_frontend:
-        working_directory: ~/SOA2019_Group6/client/
-        docker:
-            - image: circleci/node:11.13.0
+        # working_directory: ~/SOA2019_Group6/client/
+        # docker:
+        #     - image: circleci/node:11.13.0
+        # steps:
+        #     - setup_remote_docker:
+        #         docker_layer_caching: true
+        #     - checkout:
+        #         path: ~/SOA2019_Group6
+        #     # - run:
+        #     #     name: Install Library
+        #     #     command: |
+        #     #         npm install
+        #     # - run:
+        #     #     name: Test Request Service
+        #     #     command: |
+        #     #         npm test #wait for mongodb
+        #     - run:
+        #         name: Build Docker request service Image
+        #         command: |
+        #             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        #             docker build -t $DOCKER_USERNAME/payang_frontend .
+        #             docker push $DOCKER_USERNAME/payang_frontend
+        machine:
+            enabled: true
         steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Request Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
-                name: Build Docker request service Image
+                name: SSH
                 command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/payang_frontend .
-                    docker push $DOCKER_USERNAME/payang_frontend
+                    sudo apt-get install sshpass
+                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6/client;docker build image -t payang_frontend ."
 #deploy
     service-deploy:
         machine:
