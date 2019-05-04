@@ -37,25 +37,23 @@ services:
     ports:
       - "3002:3000"
 #Authentication Service
- authen:
-   image: tomtan05/authen_service
-   container_name: authen
-   restart: on-failure
-   links:
-     - mongo
-   environment:
-     WAIT_HOSTS: mongo:27017
-     MONGOURL: mongodb://mongo:27017/payang
-   ports:
-     - "3003:3000"
+  authen:
+    image: tomtan05/authen_service
+    container_name: authen
+    restart: on-failure
+    links:
+      - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017
+      MONGOURL: mongodb://mongo:27017/payang
+    ports:
+      - "3003:3000"
 #front-end
   payang_frontend:
-   image: tomtan05/payang_frontend
-   container_name: payang_frontend
-   restart: on-failure
-   environment:
-     WAIT_HOSTS: mongo:27017
-   ports:
+    image: tomtan05/payang_frontend
+    container_name: payang_frontend
+    restart: on-failure
+    ports:
      - "3004:3000"
 # Database
   mongo:
@@ -106,10 +104,12 @@ services:
     container_name: nginx
     restart: on-failure
     ports:
-      - "4200:8080"
+      - "80:8080"
     volumes:
       - ./etc/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - customer
       - mechanic
       - request
+      - authen
+      - payang_frontend
