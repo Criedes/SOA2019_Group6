@@ -36,18 +36,18 @@ services:
       MONGOURL: mongodb://mongo:27017/notification
     ports:
       - "3002:3000"
-# Authentication Service
-#  authen:
-#    image: tomtan05/authen_service
-#    container_name: authen
-#    restart: on-failure
-#    links:
-#      - mongo
-#    environment:
-#      WAIT_HOSTS: mongo:27017
-#      MONGOURL: mongodb://mongo:27017/payang
-#    ports:
-#      - "3003:3000"
+Authentication Service
+ authen:
+   image: tomtan05/authen_service
+   container_name: authen
+   restart: on-failure
+   links:
+     - mongo
+   environment:
+     WAIT_HOSTS: mongo:27017
+     MONGOURL: mongodb://mongo:27017/payang
+   ports:
+     - "3003:3000"
 # Database
   mongo:
     container_name: mongo
