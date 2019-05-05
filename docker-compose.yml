@@ -51,17 +51,6 @@ services:
     restart: on-failure
     ports:
      - "3005:3000"
-# Database
-  mongo:
-    container_name: mongo
-    image: mongo:latest
-    environment:
-      - MONGO_DATA_DIR=/data/db
-      - MONGO_LOG_DIR=/dev/null
-    volumes:
-      - ./data/db:/data/db
-    ports:
-      - '27017:27017'
 # Seed data
   mongo-seed-customer:
     container_name: seed-data
