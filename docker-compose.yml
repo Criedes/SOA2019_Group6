@@ -2,7 +2,7 @@ version: '3.1'
 services:
 # Customer Service
   customer:
-    image: tomtan05/customer_service:latest:latest
+    image: tomtan05/customer_service:latest
     container_name: customer
     restart: on-failure
     ports:
