@@ -15,14 +15,16 @@ export default class RegisterMechanic extends Component {
             number_of_customer: 0,
             address: '',
             contact: '',
-            patch_rubber: 0,
+            path_rubber: 0,
             change_rubber: 0,
             imgURL: '',
 
         }
     }
 
-    
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+    }
 
     render() {
         return (
@@ -37,24 +39,24 @@ export default class RegisterMechanic extends Component {
                             <div className='element'>
                                 <span className='text_registerMechanic'>Username:</span>
                                 <br/>
-                                <input value={this.state.username}></input>
+                                <input name='username' value={this.state.username} onChange={this.handleChange}></input>
                             </div>
                             <div className='element'>
                                 <span className='text_registerMechanic'>Name:</span>
                                 <br/>
-                                <input value={this.state.mechanic_name}></input>
+                                <input name='mechanic_name' value={this.state.mechanic_name} onChange={this.handleChange}></input>
                             </div>
                         </div>
                         <div className='line'>
                             <div className='element'>
                                 <span className='text_registerMechanic'>Password:</span>
                                 <br/>
-                                <input value={this.state.password}></input>
+                                <input name='password' value={this.state.password} onChange={this.handleChange}></input>
                             </div>
                             <div className='element'>
                                 <span className='text_registerMechanic'>GarageName:</span>
                                 <br/>
-                                <input value={this.state.garagename}></input>
+                                <input name='garagename' value={this.state.garagename} onChange={this.handleChange}></input>
                             </div>
                         </div>
                         <div className='line'>
@@ -65,31 +67,31 @@ export default class RegisterMechanic extends Component {
                                     <div className='priceElement'>
                                         <span className='priceText'>X:</span>
                                         <br/>
-                                        <input className='subInput' type='number' value={this.state.lat}></input>
+                                        <input name='lat' className='subInput' type='number' value={this.state.lat} onChange={this.handleChange}></input>
                                     </div>
                                     <div className='priceElement'>
                                         <span className='priceText'>Y:</span>
                                         <br/>
-                                        <input className='subInput' type='number' value={this.state.lng}></input>
+                                        <input name='lng' className='subInput' type='number' value={this.state.lng} onChange={this.handleChange}></input>
                                     </div>
                                 </div>
                             </div>
                             <div className='element'>
                                 <span className='text_registerMechanic'>Your Customers:</span>
                                 <br/>
-                                <input type='number' value={this.state.number_of_customer}></input>
+                                <input name='number_of_customer' type='number' value={this.state.number_of_customer} onChange={this.handleChange}></input>
                             </div>
                         </div>
                         <div className='line'>
                             <div className='element'>
                                 <span className='text_registerMechanic'>Address:</span>
                                 <br/>
-                                <textarea style={{resize:'none'}} value={this.state.address}></textarea>
+                                <textarea name='address' style={{resize:'none'}} value={this.state.address} onChange={this.handleChange}></textarea>
                             </div>
                             <div className='element'>
                                 <span className='text_registerMechanic'>Contact:</span>
                                 <br/>
-                                <input value={this.state.contact}></input>
+                                <input name='contact' value={this.state.contact} onChange={this.handleChange}></input>
                             </div>
                         </div>
                         <div className='line'>
@@ -100,22 +102,23 @@ export default class RegisterMechanic extends Component {
                                     <div className='priceElement'>
                                         <span className='priceText'>Path:</span>
                                         <br/>
-                                        <input className='subInput' type='number' value={this.state.patch_rubber}></input>
+                                        <input name='path_rubber' className='subInput' type='number' value={this.state.path_rubber} onChange={this.handleChange}></input>
                                     </div>
                                     <div className='priceElement'>
                                         <span className='priceText'>Change:</span>
                                         <br/>
-                                        <input className='subInput' type='number' value={this.state.change_rubber}></input>
+                                        <input name='change_rubber' className='subInput' type='number' value={this.state.change_rubber} onChange={this.handleChange}></input>
                                     </div>
                                 </div>
                             </div>
                             <div className='element'>
                                 <span className='text_registerMechanic'>ImgURL:</span>
                                 <br/>
-                                <input value={this.state.imgURL}></input>
+                                <input name='imgURL' value={this.state.imgURL} onChange={this.handleChange}></input>
                             </div>
                         </div>
                         <div className='buttonBox'>
+                            {/* Need OnClick Func for Submit */}
                             <input type="submit" value="Submit" />
                         </div>
                     </form>
