@@ -9,6 +9,7 @@ import CallMechanicButton from '../component/MechanicProfile/CallMechanicButton'
 import MechanicService from '../component/MechanicProfile/MechanicService';
 import { connect } from 'react-redux'
 import { loadProfileMechanic } from '../actions/mechanic'
+import socket from '../utils/socket'
 
 class MechanicProfile extends Component {
     state = {
@@ -33,6 +34,10 @@ class MechanicProfile extends Component {
         const { id } = this.props.match.params
         // console.log(id)
         this.loadProfile(id)
+
+        socket.on('getCallFromUser', (data) => {
+           console.log("Calling from User")
+        })
     }
 
 
@@ -42,13 +47,13 @@ class MechanicProfile extends Component {
     }
 
     render() {
+        const { id } = this.props.match.params
         return (
             <div>
-                
                 <Header />
                 <div className="container">
                     <Maps location={this.state.user}/>
-                    <CallMechanicButton />
+                    <CallMechanicButton user={this.state.user} mechanic_id={id}/>
                     <MechanicInfo user={this.state.user} />
                     <StatusMechanic user={this.state.user} />
                     <MechanicService user={this.state.user} />
