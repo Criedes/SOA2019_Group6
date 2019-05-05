@@ -5,12 +5,13 @@ class MechanicListItem extends Component {
     render() { 
         const data = this.props.list
         const id = data._id
+        console.log(data)
         return ( 
             <div className="mechanic-wrapper">
 
                 <div className="mechanic">
                     <div className="img_profile_wrapper">
-                        <img className="img_profile" src={data.imgProfile} alt={''}></img>
+                        <img className="img_profile" src={data.imgUrl} alt={''}></img>
                     </div>
                     <div className="mechanic-info">
                         <div className="header-info">
