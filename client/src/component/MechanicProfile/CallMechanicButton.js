@@ -5,7 +5,7 @@ class CallMechanicButton extends Component {
     state = {  }
 
     callMechanic = () => {
-        socket.emit('callMechanic', {user:this.props.user, mechanic_id:this.props.mechanic_id})
+        socket.emit('callMechanic', {user:this.props.auth.user, mechanic_id:this.props.mechanic_id})
     }
     
     render() { 

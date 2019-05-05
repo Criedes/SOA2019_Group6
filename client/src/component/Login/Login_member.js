@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import '../../styles/login.css'
-import {connect} from 'react-redux'
-import {loginCustomer} from '../../actions/auth'
-import {Redirect} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loginCustomer } from '../../actions/auth'
+import { Redirect } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 class Login_member extends Component {
     constructor(props) {
@@ -19,12 +20,30 @@ class Login_member extends Component {
 
     submitLogin = (e) => {
         e.preventDefault();
-        this.props.loginCustomer({username:this.state.username, password:this.state.password})
+        this.props.loginCustomer({ username: this.state.username, password: this.state.password })
     }
 
+    loginAction = () => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: true,
+            timer: 4000
+        });
+
+        Toast.fire({
+            type: 'success',
+            title: 'Sign In in successfully',
+            customClass: {
+                popup: 'animated tada'
+            },
+
+        })
+    }
     render() {
-        if(this.props.auth.isAuth){
-           return <Redirect to="/" />
+        if (this.props.auth.isAuth) {
+            this.loginAction()
+            return <Redirect to="/" />
         }
         return (
             <form className="login100-form" onSubmit={this.submitLogin}>
@@ -47,8 +66,8 @@ class Login_member extends Component {
         );
     }
 }
-const mapStateToProps = (state)=>({
-    auth : state.auth
+const mapStateToProps = (state) => ({
+    auth: state.auth
 })
 
-export default connect(mapStateToProps, {loginCustomer})(Login_member);
+export default connect(mapStateToProps, { loginCustomer })(Login_member);

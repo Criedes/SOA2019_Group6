@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {loginMechanic} from '../../actions/auth'
+import Swal from 'sweetalert2'
 class Login_mechanic extends Component {
     constructor(props) {
         super(props);
@@ -20,8 +21,27 @@ class Login_mechanic extends Component {
         this.props.loginMechanic({username:this.state.username, password:this.state.password})
     }
 
+    loginAction = () => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: true,
+            timer: 4000
+        });
+
+        Toast.fire({
+            type: 'success',
+            title: 'Sign In in successfully',
+            customClass: {
+                popup: 'animated tada'
+            },
+
+        })
+    }
+
     render() {
         if(this.props.auth.isAuth){
+            this.loginAction()
             return <Redirect to="/" />
          }
         return (<form className="login100-form " onSubmit={this.submitLoginMechanic}>

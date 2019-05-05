@@ -4,6 +4,7 @@ import logo from '../assets/logo.png'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../actions/auth'
+import Swal from 'sweetalert2'
 class Header extends Component {
     state = {
         userType: ''
@@ -15,12 +16,30 @@ class Header extends Component {
         }
     }
 
+    logoutAction = () => {
+        this.props.logout();
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: true,
+            timer: 4000
+        });
+
+        Toast.fire({
+            type: 'success',
+            title: 'Sign Out in successfully',
+            customClass: {
+                popup: 'animated tada'
+            },
+
+        })
+    }
 
     render() {
         if (this.props.auth.user) {
             if (this.props.auth.user.role) {
                 if (this.props.auth.user.role === 'mechanic') {
-                    console.log("hello mechanic")
+                    // console.log("hello mechanic")
                     return (
                         <div className="header-group">
                             <div className="container">
@@ -42,7 +61,7 @@ class Header extends Component {
                                         </div>
                                     </div>
                                     <div className="navbar-r">
-                                        <div className="" onClick={this.props.logout}>
+                                        <div className="" onClick={this.logoutAction}>
                                             <h6>Sign Out</h6>
                                             <span>ออกจากระบบ</span>
                                         </div>
@@ -51,7 +70,7 @@ class Header extends Component {
                             </div>
                         </div>);
                 } else {
-                    console.log("hello customer")
+                    // console.log("hello customer")
                     return (<div className="header-group">
                         <div className="container">
                             <div className="nav-wrapper">
@@ -61,12 +80,12 @@ class Header extends Component {
                                         </img>
                                     </Link>
                                 </div>
-                                
+
                                 <div className="navbar-r">
                                     <div>
                                         สวัสดีคุณ {this.props.auth.user.name}
                                     </div>
-                                    <div className="" onClick={this.props.logout}>
+                                    <div className="" onClick={this.logoutAction}>
                                         <h6>Sign Out</h6>
                                         <span>ออกจากระบบ</span>
                                     </div>
@@ -76,17 +95,19 @@ class Header extends Component {
                     </div>)
                 }
             } else {
-                console.log("dont have user role")
+                // console.log("dont have user role")
             }
         } else {
-            console.log("dont have user")
+            // console.log("dont have user")
             return (
                 <div className="header-group">
                     <div className="container">
                         <div className="nav-wrapper">
                             <div className="brand">
-                                <img src={logo} alt="">
-                                </img>
+                                <Link to="/">
+                                    <img src={logo} alt="">
+                                    </img>
+                                </Link>
                             </div>
                             <div className="navbar-r">
                                 <div className="">

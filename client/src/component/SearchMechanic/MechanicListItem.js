@@ -5,7 +5,6 @@ class MechanicListItem extends Component {
     render() { 
         const data = this.props.list
         const id = data._id
-        console.log(data)
         return ( 
             <div className="mechanic-wrapper">
 

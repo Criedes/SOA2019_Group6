@@ -39,7 +39,6 @@ class FindMechanic extends Component {
 
     componentDidUpdate(prevProps, prevState){
         if(prevState.search !== this.state.search){
-            console.log(this.state.search)
            this.searchMechanicMethod(this.state.search)
         }
     }
@@ -51,7 +50,6 @@ class FindMechanic extends Component {
 
    
     render() { 
-        console.log(this.state.search)
         return ( 
             <div className="find_mechanic">
                 <Header></Header>

@@ -14,7 +14,6 @@ class Maps extends Component {
 
     getLocation = () => {
         if (navigator.geolocation) {
-            console.log("navigator.geolocation is available");
             let self = this;
             navigator.geolocation.getCurrentPosition(function (position) {
                 self.setState({ currentLocation:{
