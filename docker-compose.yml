@@ -2,35 +2,35 @@ version: '3.1'
 services:
 # Customer Service
   customer:
-    image: tomtan05/customer_service
+    image: tomtan05/customer_service:latest:latest
     container_name: customer
     restart: on-failure
     ports:
       - "3001:3000"
 # Mechanics Service
   mechanic:
-    image: tomtan05/mechanics_service
+    image: tomtan05/mechanics_service:latest
     container_name: mechanic
     restart: on-failure
     ports:
       - "3002:3000"
 # Notification Service
   request:
-    image: tomtan05/request_service
+    image: tomtan05/request_service:latest
     container_name: request
     restart: on-failure
     ports:
       - "3003:3000"
 #Authentication Service
   authen:
-    image: tomtan05/authen_service
+    image: tomtan05/authen_service:latest
     container_name: authen
     restart: on-failure
     ports:
       - "3004:3000"
 #front-end
   payang_frontend:
-    image: tomtan05/payang_frontend
+    image: tomtan05/payang_frontend:latest
     container_name: payang_frontend
     restart: on-failure
     ports:
