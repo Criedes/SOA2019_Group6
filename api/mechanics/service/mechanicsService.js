@@ -85,22 +85,22 @@ exports.registerMechanic = (req, res) => {
                         lat: req.body.coordinate.lat,
                         lng: req.body.coordinate.lng
                     },
-                    number_of_customer: req.body.number_of_customer,
+                    number_of_customer: 0,
                     address: req.body.address,
-                    join_date: req.body.join_date,
                     contact: req.body.contact,
-                    status: req.body.status,
+                    status: false,
                     price: {
                         patch_rubber: req.body.price.patch_rubber,
                         change_rubber: req.body.price.change_rubber
                     },
                     request_status_service : false,
-                    request_user_id: "",
+                    request_user_id: "id",
                     role: "mechanic",
-                    imgUrl:""
+                    imgUrl:req.body.imgurl
                 })
                 newMechanic.save(function (err, post) {
                     if (err) { 
+                        console.log(err)
                         return res.status(400).json({
                         success: false
                     })}

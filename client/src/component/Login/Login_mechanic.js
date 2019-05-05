@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 import {loginMechanic} from '../../actions/auth'
 class Login_mechanic extends Component {
     constructor(props) {
@@ -14,13 +15,16 @@ class Login_mechanic extends Component {
         this.setState({ ...this.state, [e.target.name]: e.target.value })
     }
 
-    submitLogin = (e) => {
+    submitLoginMechanic = (e) => {
         e.preventDefault();
         this.props.loginMechanic({username:this.state.username, password:this.state.password})
     }
 
     render() {
-        return (<form className="login100-form ">
+        if(this.props.auth.isAuth){
+            return <Redirect to="/" />
+         }
+        return (<form className="login100-form " onSubmit={this.submitLoginMechanic}>
             <div className="title-text">
                 <br />
                 <div className="wrap-input100 validate-input">
