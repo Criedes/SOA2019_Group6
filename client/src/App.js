@@ -5,6 +5,7 @@ import FindMechanic from './page/FindMechanic'
 import MechanicProfile from './page/MechanicProfile'
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import RegisterCustomerPage from './page/RegisterCustomerPage'
+import RegisterMechanic from './page/RegisterMechanic'
 import Login from './page/Login'
 import setAuthToken from './utils/setAuthToken'
 import {loadUser} from './actions/auth'
@@ -32,6 +33,7 @@ class App extends Component {
                   <Route path="/search" component={FindMechanic} />
                   <Route path="/mechanic/:id" component={MechanicProfile} />
                   <Route path="/register/customer" component={RegisterCustomerPage} />
+                  <Route path="/register/mechanic" component={RegisterMechanic} />
                   <Route path="/login" component={Login} />
               </div>
           </Router>

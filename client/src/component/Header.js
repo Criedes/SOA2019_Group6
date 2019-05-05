@@ -22,7 +22,7 @@ class Header extends Component {
                             </Link>
                         </div>
                         <div>
-                            <Link to="/">
+                            <Link to="/register/mechanic">
                                 <h6>Become Partner</h6>
                                 <span>สมัครเป็นช่าง</span>
                             </Link>
