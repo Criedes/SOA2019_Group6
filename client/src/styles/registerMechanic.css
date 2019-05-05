@@ -1,0 +1,71 @@
+
+input {
+    border-radius: 6px;
+}
+
+.registerMechanicBox{
+    width: 600px;
+    height: 600px;
+    border-radius: 10px;
+    background: #9338D0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+   
+}
+
+.bar_registerMechanic {
+    border-radius: 7px;
+}
+
+
+.titleBox_registerMechanic {
+    
+    display: flex;
+    justify-content: center;
+   
+}
+
+
+.text_registerMechanic {
+    color: white;
+}
+
+.line {
+    display: flex;
+}
+
+.buttonBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.subInput {
+    width: 50px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
+}
+
+.element {
+    flex-grow: 1;
+    padding-left: 30px;
+    width: 50%;
+}
+
+.priceText {
+    font-size: 10px;
+    color: white;
+    text-decoration: underline;
+}
+
+.priceElement {
+    flex-grow: 1;
+}
