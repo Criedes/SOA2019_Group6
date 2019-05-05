@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
 class GeneralInfo extends Component {
-    state = {  }
+    state = {
+        userType: ''
+    }
     render() { 
         const user = this.props.user
         return ( 
         <div className="general-info">
             <div className="img_profile_wrapper">
-                <img className="img_profile-2x" src={`https://fortunedotcom.files.wordpress.com/2018/07/gettyimages-961697338.jpg`} alt={''}></img>
+                <img className="img_profile-2x" src={user.imgUrl} alt={''}></img>
             </div>
             <div className="info-mechanic-profile">
                 <div><h2>{user.machanic_name}</h2></div>
@@ -20,5 +22,7 @@ class GeneralInfo extends Component {
         </div> );
     }
 }
+
+
  
 export default GeneralInfo;

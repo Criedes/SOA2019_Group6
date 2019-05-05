@@ -5,9 +5,9 @@ const customerSchema = mongoose.Schema({
     username : {type:String, required: true},
     password : {type:String, required: true},
     phone_number : {type:String, required: true},
-    status : {type:String , require: true},
-    role: {type:String , require: true},
-    request_mechanic_id : {type: String , require: true},
+    status : {type:String , required: true},
+    role: {type:String , required: true},
+    request_mechanic_id : {type: String , required: true},
 });
 
 const Customer = mongoose.model('customers', customerSchema);

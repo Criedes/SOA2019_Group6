@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import socket from '../../utils/socket'
+import {connect} from 'react-redux'
 class CallMechanicButton extends Component {
     state = {  }
 
@@ -8,7 +9,13 @@ class CallMechanicButton extends Component {
     }
     
     render() { 
-        console.log(JSON.stringify(this.props.user))
+        if (this.props.auth.user) {
+            if (this.props.auth.user.role) {
+                if (this.props.auth.user.role === 'mechanic') {
+                    return (<div></div>);
+                }
+            }
+        }
         return ( 
         <div className="call-warpper">
             <button className="call_mechanic-btn" onClick={this.callMechanic}>
@@ -17,5 +24,8 @@ class CallMechanicButton extends Component {
         </div> );
     }
 }
- 
-export default CallMechanicButton;
+
+const mapStateToProps = (state) => ({
+    auth: state.auth
+})
+export default connect(mapStateToProps)(CallMechanicButton);
