@@ -23,6 +23,7 @@ if(localStorage.token){
 class App extends Component {
   componentDidMount(){
     store.dispatch(loadUser())
+    
   }
   renderRouter () {
       return (

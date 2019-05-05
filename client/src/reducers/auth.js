@@ -1,4 +1,4 @@
-import {REGISTER_SUCCESS, REGISTER_FAIL, REGISTER_CLEAR, LOGIN_SUCCESS, LOGIN_FAIL, USER_LOADED ,AUTH_ERROR} from '../actions/type'
+import {REGISTER_SUCCESS,LOGOUT, REGISTER_FAIL, REGISTER_CLEAR, LOGIN_SUCCESS, LOGIN_FAIL, USER_LOADED ,AUTH_ERROR} from '../actions/type'
 
 const initialState = {
     isRegistered : null,
@@ -32,13 +32,15 @@ export default function(state=initialState , action){
                 user: payload
             }
         case LOGIN_FAIL:
+        case LOGOUT:
         case AUTH_ERROR :
             localStorage.removeItem('token')
             return{
                 ...state,
                 token: null,
                 isAuth:false,
-                loading:false
+                loading:false,
+                user:null
             }
         case REGISTER_CLEAR:
             return {
