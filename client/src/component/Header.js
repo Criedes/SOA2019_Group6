@@ -25,13 +25,17 @@ class Header extends Component {
                         <div className="header-group">
                             <div className="container">
                                 <div className="nav-wrapper">
+
                                     <div className="brand">
-                                        <img src={logo} alt="">
-                                        </img>
+                                        <Link to="/">
+                                            <img src={logo} alt="">
+                                            </img>
+                                        </Link>
                                     </div>
+
                                     <div className="navbar-r">
                                         <div className="">
-                                            <Link to="/">
+                                            <Link to={`/mechanic/${this.props.auth.user._id}`}>
                                                 <h6>Profile</h6>
                                                 <span>ข้อมูลส่วนตัว</span>
                                             </Link>

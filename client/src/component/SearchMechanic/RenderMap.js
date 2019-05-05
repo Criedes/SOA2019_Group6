@@ -27,7 +27,7 @@ class RenderMap extends Component {
     }
 
     static defaultProps = {
-        zoom: 11
+        zoom: 15
     };
 
     componentDidUpdate(prevProps, prevState) {
