@@ -6,7 +6,6 @@ exports.auth = (req, res, next) => {
     if (!token) {
         return res.status(401).json({ msg: 'Authorization denied' })
     }
-
     try {
         const decode = jwt.verify(token, config.get('jwtPrivateKey'))
         req.user = decode
@@ -14,7 +13,4 @@ exports.auth = (req, res, next) => {
     } catch (e) {
         return res.status(400).json('invalid token')
     }
-
-
-
 }

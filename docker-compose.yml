@@ -5,10 +5,6 @@ services:
     image: tomtan05/customer_service
     container_name: customer
     restart: on-failure
-    links:
-        - mongo
-    environment:
-      WAIT_HOSTS: mongo:27017
     ports:
       - "3001:3000"
 # Mechanics Service
@@ -16,10 +12,6 @@ services:
     image: tomtan05/mechanics_service
     container_name: mechanic
     restart: on-failure
-    links:
-        - mongo
-    environment:
-      WAIT_HOSTS: mongo:27017
     ports:
       - "3002:3000"
 # Notification Service
@@ -27,10 +19,6 @@ services:
     image: tomtan05/request_service
     container_name: request
     restart: on-failure
-    links:
-        - mongo
-    environment:
-      WAIT_HOSTS: mongo:27017
     ports:
       - "3003:3000"
 #Authentication Service
@@ -38,10 +26,6 @@ services:
     image: tomtan05/authen_service
     container_name: authen
     restart: on-failure
-    links:
-      - mongo
-    environment:
-      WAIT_HOSTS: mongo:27017
     ports:
       - "3004:3000"
 #front-end
@@ -51,27 +35,12 @@ services:
     restart: on-failure
     ports:
      - "3005:3000"
-# Database
-  mongo:
-    container_name: mongo
-    image: mongo:latest
-    environment:
-      - MONGO_DATA_DIR=/data/db
-      - MONGO_LOG_DIR=/dev/null
-    volumes:
-      - ./data/db:/data/db
-    ports:
-      - '27017:27017'
 # Seed data
   mongo-seed-customer:
     container_name: seed-data
     image: mongo
-    links:
-      - mongo
     volumes:
       - ./api/mockdata:/seed-data
-    environment:
-      WAIT_HOSTS: mongo:27017
     command:
       'bash -c "mongoimport --host mongo --db payang --collection customers --file /seed-data/customer.json
       &&
