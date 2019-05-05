@@ -52,6 +52,28 @@ class Header extends Component {
                         </div>);
                 } else {
                     console.log("hello customer")
+                    return (<div className="header-group">
+                        <div className="container">
+                            <div className="nav-wrapper">
+                                <div className="brand">
+                                    <Link to="/">
+                                        <img src={logo} alt="">
+                                        </img>
+                                    </Link>
+                                </div>
+                                
+                                <div className="navbar-r">
+                                    <div>
+                                        สวัสดีคุณ {this.props.auth.user.name}
+                                    </div>
+                                    <div className="" onClick={this.props.logout}>
+                                        <h6>Sign Out</h6>
+                                        <span>ออกจากระบบ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>)
                 }
             } else {
                 console.log("dont have user role")

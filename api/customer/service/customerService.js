@@ -15,8 +15,8 @@ exports.registerCustomer = (req, res) => {
                     password: hash,
                     phone_number: req.body.phone,
                     role: "customer",
-                    status: '',
-                    mechanic_id: '',
+                    status: 'null',
+                    request_mechanic_id: 'null',
                 });
                 customerInfo.save((err) => {
                     if (err) {
