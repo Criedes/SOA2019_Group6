@@ -141,15 +141,15 @@ jobs:
                     docker build -t $DOCKER_USERNAME/payang_frontend .
                     docker push $DOCKER_USERNAME/payang_frontend
 #deploy
-    # service-deploy:
-    #     machine:
-    #         enabled: true
-    #     steps:
-    #         - run:
-    #             name: SSH
-    #             command: |
-    #                 sudo apt-get install sshpass
-    #                 sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;git reset --hard;git pull;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
+    service-deploy:
+        machine:
+            enabled: true
+        steps:
+            - run:
+                name: SSH
+                command: |
+                    sudo apt-get install sshpass
+                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;git reset --hard;git pull;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
     
 #Test
     # machine:
@@ -213,17 +213,17 @@ workflows:
                     branches:
                         only:
                             - master
-            # - service-deploy:
-            #     requires:
-            #         - customer
-            #         - mechanics
-            #         - request
-            #         - authen
-            #         - payang_frontend
-            #     filters:
-            #         branches:
-            #             only:
-            #                 - master
+            - service-deploy:
+                requires:
+                    - customer
+                    - mechanics
+                    - request
+                    - authen
+                    - payang_frontend
+                filters:
+                    branches:
+                        only:
+                            - master
             # - api-test:
             #     requires:
             #         - service-deploy:
