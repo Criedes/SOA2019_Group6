@@ -41,11 +41,23 @@ services:
       container_name: prometheus
       volumes:
         - ./etc/prometheus.yml:/etc/prometheus/prometheus.yml
+        - prometheus_data:/prometheus
       command:
         - '--config.file=/etc/prometheus/prometheus.yml'
       ports:
         - '9090:9090'
       restart: always
+# Grafana
+  grafana:
+    image: grafana/grafana:3.0.0-beta7
+    volumes: 
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
+    ports:
+      - "3006:3000"
 # ApiGateWay
   nginx:
     image: nginx:latest
