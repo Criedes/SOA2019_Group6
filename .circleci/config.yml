@@ -141,15 +141,43 @@ jobs:
                     docker build -t $DOCKER_USERNAME/payang_frontend .
                     docker push $DOCKER_USERNAME/payang_frontend
 #deploy
+    # service-deploy:
+    #     machine:
+    #         enabled: true
+    #     steps:
+    #         - run:
+    #             name: SSH
+    #             command: |
+    #                 sudo apt-get install sshpass
+    #                 sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;git reset --hard;git pull;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
     service-deploy:
         machine:
             enabled: true
         steps:
             - run:
-                name: SSH
+                name: install gloudsdk
                 command: |
-                    sudo apt-get install sshpass
-                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;git reset --hard;git pull;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
+                    export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+                    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+                    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+                    sudo apt-get update && sudo apt-get install google-cloud-sdk
+            - run:
+                name: Config gcloud credentials
+                command: |
+                    echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+                    # gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
+                    gcloud config list
+                    gcloud config configurations list
+                    gcloud config set account payangonline@gmail.com 
+                    gcloud config set project ${GCLOUD_PROJECT_ID}
+                    gcloud config set compute/region asia-southeast1
+                    gcloud config set compute/zone asia-southeast1-a
+            - run:
+                name: SSH
+                command: |                                        
+                    gcloud --quiet compute --project "central-eon-235617" ssh --zone "asia-southeast1-a" "payangonline" \
+                        --command "cd SOA2019_Group6"
+                    # --command "git reset --hard && git pull && sudo docker-compose stop && sudo docker-compose rm -f && sudo docker-compose pull && sudo docker-compose up -d"
     
 #Test
     # machine:
