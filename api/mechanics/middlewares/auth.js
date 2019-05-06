@@ -3,15 +3,15 @@ const config = require('config')
 
 exports.auth = (req, res, next) => {
     const token = req.header('Authorization')
-    if(!token){
+    if (!token) {
         return res.status(401).json()
-    }else{
+    } else {
         const accessToken = token.match(/Bearer (.*)/)[1]
-        try{
+        try {
             const decode = jwt.verify(accessToken, config.get('jwtPrivateKey'))
             req.user = decode
             next()
-        }catch(e){
+        } catch (e) {
             return res.status(400).json('invalid token')
         }
         next();
