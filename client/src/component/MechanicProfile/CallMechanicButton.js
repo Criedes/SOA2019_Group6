@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import socket from '../../utils/socket'
 import { connect } from 'react-redux'
 import Swal from 'sweetalert2'
+import {Redirect} from 'react-router-dom'
 class CallMechanicButton extends Component {
     state = {
-        callMechanicStatus : false
+        callMechanicStatus : false,
+        isRedirect : false
     }
 
 
@@ -18,8 +20,7 @@ class CallMechanicButton extends Component {
             if (this.props.auth.user.role) {
                 if (this.props.auth.user.role === 'customer') {
                     socket.on(this.props.auth.user._id, (data)=>{
-                        this.setState({callMechanicStatus:false})
-                        //mechanic accepted
+                        this.setState({callMechanicStatus:false, isRedirect:true})
                     })
                 }
             }
@@ -35,6 +36,11 @@ class CallMechanicButton extends Component {
             })
         }else{
             Swal.close()
+        }
+
+        if(this.state.isRedirect){
+            this.setState({isRedirect:false,callMechanicStatus:false})
+            return <Redirect to='/service' />
         }
 
 

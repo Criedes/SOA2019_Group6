@@ -52,7 +52,7 @@ class MechanicProfile extends Component {
                 if (this.props.auth.user.role === 'mechanic') {
                     let id_mechanic_watch = this.props.match.params.id
                     socket.on(id_mechanic_watch, (data) => {
-                        this.setState({ calling: true , customer: data.user , isRedirect:true})
+                        this.setState({ calling: true , customer: data.user})
                     })
                 }else if(this.props.auth.user.role === 'customer'){
                     
@@ -66,6 +66,10 @@ class MechanicProfile extends Component {
 
     acceptCalling = () => {
         console.log(this.state.customer._id + `<< from accept calling`)
+        this.setState({
+            isRedirect:true,
+            calling: false
+        })
         socket.emit('acceptcall', {customer_id:this.state.customer._id , user: this.props.auth.user})
     }
 
