@@ -157,22 +157,11 @@ jobs:
             - run:
                 name: add SSH
                 command: |
-                    ssh-keygen -t rsa -f ~/.ssh/google_compute_engine -C payangonline -P ""
-            # - run:
-            #     name: Config gcloud credentials
-            #     command: |
-            #         echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-            #         # gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
-            #         gcloud config list
-            #         gcloud config configurations list
-            #         gcloud config set account  payangonline@central-eon-235617.iam.gserviceaccount.com
-            #         gcloud config set project ${GCLOUD_PROJECT_ID}
-            #         gcloud config set compute/region asia-southeast1
-            #         gcloud config set compute/zone asia-southeast1-a
+                    ssh-keygen -t rsa -f ~/.ssh/my-ssh-key -C payangonline -P ""
             - run:
                 name: SSH
                 command: |                                        
-                    ssh -i ~/.ssh/google_compute_engine payangonline@35.240.192.56 ls
+                    ssh -i ~/.ssh/my-ssh-key payangonline@35.240.192.56 cd SOA2019_Group6 && ls
                     # --command "git reset --hard && git pull && sudo docker-compose stop && sudo docker-compose rm -f && sudo docker-compose pull && sudo docker-compose up -d"
     
 #Test
