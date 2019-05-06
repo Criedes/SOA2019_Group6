@@ -31,5 +31,11 @@ io.on('connection', (socket) => {
         // }
     })
 
+    socket.on('newMessage', (data) => {
+        console.log("Message sent to server on:"+"newMessage")
+        console.log(data)
+        io.sockets.emit('getNewMessage', data)
+    })
 })
+
 
