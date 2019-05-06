@@ -28,9 +28,12 @@ exports.updateMessage = (req, res) => {
 }
 
 exports.getMessage = (req, res) => {
+    console.log("Inside GET /messages")
+    console.log(req.query.myID)
+    console.log(req.query.targetID)
     console.log(req.query.name)
     console.log(req.query.target)
-    Message.find({ persons: {$all: [req.query.name, req.query.target]}}, (err, messages) => {
+    Message.find({ personID: {$all: [req.query.myID, req.query.targetID]}}, (err, messages) => {
         res.json(messages)
         console.log(messages)
     })

@@ -11,6 +11,7 @@ import setAuthToken from './utils/setAuthToken'
 import {loadUser} from './actions/auth'
 import ServicePage from './page/ServicePage'
 import ChatPage from './page/ChatPage'
+import ChatPage2 from './page/ChatPage2'
 
 //redux
 import {Provider} from 'react-redux';
@@ -40,6 +41,7 @@ class App extends Component {
                   <Route path="/login" component={Login} />
                   <Route path="/service" component={ServicePage} />
                   <Route path="/chat" component={ChatPage} />
+                  <Route path="/chat2" component={ChatPage2} />
               </div>
           </Router>
         </Provider>

@@ -107,8 +107,14 @@ class MechanicProfile extends Component {
         }
 
         if (this.state.isRedirect) {
+            this.props.setService({
+                customer_id: this.props.auth.user._id
+                , mechanic_id: this.state.user._id
+                , mechanic_data : this.state.user
+                , customer_data : this.props.auth.user
+            })
             return <Redirect to={{
-                pathname: '/chat'
+                pathname: '/chat2'
             }} />
         }
 

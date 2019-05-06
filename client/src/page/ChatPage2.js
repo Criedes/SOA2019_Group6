@@ -3,19 +3,18 @@ import axios from 'axios'
 import socket from '../utils/socket'
 import qs from 'qs'
 import '../styles/chat.css'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
-class ChatPage extends Component {
+class ChatPage2 extends Component {
 
     state = {
         chatInfo: [],
         incomingChat: [],
-        myID: this.props.service.customer_id,
-        targetID: this.props.service.mechanic_id,
-        name: this.props.service.customer_data.name,
-        target: this.props.service.mechanic_data.machanic_name, // Machanic
+        myID: this.props.service.mechanic_id,
+        targetID: this.props.service.customer_id,
+        name: this.props.service.mechanic_data.machanic_name,
+        target: this.props.service.customer_data.name, // Machanic
         message: "",
-        onSocket : false
     }
 
 
@@ -62,38 +61,14 @@ class ChatPage extends Component {
         .catch((err) => {
             console.log(err)
         })
-
-        // const params = {
-        //     myID: this.state.myID,
-        //     targetID: this.state.targetID,
-        //     name: this.state.name,
-        //     target: this.state.target,
-        //     message: this.state.message,
-        // }
-        // axios.post('http://localhost:3005/api/request/messages', qs.stringify(params))
-        // .then((res) => {
-        //     console.log(res.data)
-        // })
-        // .catch((err) => {
-        //     console.log(err)
-        // })
     }
 
     handleNameChange = (event) => {
-        this.setState({ name: event.target.value })
+        this.setState({ name: event.target.value})
     }
 
     handleMessageChange = (event) => {
-        this.setState({ message: event.target.value })
-    }
-
-    setSocket = () => {
-        socket.on(this.props.service.customer_id + this.props.service.mechanic_id, (data) => {
-            const temp = this.state.incomingChat
-            console.log("hello")
-            temp.push(data)
-            this.setState({ incomingChat: temp })
-        })
+        this.setState({ message: event.target.value})
     }
 
     // componentDidUpdate = (prevProps , prevstate) => {
@@ -121,20 +96,20 @@ class ChatPage extends Component {
             <div className='container-fluid'>
                 <div className='chatBox'>
                     <div className='chatTitle'>
-                        <span>Title of this chat between {this.state.chatInfo.map(info => { return info.persons[0] + ' & ' + info.persons[1] })}</span>
+                        <span>Title of this chat between {this.state.chatInfo.map(info => {return info.persons[0]+' & '+info.persons[1]})}</span>
                     </div>
                     <div className='container'>
                         <div className='messageBox'>
                             {/* { this.state.chatInfo.map(info => <li className='message'>{info.persons} : {info.messages[0][0]}</li>)} */}
-                            {this.state.chatInfo.map(info => {
-                                return (
+                            { this.state.chatInfo.map(info => {
+                                return(
                                     <div>{info.messages.map(item => {
                                         return <li className='message'>{item[0]} : {item[1]}</li>
                                     })}</div>
                                 )
                             })}
-                            {this.state.incomingChat.map(info => { return <li className='message'>{info[0]} : {info[1]}</li> })}
-
+                            { this.state.incomingChat.map(info => { return <li className='message'>{info[0]} : {info[1]}</li>})}
+                            
                         </div>
                         <input value={this.state.message} onChange={this.handleMessageChange} className='messageInput' placeholder='Send your message'></input>
                         <button onClick={this.handleSendMessage}>Send</button>
@@ -146,9 +121,9 @@ class ChatPage extends Component {
 }
 
 
-const mapStateToProps = (state) => ({
-    service: state.service,
-    auth: state.auth
+const mapStateToProps = (state)=>({
+    service : state.service,
+    auth : state.auth
 })
 
-export default connect(mapStateToProps)(ChatPage)
+export default connect(mapStateToProps)(ChatPage2)
