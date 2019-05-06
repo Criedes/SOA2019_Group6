@@ -165,7 +165,13 @@ jobs:
                 name: Config gcloud credentials
                 command: |
                     echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-                    gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
+                    # gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
+                    gcloud config list
+                    gcloud config configurations list
+                    gcloud config set account payangonline@gmail.com 
+                    gcloud config set project ${GCLOUD_PROJECT_ID}
+                    gcloud config set compute/region asia-southeast1
+                    gcloud config set compute/zone asia-southeast1-a
             - run:
                 name: SSH
                 command: |                                        
