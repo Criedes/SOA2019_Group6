@@ -1,74 +1,33 @@
-# How to run Mechanic Service
+## How to run Customer Service
 ### Run
-1.  git clone https://github.com/Criedes/SOA2019_Group6.git
-2.	cd SOA2019_Group6
-3.	cd to directory ```api```
-4.	cd to directory ```mechanics```
-5.	run test by this command ```npm start	```
+
+1.	Open CMD or Terminal
+2.	git clone https://github.com/Criedes/SOA2019_Group6.git
+3.	cd SOA2019_Group6
+4.	cd to directory ‘ api ’
+5.	cd to directory ‘ customer ’
+6.	run test by this command npm start
 
 ### Test
-1.	run test by this command ```npm test```
+1.	run test by this command npm test
 
-### Endpoints
-1. get information of all mechanics.
-
-    ```GET /api/mechanics/find```
-
-      Return 200 Success Search and show all mechanic.
-      
-***
-      
-2. get information of mechanic by ID.
-
-    ```GET /api/mechanics/find/:id```
-    
-      Return 200 Success Search and show mechanic follow by ID. 
-      
-***
-
-3. get information of mechanic by Garage name ( shop name ).
-
-    ```GET /api/mechanics/find/garage/:shopname``` 
-    
-      Return 200 Success Search and show mechanic by Garage name (shop name ).
-
-***
+## Endpoints
+1.	Get information of customer by ID.
+-	`Get /api/customers/:id`
   
-4. register new mechanic by request body
+      Return `200 SUCCESS` show all list of customer with information of user profile when given an exists user ID.
+ ***
 
+2.	Post request body to save in database.
+-	`Post /api/customers/register`
 
-    ```POST /api/mechanics/register```
-  
         {
-  
-             “username”: “ZeroCar”,
-              “password”:  “SecurePassword”,
-              “garagename”: “ZeroCar” ,
-              “machanic_name”: “Jira Pundee”,
-              “coordinate”: {
- 	                “lat”: 13.733555,
-       	          “lng”: 100.4712464
-                  },
-              “number_of_customer”: 1,
-              “address”: "Khaosan Road, Bangkok",
-              “contact”: “0850325686”,
-              “status”: false ,
-              “price”: {
-                  “patch_rubber”: 60,
-                  “change_rubber”: 150
-                  },
-              "role": “mechanic”,
-              “imgUrl”: “https://www.pinterest.de/pin/746753181937262541/”
-        }
-        
-        
-     Return 200 Success  member registered with correct data and compleate.
-     
- 	 Return 400 Error member not registered because incorrect data and non-compleate.
-***
-
-
-
-
-
-
+	        name: ‘Jutharat’
+        	username: ‘Jutha60’
+        	password: ‘Juju’
+        	phone_number: ‘0645678900’
+        	status: ‘false’
+        	role: ‘customer’
+        } 
+      Return `201 SUCCESS` Register with correct data.\
+      Return `400 UNSUCCESS` Unregister because incorrect data.
