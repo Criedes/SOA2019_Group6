@@ -27,7 +27,7 @@ router.get('/authentication', auth, async (req, res) => {
   
 
 router.post('/customer',loginService.authenUser)
-router.post('/mechanic', loginService.authenMechanic, counter.inc())
+router.post('/mechanic', loginService.authenMechanic)
 
 router.get('/metrics', (request, response) => {
     response.set('Content-Type', Prometheus.register.contentType)
