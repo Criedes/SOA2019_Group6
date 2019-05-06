@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import { loadProfileMechanic } from '../actions/mechanic'
 import socket from '../utils/socket'
 import Swal from 'sweetalert2'
+import {Redirect} from 'react-router-dom'
 
 class MechanicProfile extends Component {
     state = {
@@ -31,7 +32,8 @@ class MechanicProfile extends Component {
 
         },
         calling: false,
-        customer: null
+        customer: null,
+        isRedirect : false
     }
 
     componentDidMount() {
@@ -50,16 +52,21 @@ class MechanicProfile extends Component {
                 if (this.props.auth.user.role === 'mechanic') {
                     let id_mechanic_watch = this.props.match.params.id
                     socket.on(id_mechanic_watch, (data) => {
-                        this.setState({ calling: true , customer: data.user})
+                        this.setState({ calling: true , customer: data.user , isRedirect:true})
                     })
+                }else if(this.props.auth.user.role === 'customer'){
+                    
                 }
             }
         }
     }
+
+
     
 
     acceptCalling = () => {
-        console.log("accept")
+        console.log(this.state.customer._id + `<< from accept calling`)
+        socket.emit('acceptcall', {customer_id:this.state.customer._id , user: this.props.auth.user})
     }
 
     cancelCalling = () => {
@@ -80,14 +87,16 @@ class MechanicProfile extends Component {
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
-                
                 if(result.value){
                     this.acceptCalling()
                 }else{
                     this.cancelCalling()
                 }
             })
-            this.setState({calling:false})
+        }
+        
+        if(this.state.isRedirect){
+            return <Redirect to='/service' />
         }
         
         return (
