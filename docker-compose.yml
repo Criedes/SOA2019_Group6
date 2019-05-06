@@ -8,6 +8,14 @@ services:
     image: tomtan05/customer_service:latest
     container_name: customer
     restart: on-failure
+    environment:
+      WAIT_HOSTS: eureka:8761
+      EUREKA_CLIENT_HOST: 'customer'
+      EUREKA_CLIENT_URL: 'http://customer:'
+      EUREKA_SERVER_HOST: 'eureka'
+      EUREKA_SERVER_PORT: 8761
+    depends_on:
+      - eureka
     ports:
       - "3001:3000"
 # Mechanics Service
@@ -15,6 +23,14 @@ services:
     image: tomtan05/mechanics_service:latest
     container_name: mechanic
     restart: on-failure
+    environment:
+      WAIT_HOSTS: eureka:8761
+      EUREKA_CLIENT_HOST: 'mechanic'
+      EUREKA_CLIENT_URL: 'http://mechanic:'
+      EUREKA_SERVER_HOST: 'eureka'
+      EUREKA_SERVER_PORT: 8761
+    depends_on:
+      - eureka
     ports:
       - "3002:3000"
 # Notification Service
@@ -22,6 +38,14 @@ services:
     image: tomtan05/request_service:latest
     container_name: request
     restart: on-failure
+    environment:
+      WAIT_HOSTS: eureka:8761
+      EUREKA_CLIENT_HOST: 'request'
+      EUREKA_CLIENT_URL: 'http://request:'
+      EUREKA_SERVER_HOST: 'eureka'
+      EUREKA_SERVER_PORT: 8761
+    depends_on:
+      - eureka
     ports:
       - "3003:3000"
 #Authentication Service
@@ -89,6 +113,7 @@ services:
       - request
       - authen
       - payang_frontend
+      - eureka
 #SSL
   certbot:
     image: certbot/certbot
