@@ -18,20 +18,36 @@ Login ในส่วนของCustomer
 	เลือกLoginของCustomer
     กรอกUsernameและPasswordของCustomer
 	ต้องเจอSignOutของCustomer
-Login ในส่วนของCustomer Teardown  Close Browser
+	Close Browser
 
 Login ในส่วนของMechanic
     เปิดหน้าแรกของเว็บPayangOnline
     เลือกLoginของMechanic
 	กรอกUsernameและPasswordของMechanic
 	ต้องเจอSignOutของMechanic
-Login ในส่วนของMechanic Teardown  Close Browser
+	Close Browser
 
 Searchคำว่าmainต้องเจอMainShopร้านเดียว
 	เปิดหน้าแรกของเว็บPayangOnline
 	เข้าไปพิมในช่องSearch
 	ต้องเจอร้านเดียว
-Searchคำว่าmainต้องเจอMainShopร้านเดียว Teardown  Close Browser
+	Close Browser
+
+SignOutจากCustomerแล้วNavbarเปลี่ยนกลับ
+	เปิดหน้าแรกของเว็บPayangOnline
+	เลือกLoginของCustomer
+    กรอกUsernameและPasswordของCustomer
+	ต้องเจอSignOutของCustomer
+	กด​SignOutแล้วกลับมาหน้าแรก
+	Close Browser
+
+SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
+	เปิดหน้าแรกของเว็บPayangOnline
+	เลือกLoginของMechanic
+    กรอกUsernameและPasswordของMechanic
+	ต้องเจอSignOutของMechanic
+	กด​SignOutแล้วกลับมาหน้าแรก
+	Close Browser
 
 *** Keywords ***
 # ต้องเจอข้อมูลในหน้าแรกจำนวน 10 เรื่อง
@@ -45,7 +61,7 @@ Searchคำว่าmainต้องเจอMainShopร้านเดีย�
 
 
 เปิดหน้าแรกของเว็บPayangOnline
-    Open Browser  https://payangonline.me/  browser=chrome
+    Open Browser  ${url_payangOnline}  browser=chrome
 
 # Login ในส่วนของCustomer
 เลือกLoginของCustomer
@@ -75,3 +91,9 @@ Searchคำว่าmainต้องเจอMainShopร้านเดีย�
 	Input Text  class:search_input  main
 ต้องเจอร้านเดียว
 	Page Should Contain Element  class:mechanic-wrapper  limit=1
+
+# SignOutจากCustomerแล้วNavbarเปลี่ยนกลับ
+กด​SignOutแล้วกลับมาหน้าแรก
+	Sleep  10s
+	Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[2]
+	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]/a
