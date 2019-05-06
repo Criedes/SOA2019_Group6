@@ -160,7 +160,14 @@ jobs:
                 command: |                                        
                     sudo apt-get install sshpass
                     sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} \
-                    "ssh -i ~/.ssh/my-ssh-key payangonline@35.240.192.56 ls"
+                    "ssh -i ${KEY_PATH} ${DEPLOY_USER}@${DEPLOY_HOST} ls \
+                    cd SOA2019_Group6 \
+                    git reset --hard \
+                    git pull \
+                    docker-compose stop \
+                    docker-compose rm -f \
+                    docker-compose pull \
+                    docker-compose up -d"
                     # --command "git reset --hard && git pull && sudo docker-compose stop && sudo docker-compose rm -f && sudo docker-compose pull && sudo docker-compose up -d"
     
 #Test
