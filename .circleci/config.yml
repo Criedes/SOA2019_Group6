@@ -155,28 +155,24 @@ jobs:
             enabled: true
         steps:
             - run:
-                name: install gloudsdk
+                name: add SSH
                 command: |
-                    export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
-                    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-                    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-                    sudo apt-get update && sudo apt-get install google-cloud-sdk
-            - run:
-                name: Config gcloud credentials
-                command: |
-                    echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-                    # gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
-                    gcloud config list
-                    gcloud config configurations list
-                    gcloud config set account  payangonline@central-eon-235617.iam.gserviceaccount.com
-                    gcloud config set project ${GCLOUD_PROJECT_ID}
-                    gcloud config set compute/region asia-southeast1
-                    gcloud config set compute/zone asia-southeast1-a
+                    ssh-keygen -t rsa -f ~/.ssh/google_compute_engine -C payangonline -P ""
+            # - run:
+            #     name: Config gcloud credentials
+            #     command: |
+            #         echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+            #         # gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
+            #         gcloud config list
+            #         gcloud config configurations list
+            #         gcloud config set account  payangonline@central-eon-235617.iam.gserviceaccount.com
+            #         gcloud config set project ${GCLOUD_PROJECT_ID}
+            #         gcloud config set compute/region asia-southeast1
+            #         gcloud config set compute/zone asia-southeast1-a
             - run:
                 name: SSH
                 command: |                                        
-                    gcloud --quiet compute --project "central-eon-235617" ssh --zone "asia-southeast1-a" "payangonline" \
-                        --command "cd SOA2019_Group6"
+                    ssh -i ~/.ssh/google_compute_engine payangonline@35.240.192.56 ls
                     # --command "git reset --hard && git pull && sudo docker-compose stop && sudo docker-compose rm -f && sudo docker-compose pull && sudo docker-compose up -d"
     
 #Test
