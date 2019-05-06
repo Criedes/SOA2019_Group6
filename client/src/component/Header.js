@@ -22,7 +22,7 @@ class Header extends Component {
             toast: true,
             position: 'top-end',
             showConfirmButton: true,
-            timer: 4000
+            timer: 2000
         });
 
         Toast.fire({

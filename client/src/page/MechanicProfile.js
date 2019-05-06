@@ -80,15 +80,16 @@ class MechanicProfile extends Component {
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
+                
                 if(result.value){
                     this.acceptCalling()
-                    this.setState({calling:false})
                 }else{
                     this.cancelCalling()
-                    this.setState({calling:false})
                 }
             })
+            this.setState({calling:false})
         }
+        
         return (
             <div>
                 <Header />
