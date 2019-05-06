@@ -35,6 +35,8 @@ services:
       EUREKA_CLIENT_URL: 'http://authen:'
       EUREKA_SERVER_HOST: 'eureka'
       EUREKA_SERVER_PORT: 8761
+    depends_on:
+      - eureka
     ports:
       - "3004:3000"
 #front-end
