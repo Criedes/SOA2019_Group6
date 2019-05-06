@@ -50,15 +50,6 @@ SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
 	Close Browser
 
 *** Keywords ***
-# ต้องเจอข้อมูลในหน้าแรกจำนวน 10 เรื่อง
-# 	#${count} =  Get ELement Count  xpath://div/div/article
-# 	#Should Be True  ${count} == 10
-# 	Page Should Contain Element  xpath://div/div/article  limit=10
-# ค้นหาคำว่าสอบ
-# 	Click Element  xpath://div/div[2]/span[1]/a[1]
-# 	Input Text  name:s  สอบ
-# 	Press Keys  None  RETURN
-
 
 เปิดหน้าแรกของเว็บPayangOnline
     Open Browser  ${url_payangOnline}  browser=chrome
