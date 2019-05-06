@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot rpa="false" generated="20190507 04:00:47.555" generator="Robot 3.1.1 (Python 2.7.16 on darwin)">
+<robot rpa="false" generated="20190507 04:12:06.468" generator="Robot 3.1.1 (Python 2.7.16 on darwin)">
 <suite source="/Users/administrator/Desktop/Projects/SOA2019_Group6/UITest/PayangOnline-UITesting.robot" id="s1" name="PayangOnline-UITesting">
 <test id="s1-t1" name="Login ในส่วนของCustomer">
 <kw name="เปิดหน้าแรกของเว็บPayangOnline">
@@ -9,10 +9,10 @@
 <arg>${url_payangOnline}</arg>
 <arg>browser=chrome</arg>
 </arguments>
-<msg timestamp="20190507 04:00:47.751" level="INFO">Opening browser 'chrome' to base url 'https://payangonline.me/'.</msg>
-<status status="PASS" endtime="20190507 04:00:49.847" starttime="20190507 04:00:47.751"></status>
+<msg timestamp="20190507 04:12:06.788" level="INFO">Opening browser 'chrome' to base url 'https://payangonline.me/'.</msg>
+<status status="PASS" endtime="20190507 04:12:10.085" starttime="20190507 04:12:06.788"></status>
 </kw>
-<status status="PASS" endtime="20190507 04:00:49.847" starttime="20190507 04:00:47.751"></status>
+<status status="PASS" endtime="20190507 04:12:10.086" starttime="20190507 04:12:06.788"></status>
 </kw>
 <kw name="เลือกLoginของCustomer">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -20,27 +20,65 @@
 <arguments>
 <arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]</arg>
 </arguments>
-<msg timestamp="20190507 04:00:49.848" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]'.</msg>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190507 04:00:50.238" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" endtime="20190507 04:00:50.238" starttime="20190507 04:00:49.858"></status>
+<msg timestamp="20190507 04:12:10.087" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]'.</msg>
+<status status="PASS" endtime="20190507 04:12:10.155" starttime="20190507 04:12:10.086"></status>
 </kw>
-<msg timestamp="20190507 04:00:50.240" level="FAIL">Element with locator 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]' not found.</msg>
-<status status="FAIL" endtime="20190507 04:00:50.240" starttime="20190507 04:00:49.848"></status>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[1]/button</arg>
+</arguments>
+<msg timestamp="20190507 04:12:10.155" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[1]/button'.</msg>
+<status status="PASS" endtime="20190507 04:12:10.190" starttime="20190507 04:12:10.155"></status>
 </kw>
-<status status="FAIL" endtime="20190507 04:00:50.240" starttime="20190507 04:00:49.848"></status>
+<status status="PASS" endtime="20190507 04:12:10.190" starttime="20190507 04:12:10.086"></status>
 </kw>
-<status status="FAIL" endtime="20190507 04:00:50.240" critical="yes" starttime="20190507 04:00:47.750">Element with locator 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]' not found.</status>
-</test>
-<test id="s1-t2" name="Login ในส่วนของCustomer Teardown">
+<kw name="กรอกUsernameและPasswordของCustomer">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${customer_username}</arg>
+</arguments>
+<msg timestamp="20190507 04:12:10.191" level="INFO">Typing text 'kitti01' into text field 'name:username'.</msg>
+<status status="PASS" endtime="20190507 04:12:10.297" starttime="20190507 04:12:10.191"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${customer_password}</arg>
+</arguments>
+<msg timestamp="20190507 04:12:10.297" level="INFO">Typing text 'kitti01' into text field 'name:password'.</msg>
+<status status="PASS" endtime="20190507 04:12:10.361" starttime="20190507 04:12:10.297"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button</arg>
+</arguments>
+<msg timestamp="20190507 04:12:10.361" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button'.</msg>
+<status status="PASS" endtime="20190507 04:12:10.393" starttime="20190507 04:12:10.361"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:10.393" starttime="20190507 04:12:10.190"></status>
+</kw>
+<kw name="ต้องเจอSignOutของCustomer">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[2]/h6</arg>
+</arguments>
+<status status="PASS" endtime="20190507 04:12:10.848" starttime="20190507 04:12:10.393"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:10.848" starttime="20190507 04:12:10.393"></status>
+</kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" endtime="20190507 04:00:50.306" starttime="20190507 04:00:50.241"></status>
+<status status="PASS" endtime="20190507 04:12:10.925" starttime="20190507 04:12:10.848"></status>
 </kw>
-<status status="PASS" endtime="20190507 04:00:50.306" critical="yes" starttime="20190507 04:00:50.241"></status>
+<status status="PASS" endtime="20190507 04:12:10.926" critical="yes" starttime="20190507 04:12:06.785"></status>
 </test>
-<test id="s1-t3" name="Login ในส่วนของMechanic">
+<test id="s1-t2" name="Login ในส่วนของMechanic">
 <kw name="เปิดหน้าแรกของเว็บPayangOnline">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the given ``url``.</doc>
@@ -48,10 +86,10 @@
 <arg>${url_payangOnline}</arg>
 <arg>browser=chrome</arg>
 </arguments>
-<msg timestamp="20190507 04:00:50.308" level="INFO">Opening browser 'chrome' to base url 'https://payangonline.me/'.</msg>
-<status status="PASS" endtime="20190507 04:00:52.397" starttime="20190507 04:00:50.308"></status>
+<msg timestamp="20190507 04:12:10.929" level="INFO">Opening browser 'chrome' to base url 'https://payangonline.me/'.</msg>
+<status status="PASS" endtime="20190507 04:12:13.983" starttime="20190507 04:12:10.928"></status>
 </kw>
-<status status="PASS" endtime="20190507 04:00:52.398" starttime="20190507 04:00:50.307"></status>
+<status status="PASS" endtime="20190507 04:12:13.983" starttime="20190507 04:12:10.928"></status>
 </kw>
 <kw name="เลือกLoginของMechanic">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -59,27 +97,65 @@
 <arguments>
 <arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]</arg>
 </arguments>
-<msg timestamp="20190507 04:00:52.399" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]'.</msg>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190507 04:00:52.800" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" endtime="20190507 04:00:52.800" starttime="20190507 04:00:52.408"></status>
+<msg timestamp="20190507 04:12:13.984" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]'.</msg>
+<status status="PASS" endtime="20190507 04:12:14.055" starttime="20190507 04:12:13.984"></status>
 </kw>
-<msg timestamp="20190507 04:00:52.800" level="FAIL">Element with locator 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]' not found.</msg>
-<status status="FAIL" endtime="20190507 04:00:52.800" starttime="20190507 04:00:52.398"></status>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[2]/button</arg>
+</arguments>
+<msg timestamp="20190507 04:12:14.055" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[2]/button'.</msg>
+<status status="PASS" endtime="20190507 04:12:14.094" starttime="20190507 04:12:14.055"></status>
 </kw>
-<status status="FAIL" endtime="20190507 04:00:52.800" starttime="20190507 04:00:52.398"></status>
+<status status="PASS" endtime="20190507 04:12:14.094" starttime="20190507 04:12:13.983"></status>
 </kw>
-<status status="FAIL" endtime="20190507 04:00:52.801" critical="yes" starttime="20190507 04:00:50.307">Element with locator 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]' not found.</status>
-</test>
-<test id="s1-t4" name="Login ในส่วนของMechanic Teardown">
+<kw name="กรอกUsernameและPasswordของMechanic">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${mechanic_username}</arg>
+</arguments>
+<msg timestamp="20190507 04:12:14.095" level="INFO">Typing text 'nawin01' into text field 'name:username'.</msg>
+<status status="PASS" endtime="20190507 04:12:14.197" starttime="20190507 04:12:14.094"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${mechanic_password}</arg>
+</arguments>
+<msg timestamp="20190507 04:12:14.198" level="INFO">Typing text 'nawin01' into text field 'name:password'.</msg>
+<status status="PASS" endtime="20190507 04:12:14.256" starttime="20190507 04:12:14.197"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button</arg>
+</arguments>
+<msg timestamp="20190507 04:12:14.256" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button'.</msg>
+<status status="PASS" endtime="20190507 04:12:14.286" starttime="20190507 04:12:14.256"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:14.287" starttime="20190507 04:12:14.094"></status>
+</kw>
+<kw name="ต้องเจอSignOutของMechanic">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[3]/div/h6</arg>
+</arguments>
+<status status="PASS" endtime="20190507 04:12:14.504" starttime="20190507 04:12:14.287"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:14.504" starttime="20190507 04:12:14.287"></status>
+</kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" endtime="20190507 04:00:52.864" starttime="20190507 04:00:52.802"></status>
+<status status="PASS" endtime="20190507 04:12:14.579" starttime="20190507 04:12:14.504"></status>
 </kw>
-<status status="PASS" endtime="20190507 04:00:52.865" critical="yes" starttime="20190507 04:00:52.801"></status>
+<status status="PASS" endtime="20190507 04:12:14.580" critical="yes" starttime="20190507 04:12:10.927"></status>
 </test>
-<test id="s1-t5" name="Searchคำว่าmainต้องเจอMainShopร้านเดียว">
+<test id="s1-t3" name="Searchคำว่าmainต้องเจอMainShopร้านเดียว">
 <kw name="เปิดหน้าแรกของเว็บPayangOnline">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the given ``url``.</doc>
@@ -87,10 +163,10 @@
 <arg>${url_payangOnline}</arg>
 <arg>browser=chrome</arg>
 </arguments>
-<msg timestamp="20190507 04:00:52.867" level="INFO">Opening browser 'chrome' to base url 'https://payangonline.me/'.</msg>
-<status status="PASS" endtime="20190507 04:00:54.896" starttime="20190507 04:00:52.866"></status>
+<msg timestamp="20190507 04:12:14.583" level="INFO">Opening browser 'chrome' to base url 'https://payangonline.me/'.</msg>
+<status status="PASS" endtime="20190507 04:12:17.767" starttime="20190507 04:12:14.583"></status>
 </kw>
-<status status="PASS" endtime="20190507 04:00:54.897" starttime="20190507 04:00:52.866"></status>
+<status status="PASS" endtime="20190507 04:12:17.768" starttime="20190507 04:12:14.582"></status>
 </kw>
 <kw name="เข้าไปพิมในช่องSearch">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -98,27 +174,39 @@
 <arguments>
 <arg>xpath://*[@id="root"]/div/div/div[2]/div/div/div[4]/div/a/p</arg>
 </arguments>
-<msg timestamp="20190507 04:00:54.898" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div[4]/div/a/p'.</msg>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190507 04:00:55.302" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-9.png"&gt;&lt;img src="selenium-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" endtime="20190507 04:00:55.302" starttime="20190507 04:00:54.907"></status>
+<msg timestamp="20190507 04:12:17.769" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div[4]/div/a/p'.</msg>
+<status status="PASS" endtime="20190507 04:12:17.855" starttime="20190507 04:12:17.769"></status>
 </kw>
-<msg timestamp="20190507 04:00:55.303" level="FAIL">Element with locator 'xpath://*[@id="root"]/div/div/div[2]/div/div/div[4]/div/a/p' not found.</msg>
-<status status="FAIL" endtime="20190507 04:00:55.303" starttime="20190507 04:00:54.897"></status>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>class:search_input</arg>
+<arg>main</arg>
+</arguments>
+<msg timestamp="20190507 04:12:17.856" level="INFO">Typing text 'main' into text field 'class:search_input'.</msg>
+<status status="PASS" endtime="20190507 04:12:17.967" starttime="20190507 04:12:17.855"></status>
 </kw>
-<status status="FAIL" endtime="20190507 04:00:55.303" starttime="20190507 04:00:54.897"></status>
+<status status="PASS" endtime="20190507 04:12:17.968" starttime="20190507 04:12:17.768"></status>
 </kw>
-<status status="FAIL" endtime="20190507 04:00:55.303" critical="yes" starttime="20190507 04:00:52.865">Element with locator 'xpath://*[@id="root"]/div/div/div[2]/div/div/div[4]/div/a/p' not found.</status>
-</test>
-<test id="s1-t6" name="Searchคำว่าmainต้องเจอMainShopร้านเดียว Teardown">
+<kw name="ต้องเจอร้านเดียว">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>class:mechanic-wrapper</arg>
+<arg>limit=1</arg>
+</arguments>
+<msg timestamp="20190507 04:12:17.975" level="INFO">Current page contains 1 element(s).</msg>
+<status status="PASS" endtime="20190507 04:12:17.975" starttime="20190507 04:12:17.968"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:17.975" starttime="20190507 04:12:17.968"></status>
+</kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" endtime="20190507 04:00:55.366" starttime="20190507 04:00:55.304"></status>
+<status status="PASS" endtime="20190507 04:12:18.043" starttime="20190507 04:12:17.975"></status>
 </kw>
-<status status="PASS" endtime="20190507 04:00:55.367" critical="yes" starttime="20190507 04:00:55.303"></status>
+<status status="PASS" endtime="20190507 04:12:18.043" critical="yes" starttime="20190507 04:12:14.581"></status>
 </test>
-<test id="s1-t7" name="SignOutแล้วNavbarเปลี่ยน">
+<test id="s1-t4" name="SignOutจากCustomerแล้วNavbarเปลี่ยนกลับ">
 <kw name="เปิดหน้าแรกของเว็บPayangOnline">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the given ``url``.</doc>
@@ -126,10 +214,10 @@
 <arg>${url_payangOnline}</arg>
 <arg>browser=chrome</arg>
 </arguments>
-<msg timestamp="20190507 04:00:55.369" level="INFO">Opening browser 'chrome' to base url 'https://payangonline.me/'.</msg>
-<status status="PASS" endtime="20190507 04:00:57.412" starttime="20190507 04:00:55.368"></status>
+<msg timestamp="20190507 04:12:18.046" level="INFO">Opening browser 'chrome' to base url 'https://payangonline.me/'.</msg>
+<status status="PASS" endtime="20190507 04:12:23.253" starttime="20190507 04:12:18.046"></status>
 </kw>
-<status status="PASS" endtime="20190507 04:00:57.412" starttime="20190507 04:00:55.368"></status>
+<status status="PASS" endtime="20190507 04:12:23.253" starttime="20190507 04:12:18.045"></status>
 </kw>
 <kw name="เลือกLoginของCustomer">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -137,30 +225,204 @@
 <arguments>
 <arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]</arg>
 </arguments>
-<msg timestamp="20190507 04:00:57.413" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]'.</msg>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190507 04:00:57.822" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-10.png"&gt;&lt;img src="selenium-screenshot-10.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" endtime="20190507 04:00:57.822" starttime="20190507 04:00:57.423"></status>
+<msg timestamp="20190507 04:12:23.254" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]'.</msg>
+<status status="PASS" endtime="20190507 04:12:23.338" starttime="20190507 04:12:23.254"></status>
 </kw>
-<msg timestamp="20190507 04:00:57.823" level="FAIL">Element with locator 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]' not found.</msg>
-<status status="FAIL" endtime="20190507 04:00:57.823" starttime="20190507 04:00:57.413"></status>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[1]/button</arg>
+</arguments>
+<msg timestamp="20190507 04:12:23.339" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[1]/button'.</msg>
+<status status="PASS" endtime="20190507 04:12:23.381" starttime="20190507 04:12:23.338"></status>
 </kw>
-<status status="FAIL" endtime="20190507 04:00:57.823" starttime="20190507 04:00:57.413"></status>
+<status status="PASS" endtime="20190507 04:12:23.381" starttime="20190507 04:12:23.253"></status>
 </kw>
-<status status="FAIL" endtime="20190507 04:00:57.823" critical="yes" starttime="20190507 04:00:55.367">Element with locator 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]' not found.</status>
+<kw name="กรอกUsernameและPasswordของCustomer">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${customer_username}</arg>
+</arguments>
+<msg timestamp="20190507 04:12:23.382" level="INFO">Typing text 'kitti01' into text field 'name:username'.</msg>
+<status status="PASS" endtime="20190507 04:12:23.490" starttime="20190507 04:12:23.382"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${customer_password}</arg>
+</arguments>
+<msg timestamp="20190507 04:12:23.490" level="INFO">Typing text 'kitti01' into text field 'name:password'.</msg>
+<status status="PASS" endtime="20190507 04:12:23.545" starttime="20190507 04:12:23.490"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button</arg>
+</arguments>
+<msg timestamp="20190507 04:12:23.545" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button'.</msg>
+<status status="PASS" endtime="20190507 04:12:23.579" starttime="20190507 04:12:23.545"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:23.579" starttime="20190507 04:12:23.382"></status>
+</kw>
+<kw name="ต้องเจอSignOutของCustomer">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[2]/h6</arg>
+</arguments>
+<status status="PASS" endtime="20190507 04:12:23.797" starttime="20190507 04:12:23.579"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:23.797" starttime="20190507 04:12:23.579"></status>
+</kw>
+<kw name="กด​SignOutแล้วกลับมาหน้าแรกของCustomer">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190507 04:12:28.800" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20190507 04:12:28.800" starttime="20190507 04:12:23.797"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[2]</arg>
+</arguments>
+<msg timestamp="20190507 04:12:28.800" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[2]'.</msg>
+<status status="PASS" endtime="20190507 04:12:28.842" starttime="20190507 04:12:28.800"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]/a</arg>
+</arguments>
+<status status="PASS" endtime="20190507 04:12:28.852" starttime="20190507 04:12:28.842"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:28.852" starttime="20190507 04:12:23.797"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20190507 04:12:28.933" starttime="20190507 04:12:28.853"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:28.934" critical="yes" starttime="20190507 04:12:18.044"></status>
 </test>
-<status status="FAIL" endtime="20190507 04:00:57.824" starttime="20190507 04:00:47.557"></status>
+<test id="s1-t5" name="SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ">
+<kw name="เปิดหน้าแรกของเว็บPayangOnline">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url_payangOnline}</arg>
+<arg>browser=chrome</arg>
+</arguments>
+<msg timestamp="20190507 04:12:28.939" level="INFO">Opening browser 'chrome' to base url 'https://payangonline.me/'.</msg>
+<status status="PASS" endtime="20190507 04:12:32.316" starttime="20190507 04:12:28.938"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:32.316" starttime="20190507 04:12:28.938"></status>
+</kw>
+<kw name="เลือกLoginของMechanic">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]</arg>
+</arguments>
+<msg timestamp="20190507 04:12:32.317" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]'.</msg>
+<status status="PASS" endtime="20190507 04:12:32.385" starttime="20190507 04:12:32.317"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[2]/button</arg>
+</arguments>
+<msg timestamp="20190507 04:12:32.385" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[2]/button'.</msg>
+<status status="PASS" endtime="20190507 04:12:32.422" starttime="20190507 04:12:32.385"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:32.422" starttime="20190507 04:12:32.316"></status>
+</kw>
+<kw name="กรอกUsernameและPasswordของMechanic">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:username</arg>
+<arg>${mechanic_username}</arg>
+</arguments>
+<msg timestamp="20190507 04:12:32.423" level="INFO">Typing text 'nawin01' into text field 'name:username'.</msg>
+<status status="PASS" endtime="20190507 04:12:32.528" starttime="20190507 04:12:32.423"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${mechanic_password}</arg>
+</arguments>
+<msg timestamp="20190507 04:12:32.528" level="INFO">Typing text 'nawin01' into text field 'name:password'.</msg>
+<status status="PASS" endtime="20190507 04:12:32.585" starttime="20190507 04:12:32.528"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button</arg>
+</arguments>
+<msg timestamp="20190507 04:12:32.586" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button'.</msg>
+<status status="PASS" endtime="20190507 04:12:32.623" starttime="20190507 04:12:32.586"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:32.623" starttime="20190507 04:12:32.422"></status>
+</kw>
+<kw name="ต้องเจอSignOutของMechanic">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[3]/div/h6</arg>
+</arguments>
+<status status="PASS" endtime="20190507 04:12:32.842" starttime="20190507 04:12:32.623"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:32.842" starttime="20190507 04:12:32.623"></status>
+</kw>
+<kw name="กด​SignOutแล้วกลับมาหน้าแรกของMechanic">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190507 04:12:37.844" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20190507 04:12:37.845" starttime="20190507 04:12:32.842"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[3]/div</arg>
+</arguments>
+<msg timestamp="20190507 04:12:37.845" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div/div[1]/div/div/div[3]/div'.</msg>
+<status status="PASS" endtime="20190507 04:12:37.891" starttime="20190507 04:12:37.845"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]/a</arg>
+</arguments>
+<status status="PASS" endtime="20190507 04:12:37.899" starttime="20190507 04:12:37.891"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:37.899" starttime="20190507 04:12:32.842"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20190507 04:12:37.976" starttime="20190507 04:12:37.899"></status>
+</kw>
+<status status="PASS" endtime="20190507 04:12:37.977" critical="yes" starttime="20190507 04:12:28.935"></status>
+</test>
+<status status="PASS" endtime="20190507 04:12:37.979" starttime="20190507 04:12:06.470"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="4" pass="3">Critical Tests</stat>
-<stat fail="4" pass="3">All Tests</stat>
+<stat fail="0" pass="5">Critical Tests</stat>
+<stat fail="0" pass="5">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="4" id="s1" name="PayangOnline-UITesting" pass="3">PayangOnline-UITesting</stat>
+<stat fail="0" id="s1" name="PayangOnline-UITesting" pass="5">PayangOnline-UITesting</stat>
 </suite>
 </statistics>
 <errors>

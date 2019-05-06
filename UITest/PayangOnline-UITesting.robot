@@ -38,7 +38,7 @@ SignOutจากCustomerแล้วNavbarเปลี่ยนกลับ
 	เลือกLoginของCustomer
     กรอกUsernameและPasswordของCustomer
 	ต้องเจอSignOutของCustomer
-	กด​SignOutแล้วกลับมาหน้าแรก
+	กด​SignOutแล้วกลับมาหน้าแรกของCustomer
 	Close Browser
 
 SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
@@ -46,7 +46,7 @@ SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
 	เลือกLoginของMechanic
     กรอกUsernameและPasswordของMechanic
 	ต้องเจอSignOutของMechanic
-	กด​SignOutแล้วกลับมาหน้าแรก
+	กด​SignOutแล้วกลับมาหน้าแรกของMechanic
 	Close Browser
 
 *** Keywords ***
@@ -93,7 +93,12 @@ SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
 	Page Should Contain Element  class:mechanic-wrapper  limit=1
 
 # SignOutจากCustomerแล้วNavbarเปลี่ยนกลับ
-กด​SignOutแล้วกลับมาหน้าแรก
-	Sleep  10s
+กด​SignOutแล้วกลับมาหน้าแรกของCustomer
+	Sleep  5s
 	Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[2]
+	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]/a
+
+กด​SignOutแล้วกลับมาหน้าแรกของMechanic
+	Sleep  5s
+	Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[3]/div
 	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]/a
