@@ -5,8 +5,16 @@ const customerSchema = require('../model/customerSchema')
 const mechanicSchema = require('../model/mechanicSchema')
 const jwt = require('jsonwebtoken')
 const config = require('config')
+const Prometheus = require('prom-client')
+
+
+const counter = new Prometheus.Counter({
+    name: 'authen_request_total',
+    help: 'metric_help'
+  });
 
 exports.authenUser = async (req, res) => {
+    counter.inc();
     const { error } = validateUser(req.body)
     if (error) {
         console.log(req.body.username)
@@ -35,6 +43,7 @@ exports.authenUser = async (req, res) => {
 }
 
 exports.authenMechanic = async (req, res) => {
+    counter.inc();
     const { error } = validateUser(req.body)
     if (error) {
         console.log(req.body.username)

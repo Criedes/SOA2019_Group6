@@ -1,7 +1,4 @@
 version: '3.1'
-volumes:
-  prometheus_data: {}
-  grafana_data: {}
 services:
 # Customer Service
   customer:
@@ -76,7 +73,6 @@ services:
       container_name: prometheus
       volumes:
         - ./etc/prometheus.yml:/etc/prometheus/prometheus.yml
-        - prometheus_data:/prometheus
       command:
         - '--config.file=/etc/prometheus/prometheus.yml'
       ports:
@@ -86,8 +82,6 @@ services:
   grafana:
     image: grafana/grafana:3.0.0-beta7
     container_name: grafana
-    volumes: 
-      - grafana_data:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:

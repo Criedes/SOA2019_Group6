@@ -6,6 +6,23 @@ scrape_configs:
   - 
     job_name: authen_metrics
     metrics_path: /api/auth/metrics
+    scheme: https
+    static_configs: 
+      - 
+        targets: 
+          - "payangonline.me"
+  -        
+    job_name: customer_metrics
+    metrics_path: /api/customers/prom/metrics
+    scheme: https
+    static_configs: 
+      - 
+        targets: 
+          - "payangonline.me"
+  -
+    job_name: mechanic_metrics
+    metrics_path: /api/mechanics/metrics
+    scheme: https
     static_configs: 
       - 
         targets: 

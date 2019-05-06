@@ -6,7 +6,20 @@
 - MongoDB
 
 ### Deploy API
+```https://payangonline.me/api/{endpoint}```
+
+
+### Prometheus
+```http://35.240.192.56:9090```
+
+
+### Eureka
+```http://35.240.192.56:8761```
+
+
+### Deploy API
 ```http://35.231.183.143:3000/{endpoint}```
+
 
 # How to run API
 
@@ -50,7 +63,7 @@ use command. `npm start`
 |POST `/api/auth/mechanic` |  Authentication mechanic in auth service by username and password. | 
 
 
-- [Mechanic Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/mechanic)
+- [Mechanic Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/mechanics)
 
 | Event                     | Description                                   | 
 |---------------------------|---------------------------------------------|
