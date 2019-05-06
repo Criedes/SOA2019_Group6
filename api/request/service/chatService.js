@@ -1,4 +1,4 @@
-import Message from '../model/messageModel';
+const Message = require('../model/messageModel')
 
 
 exports.updateMessage = (req, res) => {
