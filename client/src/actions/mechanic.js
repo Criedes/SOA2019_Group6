@@ -34,7 +34,11 @@ export const searchMechanic = (name) => async dispatch => {
 export const loadProfileMechanic = ({id}) => async dispatch =>{
     try{
         // console.log(`${global.GET_PROFILE_MECHANIC}`+'/'+`${id}`)
+
+
         const res = await axios.get(`${global.GET_PROFILE_MECHANIC}/${id}`)
+
+        
         // console.log
         dispatch({
             type: PROFILE_MECHANIC,

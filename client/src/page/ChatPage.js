@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import socket from '../utils/socket'
-import qs from 'qs'
+// import qs from 'qs'
 import '../styles/chat.css'
 import { connect } from 'react-redux'
+import {Redirect} from 'react-router-dom'
+import Header from '../component/Header'
 
 class ChatPage extends Component {
 
@@ -15,132 +17,93 @@ class ChatPage extends Component {
         name: this.props.service.customer_data.name,
         target: this.props.service.mechanic_data.machanic_name, // Machanic
         message: "",
-        onSocket : false
+        onSocket: false,
+        channal: '',
+        isSuccess : false
     }
 
-
     componentDidMount = () => {
-        axios.get('http://localhost:3005/api/request/messages', {
-            params: {
-                myID: this.state.myID,
-                targetID: this.state.targetID,
-                name: this.state.name,
-                target: this.state.target
-
-            }
-        })
-        .then((res) => {
-            this.setState({ chatInfo: res.data });
-            console.log(res.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-        // Socket on for receive update from server
         socket.on('getNewMessage', (data) => {
             const temp = this.state.incomingChat
             temp.push(data)
-            this.setState({ incomingChat: temp})
+            this.setState({ incomingChat: temp })
         })
+        if (localStorage.getItem('role') === 'mechanic') {
+            console.log(localStorage.getItem('customer_data'))
+            this.setState({ myID: localStorage.getItem('mechanic_id') })
+            this.setState({ targetID: localStorage.getItem('customer_id') })
+            this.setState({ name: localStorage.getItem('mechanic_name') })
+            this.setState({ target: localStorage.getItem('customer_name') })
 
+        } else {
+            this.setState({ targetID: localStorage.getItem('mechanic_id') })
+            this.setState({ myID: localStorage.getItem('customer_id') })
+            this.setState({ target: localStorage.getItem('mechanic_name') })
+            this.setState({ name: localStorage.getItem('customer_name') })
+        }
+
+        this.setState({ channel: localStorage.getItem('mechanic_id') + localStorage.getItem('customer_id') })
+        socket.on(this.state.channal, (data) => {
+            const temp = this.state.incomingChat
+            temp.push(data)
+            this.setState({ incomingChat: temp })
+        })
     }
 
     handleSendMessage = () => {
-        socket.emit('newMessage', [this.state.name, this.state.message])
-        //Post message
-        const params = {
-            myID: this.state.myID,
-            targetID: this.state.targetID,
-            name: this.state.name,
-            target: this.state.target,
-            message: this.state.message,
-        }
-        axios.post('http://localhost:3005/api/request/messages', qs.stringify(params))
-        .then((res) => {
-            console.log(res.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-
-        // const params = {
-        //     myID: this.state.myID,
-        //     targetID: this.state.targetID,
-        //     name: this.state.name,
-        //     target: this.state.target,
-        //     message: this.state.message,
-        // }
-        // axios.post('http://localhost:3005/api/request/messages', qs.stringify(params))
-        // .then((res) => {
-        //     console.log(res.data)
-        // })
-        // .catch((err) => {
-        //     console.log(err)
-        // })
-    }
-
-    handleNameChange = (event) => {
-        this.setState({ name: event.target.value })
+        console.log(this.state.name)
+        this.setState({ message: '' })
+        socket.emit('newMessage', { channal: this.state.channal, data: [this.state.name, this.state.message] })
     }
 
     handleMessageChange = (event) => {
         this.setState({ message: event.target.value })
     }
 
-    setSocket = () => {
-        socket.on(this.props.service.customer_id + this.props.service.mechanic_id, (data) => {
-            const temp = this.state.incomingChat
-            console.log("hello")
-            temp.push(data)
-            this.setState({ incomingChat: temp })
-        })
+    clearLocalStorage = () => {
+        localStorage.removeItem('role')
+        localStorage.removeItem('mechanic_name')
+        localStorage.removeItem('mechanic_id')
+        localStorage.removeItem('customer_name')
+        localStorage.removeItem('customer_id')
+        this.setState({isSuccess:true})
     }
 
-    // componentDidUpdate = (prevProps , prevstate) => {
-    //     if(prevProps.service.mechanic_id !== this.props.service.mechanic_id){
-            
-    //         if(this.props.auth.user.role === 'mechanic'){
-    //             console.log(this.props.service.mechanic_id + ' << from component did updata')
-    //             this.setState({myID : "hello"})
-    //             this.setState({targetID : this.props.service.customer_id})
-    //             this.setState({name : this.props.service.mechanic_data.mechanic_name})
-    //             this.setState({target: this.props.service.customer_data.name})
-    //             console.log(this.state.myID)
-
-    //         }else if(this.props.auth.user.role === 'customer'){
-    //             this.setState({myID : this.props.service.customer_id})
-    //             this.setState({targetID : this.props.service.mechanic_id})
-    //             this.setState({target : this.props.service.mechanic_data.mechanic_name})
-    //             this.setState({name: this.props.service.customer_data.name})
-    //         }
-    //     }
-    // }
 
     render() {
-        return(
-            <div className='container-fluid'>
-                <div className='chatBox'>
-                    <div className='chatTitle'>
-                        <span>Title of this chat between {this.state.chatInfo.map(info => { return info.persons[0] + ' & ' + info.persons[1] })}</span>
-                    </div>
-                    <div className='container'>
-                        <div className='messageBox'>
-                            {/* { this.state.chatInfo.map(info => <li className='message'>{info.persons} : {info.messages[0][0]}</li>)} */}
-                            {this.state.chatInfo.map(info => {
-                                return (
-                                    <div>{info.messages.map(item => {
-                                        return <li className='message'>{item[0]} : {item[1]}</li>
-                                    })}</div>
-                                )
-                            })}
-                            {this.state.incomingChat.map(info => { return <li className='message'>{info[0]} : {info[1]}</li> })}
-
-                        </div>
-                        <input value={this.state.message} onChange={this.handleMessageChange} className='messageInput' placeholder='Send your message'></input>
-                        <button onClick={this.handleSendMessage}>Send</button>
-                    </div>
+        if(this.state.isSuccess){
+            this.setState({isSuccess: false})
+            return <Redirect to="/" />
+        }
+        console.log(this.state.myID + ' ' + this.state.targetID)
+        let buttonClear = <div></div>
+        if(localStorage.getItem('role')==='mechanic'){
+            buttonClear = (<button className="clearLocalStorage" onClick={this.clearLocalStorage} >ให้บริการเสร็จสิ้น</button>)
+        }
+        return (
+            <div className="chatPage">
+                <Header />
+                <div className='chat-title'>
+                    {`M E S S A G E`}
                 </div>
+                <div className="chat-box">
+                    {this.state.incomingChat.map(item => {
+                        return (<li className='message'>
+                            <div className="name_chat">
+                                {`คุณ ${item[0]}`}
+                            </div>
+                            <div className="text_chat">{item[1]}</div>
+                        </li>)
+                    })}
+                </div>
+                <div className="sendMsg">
+                    <input value={this.state.message} onChange={this.handleMessageChange} className='messageInput' placeholder='Send your message'></input>
+                    <button onClick={this.handleSendMessage} className='msg-btn'>Send</button>
+                </div>
+
+                {buttonClear}
             </div>
+
         )
     }
 }
