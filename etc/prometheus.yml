@@ -4,9 +4,9 @@ global:
   scrape_interval: 5s
 scrape_configs: 
   - 
-    job_name: nginx
+    job_name: authen_metrics
     metrics_path: /metrics
     static_configs: 
       - 
         targets: 
-          - "35.198.223.251"
+          - "https://payangonline.me/api/auth"

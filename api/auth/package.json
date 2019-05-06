@@ -20,7 +20,8 @@
     "mongoose": "^5.4.20",
     "nodemon": "^1.18.10",
     "supertest": "^4.0.2",
-    "eureka-js-client": "^4.4.2"
+    "eureka-js-client": "^4.4.2",
+    "prom-client": "^4.1.0"
   },
   "devDependencies": {
     "jest": "^24.5.0"
