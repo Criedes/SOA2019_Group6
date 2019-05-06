@@ -23,14 +23,26 @@ router.get('/authentication', auth, async (req, res) => {
     }
 })
 
+const counter = new Prometheus.Counter({
+    name: 'request_total',
+    help: 'metric_help'
+  });
+  
+
+router.post('/customer', ()=>{
+    loginService.authenUser
+    counter.inc();
+})
+router.post('/mechanic', ()=>{
+    loginService.authenMechanic
+    counter.inc();
+})
+
 router.get('/metrics', (request, response) => {
     response.set('Content-Type', Prometheus.register.contentType)
     console.log(Prometheus.register)
     response.send(Prometheus.register.metrics())
 })
-
-router.post('/customer', loginService.authenUser)
-router.post('/mechanic', loginService.authenMechanic)
 
 //test check priority.
 router.get('/tester2', auth, (req, res) => {
