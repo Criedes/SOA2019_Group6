@@ -5,15 +5,15 @@ import qs from 'qs'
 import '../styles/chat.css'
 import {connect} from 'react-redux'
 
-class ChatPage extends Component {
+class ChatPage2 extends Component {
 
     state = {
         chatInfo: [],
         incomingChat: [],
-        myID: this.props.service.customer_id,
-        targetID: this.props.service.mechanic_id,
-        name: this.props.service.customer_data.name,
-        target: this.props.service.mechanic_data.machanic_name, // Machanic
+        myID: this.props.service.mechanic_id,
+        targetID: this.props.service.customer_id,
+        name: this.props.service.mechanic_data.machanic_name,
+        target: this.props.service.customer_data.name, // Machanic
         message: "",
     }
 
@@ -126,4 +126,4 @@ const mapStateToProps = (state)=>({
     auth : state.auth
 })
 
-export default connect(mapStateToProps)(ChatPage)
+export default connect(mapStateToProps)(ChatPage2)
