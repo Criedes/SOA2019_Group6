@@ -1,34 +1,13 @@
-# How to run Service
-## Request Service
-### Change Directory
-use command `cd request`
+# How to run API
+### Set up Environment
+1. git clone https://github.com/Criedes/SOA2019_Group6.git
+2. cd SOA2019_Group6
+3. cd `api`
+4. cd `API_Name`
 
 ### Set Up MongoDB
 1. make sure your computer be installed mongoDB and MongoShell started already.
 2. import mockup database use this command.
- 
- `mongoimport --db notification --collection mechanics --file mechanics.json`
- 
-### Install node module
-use command. `npm install`
-
-### Start server to run a service
-use command. `npm start`
-
-### Request Endpoint
-
-| Event                     | Description                                   | 
-|---------------------------|---------------------------------------------|
-| `/api/request:id` |  update status to request mechanic to fix with mechnicId | 
-### Test Endpoint
-1. make sure your computer be installed mongoDB and MongoShell started already.
-2. run test by this command `npm test`
-
-
-## Other Service
-### Set Up MongoDB
-1. make sure your computer be installed mongoDB and MongoShell started already.
- 2. import mockup database use this command.
  
  `mongoimport --db payang --collection mechanics --file mechanics.json`
  
@@ -40,31 +19,34 @@ use command. `npm install`
 ### Start server to run a service
 use command. `npm start`
 
-# Mechanic Endpoint
-
-| Event                     | Description                                   | 
-|---------------------------|---------------------------------------------|
-| `/api/mechanics/find` | get information of all mechanics. | 
-| `/api/mechanics/find/:id` | get information of mechanic by ID. | 
-| `/api/mechanics/find/garage/:shopname` | get information of mechanic by Garage name ( shop name ). | 
-| `/api/mechanics/updatestatus/:id` | update status of mechanic by ID. | 
-| `/api/mechanics/updatecounter/:id` | increate a number of customer of mechanic by ID.|
-| `/api/mechanics/register` | register new mechanic by request body.|
-
-# Login Endpoint
-
-| Event                     | Description                                   | 
-|---------------------------|---------------------------------------------|
-| `/api/login` |  post request body to compile with hash password for login. | 
-
-# Customer Endpoint
-
-| Event                     | Description                                   | 
-|---------------------------|---------------------------------------------|
-| `/api/customers/:id` |  get information of customer by ID.|
-| `/api/customers/register` |  post request body to save in Database.| 
-
 # Test Endpoint
 1. make sure your computer be installed mongoDB and MongoShell started already.
 2. cd to directory 'api'
 3. run test by this command `npm test`
+
+# API
+
+- [Customer Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/customer)
+
+| Event                     | Description                                   | 
+|---------------------------|---------------------------------------------|
+|GET  `/api/customers/:id` |  Get information of customer by ID. | 
+|POST `/api/customers/register` | Post request body to save in database. | 
+
+-  [Auth Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/auth)
+   
+| Event                     | Description                                   | 
+|---------------------------|---------------------------------------------|
+|POST `/api/auth/customer` |  Authentication customer in auth service by username and password. | 
+|POST `/api/auth/mechanic` |  Authentication mechanic in auth service by username and password. | 
+
+
+- [Mechanic Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/mechanic)
+
+| Event                     | Description                                   | 
+|---------------------------|---------------------------------------------|
+|GET  `/api/mechanics/find` | get information of all mechanics. | 
+|GET  `/api/mechanics/find/:id` | get information of mechanic by ID. | 
+|GET  `/api/mechanics/find/garage/:shopname` | get information of mechanic by Garage name ( shop name ). | 
+|POST `/api/mechanics/register` | post register new mechanic by request body.|
+
