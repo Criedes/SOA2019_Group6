@@ -14,3 +14,5 @@ export const LOGOUT = 'LOGOUT';
 export const LIST_MECHANIC = 'LIST_MECHANIC'
 export const PROFILE_MECHANIC = 'FIND_MECHANIC'
 
+export const SERVICE_SET = 'SERVICE_SET'
+

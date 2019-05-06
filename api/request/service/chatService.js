@@ -1,4 +1,4 @@
-import Message from '../model/messageModel'
+import Message from '../model/messageModel';
 
 
 exports.updateMessage = (req, res) => {

@@ -12,6 +12,7 @@ import { loadProfileMechanic } from '../actions/mechanic'
 import socket from '../utils/socket'
 import Swal from 'sweetalert2'
 import { Redirect } from 'react-router-dom'
+import { setService } from '../actions/service'
 
 class MechanicProfile extends Component {
     state = {
@@ -70,6 +71,7 @@ class MechanicProfile extends Component {
             isRedirect: true,
             calling: false
         })
+        this.props.setService({ customer_id : this.state.customer._id , mechanic_id : this.props.auth.user._id })
         socket.emit('acceptcall', { customer_id: this.state.customer._id, user: this.props.auth.user })
     }
 
@@ -101,7 +103,7 @@ class MechanicProfile extends Component {
 
         if (this.state.isRedirect) {
             return <Redirect to={{
-                pathname: '/chat',
+                pathname: '/service',
                 state: { id: '123' }
             }} />
         }
@@ -126,4 +128,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, { loadProfileMechanic })(MechanicProfile);
+export default connect(mapStateToProps, { loadProfileMechanic,setService})(MechanicProfile);

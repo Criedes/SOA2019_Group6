@@ -23,8 +23,8 @@ io.on('connection', (socket) => {
     //reciever => client
     //publisher => mechanic
     socket.on('acceptcall', (data)=>{
-        console.log(data.customer_id)
-        io.sockets.emit(data.envcustomer_id, {data:data})
+        console.log(data)
+        io.sockets.emit(data.customer_id, {data:data})
         // if(data.customer_id){
         //     console.log(data.customer_id + `<< from accept call`)
         //     io.socket.emit('5ccf2c46e6c186f97caf1e38', {data:data})

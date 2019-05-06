@@ -3,6 +3,7 @@ import socket from '../../utils/socket'
 import { connect } from 'react-redux'
 import Swal from 'sweetalert2'
 import {Redirect} from 'react-router-dom'
+import { setService } from '../../actions/service'
 class CallMechanicButton extends Component {
     state = {
         callMechanicStatus : false,
@@ -40,7 +41,7 @@ class CallMechanicButton extends Component {
 
         if(this.state.isRedirect){
             this.setState({isRedirect:false,callMechanicStatus:false})
-            return <Redirect to='/chat' />
+            return <Redirect to='/service' />
         }
 
 
@@ -63,4 +64,4 @@ class CallMechanicButton extends Component {
 const mapStateToProps = (state) => ({
     auth: state.auth
 })
-export default connect(mapStateToProps)(CallMechanicButton);
+export default connect(mapStateToProps,{ setService})(CallMechanicButton);
