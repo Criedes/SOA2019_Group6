@@ -23,20 +23,11 @@ router.get('/authentication', auth, async (req, res) => {
     }
 })
 
-const counter = new Prometheus.Counter({
-    name: 'request_total',
-    help: 'metric_help'
-  });
+
   
 
-router.post('/customer', ()=>{
-    loginService.authenUser
-    counter.inc();
-})
-router.post('/mechanic', ()=>{
-    loginService.authenMechanic
-    counter.inc();
-})
+router.post('/customer',loginService.authenUser)
+router.post('/mechanic', loginService.authenMechanic, counter.inc())
 
 router.get('/metrics', (request, response) => {
     response.set('Content-Type', Prometheus.register.contentType)
