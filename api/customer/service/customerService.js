@@ -1,8 +1,16 @@
 const customerSchema = require('../model/customerSchema');
 const bcrypt = require('bcrypt');
+const Prometheus = require('prom-client')
+
+
+const counter = new Prometheus.Counter({
+    name: 'customer_request_total',
+    help: 'metric_help'
+  });
 
 exports.registerCustomer = (req, res) => {
     // console.log(req.body)
+    counter.inc();
     async function registCustomer() {
         const saltRounds = 10;
         await bcrypt.genSalt(saltRounds, function (err, getsalt) {
@@ -34,6 +42,7 @@ exports.registerCustomer = (req, res) => {
 }
 
 exports.getCustomerById = (req, res) => {
+    counter.inc();
     customerSchema.findById(req.params.id, (err, docs) => {
         if (err) {
             return res.status(404).json({

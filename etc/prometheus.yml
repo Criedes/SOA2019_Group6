@@ -13,7 +13,7 @@ scrape_configs:
           - "payangonline.me"
   -        
     job_name: customer_metrics
-    metrics_path: /api/customers/metrics
+    metrics_path: /api/customers/prom/metrics
     scheme: https
     static_configs: 
       - 

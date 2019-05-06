@@ -15,7 +15,7 @@ router.get('/:id', customerService.getCustomerById);
 // POST customer information
 router.post('/register', customerService.registerCustomer);
 
-router.get('/metrics', (request, response) => {
+router.get('/prom/metrics', (request, response) => {
     response.set('Content-Type', Prometheus.register.contentType)
     console.log(Prometheus.register)
     response.send(Prometheus.register.metrics())
