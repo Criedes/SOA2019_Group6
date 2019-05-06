@@ -151,12 +151,16 @@ jobs:
     #                 sudo apt-get install sshpass
     #                 sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;git reset --hard;git pull;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
     service-deploy:
-        working_directory: ~/SOA2019_Group6/
-        docker:
-            - image: google/cloud-sdk
+        machine:
+            enabled: true
         steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
+            - run:
+                name: install gloudsdk
+                command: |
+                export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+                echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+                curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+                sudo apt-get update && sudo apt-get install google-cloud-sdk
             - run:
                 name: Config gcloud credentials
                 command: |
