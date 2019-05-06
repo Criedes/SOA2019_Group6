@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/mechanic_profile.css';
 import StatusMechanic from '../component/MechanicProfile/StatusMechanic';
 import Header from '../component/Header';
-import Maps from '../component/SearchMechanic/Map';
+import Maps from '../component/MechanicProfile/Map';
 // import axios from 'axios';
 import MechanicInfo from '../component/MechanicProfile/MechanicInfo';
 import CallMechanicButton from '../component/MechanicProfile/CallMechanicButton';

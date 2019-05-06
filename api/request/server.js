@@ -37,8 +37,8 @@ io.on('connection', (socket) => {
     })
 
     socket.on('successService', (data) => {
-        console.log("Message sent to server on:"+"newMessage")
-        console.log(data)
+        console.log("Message sent to server on:"+"successService")
+        console.log(data.customer_id)
         io.sockets.emit(data.customer_id, {reset:true})
     })
 })
