@@ -157,7 +157,7 @@ jobs:
             - run:
                 name: add SSH
                 command: |
-                    - ssh-keygen -q -N "" -f ~/.ssh/google_compute_engine
+                    ssh-keygen -t rsa -f ~/.ssh/google_compute_engine -C payangonline
             # - run:
             #     name: Config gcloud credentials
             #     command: |
