@@ -3,7 +3,7 @@ const customerService = require('../service/customerService');
 const bodyParser = require('body-parser');
 const router = express.Router();
 
-router.use(bodyParser.urlencoded({ extended : true }));
+router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 // GET customer by ID
