@@ -6,7 +6,7 @@ class CallMechanicButton extends Component {
     state = {
         callMechanicStatus : false
     }
-    
+
 
     callMechanic = () => {
         socket.emit('callMechanic', { user: this.props.auth.user, mechanic_id: this.props.mechanic_id })
@@ -14,6 +14,17 @@ class CallMechanicButton extends Component {
     }
 
     render() {
+        if (this.props.auth.user) {
+            if (this.props.auth.user.role) {
+                if (this.props.auth.user.role === 'customer') {
+                    socket.on(this.props.auth.user._id, (data)=>{
+                        this.setState({callMechanicStatus:false})
+                        //mechanic accepted
+                    })
+                }
+            }
+        }
+
         if(this.state.callMechanicStatus){
             Swal.fire({
                 title: 'กำลังรอช่างตอบคำขอ',
@@ -22,7 +33,11 @@ class CallMechanicButton extends Component {
                     Swal.showLoading()
                 }
             })
+        }else{
+            Swal.close()
         }
+
+
         if (this.props.auth.user) {
             if (this.props.auth.user.role) {
                 if (this.props.auth.user.role === 'mechanic') {
