@@ -40,7 +40,7 @@ class CallMechanicButton extends Component {
 
         if(this.state.isRedirect){
             this.setState({isRedirect:false,callMechanicStatus:false})
-            return <Redirect to='/service' />
+            return <Redirect to='/chat' />
         }
 
 

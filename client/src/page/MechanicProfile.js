@@ -100,7 +100,7 @@ class MechanicProfile extends Component {
         }
         
         if(this.state.isRedirect){
-            return <Redirect to='/service' />
+            return <Redirect to='/chat' />
         }
         
         return (
