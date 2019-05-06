@@ -6,6 +6,7 @@ scrape_configs:
   - 
     job_name: authen_metrics
     metrics_path: /api/auth/metrics
+    scheme: https
     static_configs: 
       - 
         targets: 
