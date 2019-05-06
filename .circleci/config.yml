@@ -166,7 +166,6 @@ jobs:
                 command: |
                     echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
                     gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
-                    gcloud auth login
             - run:
                 name: SSH
                 command: |
