@@ -3,20 +3,18 @@ import axios from 'axios'
 import socket from '../utils/socket'
 import qs from 'qs'
 import '../styles/chat.css'
+import {connect} from 'react-redux'
 
-export default class ChatPage extends Component {
+class ChatPage extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            chatInfo: [],
-            incomingChat: [],
-            myID: "John",
-            targetID: "Bank",
-            name: "John",
-            target: "Bank",
-            message: "",
-        }
+    state = {
+        chatInfo: [],
+        incomingChat: [],
+        myID: "John",
+        targetID: "Bank",
+        name: "John",
+        target: "Bank",
+        message: "",
     }
 
 
@@ -40,6 +38,13 @@ export default class ChatPage extends Component {
             temp.push(data)
             this.setState({ incomingChat: temp})
         })
+        socket.on('getNewMessage', (data) => {
+            const temp = this.state.incomingChat
+            temp.push(data)
+            this.setState({ incomingChat: temp})
+        })
+
+        
     }
 
     handleSendMessage = () => {
@@ -69,8 +74,29 @@ export default class ChatPage extends Component {
         this.setState({ message: event.target.value})
     }
 
+    componentDidUpdate = (prevProps , prevstate) => {
+        if(prevProps.service.mechanic_id !== this.props.service.mechanic_id){
+            
+            if(this.props.auth.user.role === 'mechanic'){
+                console.log(this.props.service.mechanic_id + ' << from component did updata')
+                this.setState({myID : "hello"})
+                this.setState({targetID : this.props.service.customer_id})
+                this.setState({name : this.props.service.mechanic_data.mechanic_name})
+                this.setState({target: this.props.service.customer_data.name})
+                console.log(this.state.myID)
+
+            }else if(this.props.auth.user.role === 'customer'){
+                this.setState({myID : this.props.service.customer_id})
+                this.setState({targetID : this.props.service.mechanic_id})
+                this.setState({target : this.props.service.mechanic_data.mechanic_name})
+                this.setState({name: this.props.service.customer_data.name})
+            }
+        }
+    }
 
     render() {
+        
+        
         return(
             <div className='container-fluid'>
                 <div className='chatBox'>
@@ -98,3 +124,11 @@ export default class ChatPage extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state)=>({
+    service : state.service,
+    auth : state.auth
+})
+
+export default connect(mapStateToProps)(ChatPage)

@@ -71,7 +71,12 @@ class MechanicProfile extends Component {
             isRedirect: true,
             calling: false
         })
-        this.props.setService({ customer_id : this.state.customer._id , mechanic_id : this.props.auth.user._id })
+        this.props.setService({
+            customer_id: this.state.customer._id
+            , mechanic_id: this.props.auth.user._id
+            , mechanic_data: this.props.auth.user
+            , customer_data: this.state.customer
+        })
         socket.emit('acceptcall', { customer_id: this.state.customer._id, user: this.props.auth.user })
     }
 
@@ -103,8 +108,7 @@ class MechanicProfile extends Component {
 
         if (this.state.isRedirect) {
             return <Redirect to={{
-                pathname: '/service',
-                state: { id: '123' }
+                pathname: '/chat'
             }} />
         }
 
@@ -128,4 +132,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, { loadProfileMechanic,setService})(MechanicProfile);
+export default connect(mapStateToProps, { loadProfileMechanic, setService })(MechanicProfile);
