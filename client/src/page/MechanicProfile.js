@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 import { loadProfileMechanic } from '../actions/mechanic'
 import socket from '../utils/socket'
 import Swal from 'sweetalert2'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class MechanicProfile extends Component {
     state = {
@@ -33,7 +33,7 @@ class MechanicProfile extends Component {
         },
         calling: false,
         customer: null,
-        isRedirect : false
+        isRedirect: false
     }
 
     componentDidMount() {
@@ -52,25 +52,25 @@ class MechanicProfile extends Component {
                 if (this.props.auth.user.role === 'mechanic') {
                     let id_mechanic_watch = this.props.match.params.id
                     socket.on(id_mechanic_watch, (data) => {
-                        this.setState({ calling: true , customer: data.user})
+                        this.setState({ calling: true, customer: data.user })
                     })
-                }else if(this.props.auth.user.role === 'customer'){
-                    
+                } else if (this.props.auth.user.role === 'customer') {
+
                 }
             }
         }
     }
 
 
-    
+
 
     acceptCalling = () => {
         console.log(this.state.customer._id + `<< from accept calling`)
         this.setState({
-            isRedirect:true,
+            isRedirect: true,
             calling: false
         })
-        socket.emit('acceptcall', {customer_id:this.state.customer._id , user: this.props.auth.user})
+        socket.emit('acceptcall', { customer_id: this.state.customer._id, user: this.props.auth.user })
     }
 
     cancelCalling = () => {
@@ -83,7 +83,7 @@ class MechanicProfile extends Component {
         if (this.state.calling) {
             console.log(this.state.customer)
             Swal.fire({
-                title: 'คุณ'+ this.state.customer.name + ' ต้องการใช้บริการ',
+                title: 'คุณ' + this.state.customer.name + ' ต้องการใช้บริการ',
                 text: "You won't be able to revert this!",
                 type: 'warning',
                 showCancelButton: true,
@@ -91,18 +91,21 @@ class MechanicProfile extends Component {
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
-                if(result.value){
+                if (result.value) {
                     this.acceptCalling()
-                }else{
+                } else {
                     this.cancelCalling()
                 }
             })
         }
-        
-        if(this.state.isRedirect){
-            return <Redirect to='/chat' />
+
+        if (this.state.isRedirect) {
+            return <Redirect to={{
+                pathname: '/chat',
+                state: { id: '123' }
+            }} />
         }
-        
+
         return (
             <div>
                 <Header />
