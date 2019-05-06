@@ -169,7 +169,8 @@ jobs:
                 name: SSH
                 command: |
                     gcloud --quiet compute ssh payangonline --zone asia-southeast1-a \
-                    --command "git reset --hard && git pull && sudo docker-compose stop && sudo docker-compose rm -f && sudo docker-compose pull && sudo docker-compose up -d"
+                                        --command "ls"
+                    # --command "git reset --hard && git pull && sudo docker-compose stop && sudo docker-compose rm -f && sudo docker-compose pull && sudo docker-compose up -d"
     
 #Test
     # machine:
