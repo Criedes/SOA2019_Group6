@@ -168,9 +168,9 @@ jobs:
                     gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
             - run:
                 name: SSH
-                command: |
-                    gcloud --quiet compute ssh payangonline --zone asia-southeast1-a \
-                                        --command "cd SOA2019_Group6"
+                command: |                                        
+                    gcloud --quiet compute --project "central-eon-235617" ssh --zone "asia-southeast1-a" "payangonline" \
+                        --command "cd SOA2019_Group6"
                     # --command "git reset --hard && git pull && sudo docker-compose stop && sudo docker-compose rm -f && sudo docker-compose pull && sudo docker-compose up -d"
     
 #Test
