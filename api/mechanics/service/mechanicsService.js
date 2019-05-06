@@ -57,7 +57,6 @@ exports.updateStatusById = (req, res) => {
         }
     }
     checkStatus()
-
 }
 
 exports.updateCountById = (req, res) => {

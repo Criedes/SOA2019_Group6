@@ -168,7 +168,7 @@ jobs:
                     # gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
                     gcloud config list
                     gcloud config configurations list
-                    gcloud config set account payangonline@gmail.com 
+                    gcloud config set account  payangonline@central-eon-235617.iam.gserviceaccount.com
                     gcloud config set project ${GCLOUD_PROJECT_ID}
                     gcloud config set compute/region asia-southeast1
                     gcloud config set compute/zone asia-southeast1-a
