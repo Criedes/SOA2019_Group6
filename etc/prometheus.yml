@@ -9,4 +9,4 @@ scrape_configs:
     static_configs: 
       - 
         targets: 
-          - "139.162.25.245:9113"
+          - "35.240.192.56:9113"
