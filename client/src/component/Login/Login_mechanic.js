@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
-import {loginMechanic} from '../../actions/auth'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { loginMechanic } from '../../actions/auth'
 import Swal from 'sweetalert2'
+import {Link} from 'react-router-dom'
 class Login_mechanic extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +19,7 @@ class Login_mechanic extends Component {
 
     submitLoginMechanic = (e) => {
         e.preventDefault();
-        this.props.loginMechanic({username:this.state.username, password:this.state.password})
+        this.props.loginMechanic({ username: this.state.username, password: this.state.password })
     }
 
     loginAction = () => {
@@ -40,18 +41,18 @@ class Login_mechanic extends Component {
     }
 
     render() {
-        if(this.props.auth.isAuth){
+        if (this.props.auth.isAuth) {
             this.loginAction()
             return <Redirect to="/" />
-         }
+        }
         return (<form className="login100-form " onSubmit={this.submitLoginMechanic}>
             <div className="title-text">
                 <br />
                 <div className="wrap-input100 validate-input">
-                    <input className="input100" type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.onChanged}/>
+                    <input className="input100" type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.onChanged} />
                 </div>
                 <div className="wrap-input100 validate-input">
-                    <input className="input100" type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.onChanged}/>
+                    <input className="input100" type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.onChanged} />
 
                 </div>
                 <div className="container-login100-form-btn title-text">
@@ -60,12 +61,15 @@ class Login_mechanic extends Component {
 				</button>
                 </div>
             </div>
+            <div className="bottom-register">
+                <span>ต้องการเป็นช่างกับเว็บเราใช่หรือไม่ <Link to='/register/mechanic' ><button className="login100-form-btn6">สมัครเป็นช่าง</button></Link></span>
+            </div>
         </form>
         );
     }
 }
 
-const mapStateToProps = (state)=>({
-    auth : state.auth
+const mapStateToProps = (state) => ({
+    auth: state.auth
 })
-export default connect(mapStateToProps, {loginMechanic})(Login_mechanic);
+export default connect(mapStateToProps, { loginMechanic })(Login_mechanic);

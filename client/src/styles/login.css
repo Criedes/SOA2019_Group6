@@ -3,49 +3,21 @@
     text-transform: uppercase;
     display: flex;
     padding: 0.6rem;
-    align-items: center;
-    justify-content: center;
     font-family: 'Nunito', sans-serif;
     color:white;
     background: #9338D0;
     border-radius: 70px;
-    width: 100%;
+    width: 60%;
     height: 50px;
     border-radius: 25px;
-
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 0 25px;
-  
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
   }
 
   .login100-form-btn6 {
-   
-    
-    padding: 0.6rem;
-    
     font-family: 'Prompt', sans-serif;
     color:#9338D0;
-    background: white;
-    border-radius: 70px;
-    width: 30%;
-
-
-   
-    justify-content: center;
-    align-items: center;
-   
-  
-    
+    background: transparent;
+    border:none
   }
   .block_container
 {
@@ -76,13 +48,19 @@
     height: 50px;
     
   }
+
+  .login-top{
+    display: flex;
+    justify-content: center;
+  }
+
   .login100-form-btn2 {
     align-items: center;
     justify-content: center;
     font-family: 'Nunito', sans-serif;
     color:white;
+    border:none;
     background: #9338D0;
-    border-radius: 70px;
     width: 30%;
     height: 50px;
    
@@ -92,11 +70,14 @@
     justify-content: center;
     font-family: 'Nunito', sans-serif;
     color:#666666;;
+    border:solid 2px #9338D0;
     background: white;
-    border-radius: 70px;
     width: 30%;
     height: 50px;
     
+  }
+  .login100-form-btn2:focus, .login100-form-btn3:focus{
+    outline: none;
   }
   
   .login100-form-btn:hover {
@@ -139,11 +120,14 @@
     color: #000000;
 }
 
-.title-text{
-    margin-bottom: -0.2rem;
+.title-text-login{
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    margin-bottom: 2.5rem;
 }
-.title-text2{
-    margin-bottom: 0.5rem;
+.title-text-login h1{
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
 }
 
 .wrap-input100 {
@@ -151,7 +135,13 @@
     width: 100%;
     z-index: 1;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
     
+  }
+
+  .bottom-register{
+    margin-top: 2em;
   }
   
   .input100 {
@@ -159,9 +149,9 @@
     font-size: 15px;
     line-height: 1.5;
     color: #666666;
-    
+    padding: 20px;
     display: block;
-    width: 100%;
+    width: 60%;
     background: #e6e6e6;
     height: 50px;
     border-radius: 25px;
@@ -175,3 +165,13 @@
 	outline: none;
 	border: none;
 }
+
+@media only screen and (max-width: 1000px) {
+  .input100{
+      width: 100%;
+  }
+  .login100-form-btn{
+      width: 100%;
+  }
+}
+

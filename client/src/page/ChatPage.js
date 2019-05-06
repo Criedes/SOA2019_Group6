@@ -6,6 +6,7 @@ import '../styles/chat.css'
 import { connect } from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import Header from '../component/Header'
+import {callSuccess} from '../actions/calling'
 
 class ChatPage extends Component {
 
@@ -34,12 +35,16 @@ class ChatPage extends Component {
             this.setState({ targetID: localStorage.getItem('customer_id') })
             this.setState({ name: localStorage.getItem('mechanic_name') })
             this.setState({ target: localStorage.getItem('customer_name') })
-
         } else {
             this.setState({ targetID: localStorage.getItem('mechanic_id') })
             this.setState({ myID: localStorage.getItem('customer_id') })
             this.setState({ target: localStorage.getItem('mechanic_name') })
             this.setState({ name: localStorage.getItem('customer_name') })
+            socket.on(this.state.customer_id, (data)=>{
+                if(data.reset){
+                    this.setState({isSuccess:true})
+                }
+            })
         }
 
         this.setState({ channel: localStorage.getItem('mechanic_id') + localStorage.getItem('customer_id') })
@@ -48,6 +53,7 @@ class ChatPage extends Component {
             temp.push(data)
             this.setState({ incomingChat: temp })
         })
+        
     }
 
     handleSendMessage = () => {
@@ -61,6 +67,7 @@ class ChatPage extends Component {
     }
 
     clearLocalStorage = () => {
+        socket.emit('successService', {customer_id:localStorage.removeItem('mechanic_id')})
         localStorage.removeItem('role')
         localStorage.removeItem('mechanic_name')
         localStorage.removeItem('mechanic_id')
@@ -111,7 +118,8 @@ class ChatPage extends Component {
 
 const mapStateToProps = (state) => ({
     service: state.service,
-    auth: state.auth
+    auth: state.auth,
+    calling : state.calling
 })
 
-export default connect(mapStateToProps)(ChatPage)
+export default connect(mapStateToProps, {callSuccess})(ChatPage)
