@@ -11,20 +11,6 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            - restore_cache:
-                name: Restore Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-            - run:
-                name: Install Library
-                command: |
-                    npm install
-            - save_cache:
-                name: Save Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-                paths:
-                    - ./node_modules/
             - run:
                 name: Build Docker Customer service Image
                 command: |
@@ -42,20 +28,6 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            - restore_cache:
-                name: Restore Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-            - run:
-                name: Install Library
-                command: |
-                    npm install
-            - save_cache:
-                name: Save Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-                paths:
-                    - ./node_modules/
             - run:
                 name: Build Docker mechanics service Image
                 command: |
@@ -73,20 +45,6 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            - restore_cache:
-                name: Restore Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-            - run:
-                name: Install Library
-                command: |
-                    npm install
-            - save_cache:
-                name: Save Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-                paths:
-                    - ./node_modules/
             - run:
                 name: Build Docker request service Image
                 command: |
@@ -104,20 +62,6 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            - restore_cache:
-                name: Restore Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-            - run:
-                name: Install Library
-                command: |
-                    npm install
-            - save_cache:
-                name: Save Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-                paths:
-                    - ./node_modules/
             - run:
                 name: Build Docker request service Image
                 command: |
@@ -134,20 +78,6 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            - restore_cache:
-                name: Restore Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-            - run:
-                name: Install Library
-                command: |
-                    npm install
-            - save_cache:
-                name: Save Npm Package Cache
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
-                paths:
-                    - ./node_modules/
             - run:
                 name: Build Docker request service Image
                 command: |
