@@ -61,9 +61,9 @@ class Login_mechanic extends Component {
 				</button>
                 </div>
             </div>
-            <div className="bottom-register">
+            {/* <div className="bottom-register">
                 <span>ต้องการเป็นช่างกับเว็บเราใช่หรือไม่ <Link to='/register/mechanic' ><button className="login100-form-btn6">สมัครเป็นช่าง</button></Link></span>
-            </div>
+            </div> */}
         </form>
         );
     }
