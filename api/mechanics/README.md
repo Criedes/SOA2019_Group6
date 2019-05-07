@@ -14,7 +14,7 @@
 
     ```GET /api/mechanics/find```
 
-      Return 200 Success Search and show all mechanic.
+      Return ```200 Success``` Search and show all mechanic.
       
 ***
       
@@ -22,7 +22,7 @@
 
     ```GET /api/mechanics/find/:id```
     
-      Return 200 Success Search and show mechanic follow by ID. 
+      Return ```200 Success``` Search and show mechanic follow by ID. 
       
 ***
 
@@ -30,7 +30,7 @@
 
     ```GET /api/mechanics/find/garage/:shopname``` 
     
-      Return 200 Success Search and show mechanic by Garage name (shop name ).
+      Return ```200 Success``` Search and show mechanic by Garage name (shop name ).
 
 ***
   
@@ -62,9 +62,9 @@
         }
         
         
-     Return 200 Success  member registered with correct data and compleate.
+     Return ```200 Success```  member registered with correct data and compleate.
      
- 	 Return 400 Error member not registered because incorrect data and non-compleate.
+ 	 Return ```400 Error``` member not registered because incorrect data and non-compleate.
 ***
 
 
