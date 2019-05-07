@@ -5,12 +5,10 @@ describe('/api/request', () => {
     beforeAll(async () => {
         console.log('change port to 3000 to test')
     })
-
     afterAll(() => {
         server.close();
         console.log('test complete & server.close')
     })
-
     describe('PUT /5c9001f5cf9f9075a756e419 with correctness data', () => {
         const case1 =
         {
@@ -23,11 +21,10 @@ describe('/api/request', () => {
                 .send(case1)
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
-
+                
                 expect(res.status).toBe(201)
         })
     })
-
     describe('PUT /5c9001f5cf9f9075a756e419 with Incorrectness data', () => {
         const case2 =
         {
@@ -43,6 +40,4 @@ describe('/api/request', () => {
                 expect(res.status).toBe(400)
         })
     })
-
-
 })
