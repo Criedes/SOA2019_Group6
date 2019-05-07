@@ -26,7 +26,7 @@ exports.findMechanicById = (req, res) => {
                 return res.status(404).json({
                     success: false
                 });
-            };)
+            };})
         res.status(200).json(mechanic)
     }
     getMechanicById()
@@ -41,7 +41,7 @@ exports.queryMechanicByName = (req, res) => {
                 return res.status(404).json({
                     success: false
                 });
-            };)
+            };})
         res.status(200).json(mechanic)
     }
     getMechanicById()
