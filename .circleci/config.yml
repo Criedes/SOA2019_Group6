@@ -15,8 +15,8 @@ jobs:
                 name: Build Docker Customer service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/customer_service .
-                    docker push $DOCKER_USERNAME/customer_service
+                    docker build -t $DOCKER_USERNAME/customer_service:2.0 .
+                    docker push $DOCKER_USERNAME/customer_service:2.0
 
 # Mechanics Service
     mechanics:
@@ -32,8 +32,8 @@ jobs:
                 name: Build Docker mechanics service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/mechanics_service .
-                    docker push $DOCKER_USERNAME/mechanics_service
+                    docker build -t $DOCKER_USERNAME/mechanics_service:2.0 .
+                    docker push $DOCKER_USERNAME/mechanics_service:2.0
 
 # Request Mechanics Service
     request:
@@ -49,8 +49,8 @@ jobs:
                 name: Build Docker request service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/request_service .
-                    docker push $DOCKER_USERNAME/request_service
+                    docker build -t $DOCKER_USERNAME/request_service:2.0 .
+                    docker push $DOCKER_USERNAME/request_service:2.0
 
 # Authentication Service
     authen:
@@ -66,8 +66,8 @@ jobs:
                 name: Build Docker request service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/authen_service .
-                    docker push $DOCKER_USERNAME/authen_service
+                    docker build -t $DOCKER_USERNAME/authen_service:2.0 .
+                    docker push $DOCKER_USERNAME/authen_service:2.0
 # Front-end
     payang_frontend:
         working_directory: ~/SOA2019_Group6/client/
@@ -82,8 +82,8 @@ jobs:
                 name: Build Docker request service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/payang_frontend .
-                    docker push $DOCKER_USERNAME/payang_frontend
+                    docker build -t $DOCKER_USERNAME/payang_frontend:2.0 .
+                    docker push $DOCKER_USERNAME/payang_frontend:2.0
 # Deploy Website
     service-deploy:
         machine:
