@@ -54,6 +54,7 @@ SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
 	เลือกLoginของCustomer
     กรอกUsernameและPasswordของCustomer
 	กดFind Mechanicเจอปุ่ม​See information
+	Close Brwoser
 
 *** Keywords ***
 
