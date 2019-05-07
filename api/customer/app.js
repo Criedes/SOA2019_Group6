@@ -39,7 +39,6 @@ const client = new Eureka({
     },
 });
 
-const loginController = require('./controller/loginController');
 client.logger.level('debug');
 client.start((error) => {
     console.log(error || 'Eureka client started');
