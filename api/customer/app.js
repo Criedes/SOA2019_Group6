@@ -8,9 +8,12 @@ var jsonParser = bodyParser.json()
 app.use(urlencodedParser = bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(cors())
-
+const ENV =  process.env.NODE_ENV || 'production';
 const customerController = require('./controller/customerController');
-const client = new Eureka({
+if(ENV === 'test'){
+    app.use('/api/customers', customerController);
+}
+else{const client = new Eureka({
     // application instance information
     instance: {
         app: 'customer',
@@ -44,5 +47,5 @@ client.start((error) => {
     console.log(error || 'Eureka client started');
     app.use('/api/customers', customerController);
 });
-
+}
 module.exports = app
