@@ -66,3 +66,13 @@ use command. `npm start`
 |GET  `/api/mechanics/find/garage/:shopname` | get information of mechanic by Garage name ( shop name ). | 
 |POST `/api/mechanics/register` | post register new mechanic by request body.|
 
+
+# RUN: UI TESTING
+```
+cd /UITest
+```
+run with
+```
+robot PayangOnline-UITesting.robot
+```
+
