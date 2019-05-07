@@ -19,44 +19,13 @@ describe('/api/mechanics',()=>{
     })
     describe('GET /find/:id', ()=>{
         it('should return mechanic by id', async ()=>{
-            let test_Id = '5c9001f5cf9f9075a756e419'
+            let test_Id = '5ccf1ed0c5233a001327c5d3'
             const res = await request(server).get('/api/mechanics/find/'+test_Id)
             expect(res.body[0]).toHaveProperty("username", "jameonline")
-            expect(res.body[0]).toHaveProperty("coordinate", { lat: '29.001993213', lng: '18.09002313' })
-            expect(res.body[0]).toHaveProperty("_id", '5c9001f5cf9f9075a756e419' )
-            expect(res.body[0]).toHaveProperty("garagename", 'Chang James Shop' )
-            expect(res.body[0]).toHaveProperty("join_date", '12/1/2019' )
-            expect(res.body[0]).toHaveProperty("contact", '099-9999999' )
-            expect(res.body[0]).toHaveProperty("machanic_name", 'Bratt Pitch' )
             expect(res.status).toBe(200)
         })
     })
-    describe('GET /find/garage/:garagename', ()=>{
-        it('should return mechanic information by garage name', async ()=>{
-            let test_garage_name = 'Chang James Shop'
-            const res = await request(server).get('/api/mechanics/find/garage/'+test_garage_name)
-            expect(res.body[0]).toHaveProperty("username", "jameonline")
-            expect(res.body[0]).toHaveProperty("coordinate", { lat: '29.001993213', lng: '18.09002313' })
-            expect(res.body[0]).toHaveProperty("_id", '5c9001f5cf9f9075a756e419' )
-            expect(res.body[0]).toHaveProperty("garagename", 'Chang James Shop' )
-            expect(res.body[0]).toHaveProperty("join_date", '12/1/2019' )
-            expect(res.body[0]).toHaveProperty("contact", '099-9999999' )
-            expect(res.body[0]).toHaveProperty("machanic_name", 'Bratt Pitch' )
-            expect(res.status).toBe(200)
-        })
-    })
-    describe('PUT /updatestatus/:id', ()=>{
-        it('should update status of mechanic', async ()=>{
-            const res = await request(server).put('/api/mechanics/updatestatus/5c9001f5cf9f9075a756e419')
-            expect(res.status).toBe(200)
-        })
-    })
-    describe('PUT /updatecounter/:id', ()=>{
-        it('should update a number of customer s mechanic by id', async ()=>{
-            const res = await request(server).put('/api/mechanics/updatecounter/5c9001f5cf9f9075a756e419')
-            expect(res.status).toBe(200)
-        })
-    })
+
     describe('POST /register with correctness data', ()=>{
         const case1 = {
             "coordinate": {
