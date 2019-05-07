@@ -28,7 +28,7 @@ use command. `npm start`
 
 - [Customer Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/customer)
 
-| Event                     | Description                                   | 
+| Event                     | Description                                 | 
 |---------------------------|---------------------------------------------|
 |GET  `/api/customers/:id` |  Get information of customer by ID. | 
 |POST `/api/customers/register` | Post request body to save in database. | 
