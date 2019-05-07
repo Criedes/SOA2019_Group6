@@ -7,6 +7,7 @@ services:
     restart: on-failure
     environment:
       WAIT_HOSTS: eureka:8761
+      NODE_ENV: 'production'
       EUREKA_CLIENT_HOST: 'customer'
       EUREKA_CLIENT_URL: 'http://customer:'
       EUREKA_SERVER_HOST: 'eureka'
@@ -22,6 +23,7 @@ services:
     restart: on-failure
     environment:
       WAIT_HOSTS: eureka:8761
+      NODE_ENV: 'production'
       EUREKA_CLIENT_HOST: 'mechanic'
       EUREKA_CLIENT_URL: 'http://mechanic:'
       EUREKA_SERVER_HOST: 'eureka'
@@ -37,6 +39,7 @@ services:
     restart: on-failure
     environment:
       WAIT_HOSTS: eureka:8761
+      NODE_ENV: 'production'
       EUREKA_CLIENT_HOST: 'request'
       EUREKA_CLIENT_URL: 'http://request:'
       EUREKA_SERVER_HOST: 'eureka'
@@ -52,6 +55,7 @@ services:
     restart: on-failure
     environment:
       WAIT_HOSTS: eureka:8761
+      NODE_ENV: 'production'
       EUREKA_CLIENT_HOST: 'authen'
       EUREKA_CLIENT_URL: 'http://authen:'
       EUREKA_SERVER_HOST: 'eureka'
