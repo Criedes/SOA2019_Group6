@@ -48,7 +48,6 @@ class FindMechanic extends Component {
         await this.setState({list:this.props.mechanic.mechanic_list})
     }
 
-   
     render() { 
         return ( 
             <div className="find_mechanic">
