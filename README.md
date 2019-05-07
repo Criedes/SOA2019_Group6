@@ -50,7 +50,7 @@ use command. `npm start`
 |POST `/api/auth/mechanic` |  Authentication mechanic in auth service by username and password. | 
 
 
-- [Mechanic Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/mechanic)
+- [Mechanic Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/mechanics)
 
 | Event                     | Description                                   | 
 |---------------------------|---------------------------------------------|
