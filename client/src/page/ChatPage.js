@@ -77,7 +77,6 @@ class ChatPage extends Component {
         this.setState({isSuccess:true})
     }
 
-
     render() {
         if(this.state.isSuccess){
             this.setState({isSuccess: false})
