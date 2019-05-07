@@ -2,7 +2,6 @@ const customerSchema = require('../model/customerSchema');
 const bcrypt = require('bcrypt');
 const Prometheus = require('prom-client')
 
-
 const counter = new Prometheus.Counter({
     name: 'customer_request_total',
     help: 'metric_help'
@@ -37,7 +36,6 @@ exports.registerCustomer = (req, res) => {
             })
         })
     }
-
     registCustomer();
 }
 
