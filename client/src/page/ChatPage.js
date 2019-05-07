@@ -40,7 +40,8 @@ class ChatPage extends Component {
             this.setState({ myID: localStorage.getItem('customer_id') })
             this.setState({ target: localStorage.getItem('mechanic_name') })
             this.setState({ name: localStorage.getItem('customer_name') })
-            socket.on(this.state.customer_id, (data)=>{
+            console.log(localStorage.getItem('customer_id')+ '   ssss')
+            socket.on(localStorage.getItem('customer_id'), (data)=>{
                 if(data.reset){
                     this.setState({isSuccess:true})
                 }
@@ -67,7 +68,7 @@ class ChatPage extends Component {
     }
 
     clearLocalStorage = () => {
-        socket.emit('successService', {customer_id:localStorage.removeItem('mechanic_id')})
+        socket.emit('successService', {customer_id:localStorage.getItem('customer_id')})
         localStorage.removeItem('role')
         localStorage.removeItem('mechanic_name')
         localStorage.removeItem('mechanic_id')
@@ -80,7 +81,7 @@ class ChatPage extends Component {
     render() {
         if(this.state.isSuccess){
             this.setState({isSuccess: false})
-            return <Redirect to="/" />
+            return <Redirect to='/search' />
         }
         console.log(this.state.myID + ' ' + this.state.targetID)
         let buttonClear = <div></div>

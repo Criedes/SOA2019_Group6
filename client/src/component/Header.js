@@ -56,14 +56,14 @@ class Header extends Component {
                                         <div className="">
                                             <Link to={`/mechanic/${this.props.auth.user._id}`}>
                                                 <h6>Profile</h6>
-                                                <span>ข้อมูลส่วนตัว</span>
+                                                <span className="thai_label">ข้อมูลส่วนตัว</span>
                                             </Link>
                                         </div>
                                     </div>
                                     <div className="navbar-r">
-                                        <div className="" onClick={this.logoutAction}>
+                                        <div className="logout_btn" onClick={this.logoutAction}>
                                             <h6>Sign Out</h6>
-                                            <span>ออกจากระบบ</span>
+                                            <span className="thai_label">ออกจากระบบ</span>
                                         </div>
                                     </div>
                                 </div>
@@ -82,8 +82,8 @@ class Header extends Component {
                                 </div>
 
                                 <div className="navbar-r">
-                                    <div>
-                                        สวัสดีคุณ {this.props.auth.user.name}
+                                    <div className="name_customer">
+                                        สวัสดีคุณ <b>{this.props.auth.user.name}</b>
                                     </div>
                                     <div className="" onClick={this.logoutAction}>
                                         <h6>Sign Out</h6>

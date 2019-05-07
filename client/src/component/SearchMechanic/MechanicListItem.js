@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 class MechanicListItem extends Component {
-    state = {  }
-    render() { 
+    state = {}
+    render() {
         const data = this.props.list
         const id = data._id
-        return ( 
+        let nav_right = ''
+        if (localStorage.getItem('token')) {
+            nav_right = (<div className="select_mechanic_btn_wrapper">
+                <Link to={`/mechanic/${id}`}><button className="select_mechanic_btn">See Information</button></Link>
+            </div>)
+        } else {
+            nav_right = (<div className="select_mechanic_btn_wrapper">
+                <p style={{fontSize:10,color:'purple'}}>กรุณาทำการเข้าสู่ระบบเพื่อเรียกใช้บริการ</p>
+            </div>)
+        }
+        return (
             <div className="mechanic-wrapper">
 
                 <div className="mechanic">
@@ -25,16 +35,17 @@ class MechanicListItem extends Component {
                                 <h6> <i className="fa fa-phone icon" aria-hidden="true"></i>{`โทรศัพท์ ${data.contact}`}</h6>
                             </div>
                         </div>
-                        <div className="select_mechanic_btn_wrapper">
+                        {/* <div className="select_mechanic_btn_wrapper">
                             <Link to={`/mechanic/${id}`}><button className="select_mechanic_btn">See Information</button></Link>
-                        </div>
+                        </div> */}
+                        {nav_right}
                     </div>
 
                 </div>
-                
+
             </div>
         );
     }
 }
- 
+
 export default MechanicListItem;

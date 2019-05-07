@@ -6,7 +6,7 @@ const app = express()
 const cors = require('cors')
 const port = 3000
 const Eureka = require('eureka-js-client').Eureka;
-
+const requestController = require('./controller/requestController');
 var jsonParser = bodyParser.json()
 app.use(urlencodedParser = bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
@@ -39,12 +39,11 @@ const client = new Eureka({
         servicePath: '/eureka/apps/',
     },
 });
-
-const requestController = require('./controller/requestController');
 client.logger.level('debug');
 client.start((error) => {
     console.log(error || 'Eureka client started');
     app.use('/', requestController);
 });
 
+// app.use('/', requestController);
 module.exports = app

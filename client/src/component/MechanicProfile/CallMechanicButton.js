@@ -22,8 +22,10 @@ class CallMechanicButton extends Component {
             if (this.props.auth.user.role) {
                 if (this.props.auth.user.role === 'customer') {
                     socket.on(this.props.auth.user._id, (data) => {
-                        // console.log(data.data.user)
-                        this.setState({ callMechanicStatus: false, isRedirect: true, user: data.data.user })
+                        if(data && data.data){
+                            this.setState({ callMechanicStatus: false, isRedirect: true, user: data.data.user })
+                        }
+                        
                     })
                 }
             }

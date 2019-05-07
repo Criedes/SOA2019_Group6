@@ -52,4 +52,18 @@ a span{
 .isCurrent{
     border-bottom: 2px solid #9338D0;
 }
+.name_customer{
+    margin-right: 1em;
+}
+
+.logout_btn:hover{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+   .name_customer{
+       display: none;
+   }
+   .thai_label{display:none;}
+}
 
