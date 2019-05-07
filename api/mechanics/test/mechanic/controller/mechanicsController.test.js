@@ -52,7 +52,6 @@ describe('/api/mechanics',()=>{
             .send(case1)
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
-            
             expect(res.status).toBe(201)
         })        
     })
@@ -79,7 +78,6 @@ describe('/api/mechanics',()=>{
             .send(case2)
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
-            
             expect(res.status).toBe(400)
         })        
     })

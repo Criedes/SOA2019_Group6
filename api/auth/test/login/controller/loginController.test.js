@@ -9,7 +9,6 @@ describe('/api/login', () => {
         server.close();
         console.log('test complete & server.close')
     })
-
     describe('POST with correctness email and password', () => {
         let case1 = {
             "email": "test@email.com",
@@ -24,7 +23,6 @@ describe('/api/login', () => {
                 .catch(err => console.log(err));
         })
     })
-
     describe('POST with correctness email and incorrectness password', () => {
         let case2 = {
             "email": "test@email.com",
@@ -39,7 +37,6 @@ describe('/api/login', () => {
                 .catch(err => console.log(err));
         })
     })
-
     describe('POST with incorrectness email and incorrectness password', () => {
         let case3 = {
             "email": "tes222t@email.com",

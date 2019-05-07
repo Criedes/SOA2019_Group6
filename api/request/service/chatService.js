@@ -1,6 +1,5 @@
 const Message = require('../model/messageModel')
 
-
 exports.updateMessage = (req, res) => {
     console.log('<<<<<<<<POST REQUEST IS RECIEVED>>>>>>>>>>>')
     console.log(req.body)
@@ -18,7 +17,6 @@ exports.updateMessage = (req, res) => {
                 messages: []
             })
             message.save((err) => {
-
             })
         } else {
             console.log("Obj exist")
