@@ -21,7 +21,7 @@ describe('/api/mechanics',()=>{
         it('should return mechanic by id', async ()=>{
             let test_Id = '5ccf1ed0c5233a001327c5d3'
             const res = await request(server).get('/api/mechanics/find/'+test_Id)
-            expect(res.body[0]).toHaveProperty("username", "jameonline")
+            expect(res.body[0]).toHaveProperty("username", "nawin02")
             expect(res.status).toBe(200)
         })
     })
@@ -44,7 +44,7 @@ describe('/api/mechanics',()=>{
             "address": "Khaosan Road, Bangkok",
             "join_date": "12/1/2019",
             "contact": "099-9999999",
-            "status": false
+            "imgurl": "test url"
           }    
         it('should create new document in Database', async ()=>{
             const res = await request(server)

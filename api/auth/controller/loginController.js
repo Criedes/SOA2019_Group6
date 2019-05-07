@@ -5,9 +5,10 @@ const { auth } = require('../middlewares/auth')
 const customerSchema = require('../model/customerSchema')
 const mechanicSchema = require('../model/mechanicSchema')
 const Prometheus = require('prom-client')
-
+const ENV =  process.env.NODE_ENV || 'production';
+if(ENV === 'production'){
 Prometheus.collectDefaultMetrics({ timeout: 5000 })
-
+}
 router.get('/authentication', auth, async (req, res) => {
     try {
         let user2 = ''
@@ -28,13 +29,13 @@ router.get('/authentication', auth, async (req, res) => {
 
 router.post('/customer',loginService.authenUser)
 router.post('/mechanic', loginService.authenMechanic)
-
+if(ENV === 'production'){
 router.get('/metrics', (request, response) => {
     response.set('Content-Type', Prometheus.register.contentType)
     console.log(Prometheus.register)
     response.send(Prometheus.register.metrics())
 })
-
+}
 //test check priority.
 router.get('/tester2', auth, (req, res) => {
     console.log(JSON.stringify(req.user))

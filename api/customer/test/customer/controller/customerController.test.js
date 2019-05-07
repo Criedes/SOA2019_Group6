@@ -24,7 +24,7 @@ describe('/api/customers', () => {
             "name": "Kittibun Sattabus",
             "username": "kitti_kit",
             "password": "test1234",
-            "phone_number": "0987654321"
+            "phone": "0987654321"
         }
         it('should create new document in Database', async () => {
             const res = await request(server)
@@ -50,7 +50,7 @@ describe('/api/customers', () => {
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
 
-            expect(res.status).toBe(400)
+            expect(res.status).toBe(401)
         })
     })
 })
