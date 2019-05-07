@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const Prometheus = require('prom-client')
 
 Prometheus.collectDefaultMetrics({ timeout: 5000 })
-
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
