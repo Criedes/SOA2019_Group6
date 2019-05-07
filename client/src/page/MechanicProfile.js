@@ -77,6 +77,13 @@ class MechanicProfile extends Component {
             , mechanic_data: this.props.auth.user
             , customer_data: this.state.customer
         })
+        
+        localStorage.setItem('customer_id', this.state.customer._id)
+        localStorage.setItem('mechanic_id', this.props.auth.user._id)
+        localStorage.setItem('mechanic_name', this.props.auth.user.machanic_name)
+        localStorage.setItem('customer_name', this.state.customer.name)
+        localStorage.setItem('role', this.props.auth.user.role)
+        
         socket.emit('acceptcall', { customer_id: this.state.customer._id, user: this.props.auth.user })
     }
 
@@ -114,7 +121,7 @@ class MechanicProfile extends Component {
                 , customer_data : this.props.auth.user
             })
             return <Redirect to={{
-                pathname: '/chat2'
+                pathname: '/chat'
             }} />
         }
 

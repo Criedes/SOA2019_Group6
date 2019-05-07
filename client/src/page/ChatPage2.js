@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import socket from '../utils/socket'
-import qs from 'qs'
+// import qs from 'qs'
 import '../styles/chat.css'
 import {connect} from 'react-redux'
 
@@ -19,22 +19,22 @@ class ChatPage2 extends Component {
 
 
     componentDidMount = () => {
-        axios.get('http://localhost:3005/api/request/messages', {
-            params: {
-                myID: this.state.myID,
-                targetID: this.state.targetID,
-                name: this.state.name,
-                target: this.state.target
+        // axios.get('http://localhost:3005/api/request/messages', {
+        //     params: {
+        //         myID: this.state.myID,
+        //         targetID: this.state.targetID,
+        //         name: this.state.name,
+        //         target: this.state.target
 
-            }
-        })
-        .then((res) => {
-            this.setState({ chatInfo: res.data });
-            console.log(res.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+        //     }
+        // })
+        // .then((res) => {
+        //     this.setState({ chatInfo: res.data });
+        //     console.log(res.data)
+        // })
+        // .catch((err) => {
+        //     console.log(err)
+        // })
         // Socket on for receive update from server
         socket.on('getNewMessage', (data) => {
             const temp = this.state.incomingChat
@@ -47,20 +47,20 @@ class ChatPage2 extends Component {
     handleSendMessage = () => {
         socket.emit('newMessage', [this.state.name, this.state.message])
         //Post message
-        const params = {
-            myID: this.state.myID,
-            targetID: this.state.targetID,
-            name: this.state.name,
-            target: this.state.target,
-            message: this.state.message,
-        }
-        axios.post('http://localhost:3005/api/request/messages', qs.stringify(params))
-        .then((res) => {
-            console.log(res.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+        // const params = {
+        //     myID: this.state.myID,
+        //     targetID: this.state.targetID,
+        //     name: this.state.name,
+        //     target: this.state.target,
+        //     message: this.state.message,
+        // }
+        // axios.post('http://localhost:3005/api/request/messages', qs.stringify(params))
+        // .then((res) => {
+        //     console.log(res.data)
+        // })
+        // .catch((err) => {
+        //     console.log(err)
+        // })
     }
 
     handleNameChange = (event) => {
@@ -96,7 +96,7 @@ class ChatPage2 extends Component {
             <div className='container-fluid'>
                 <div className='chatBox'>
                     <div className='chatTitle'>
-                        <span>Title of this chat between {this.state.chatInfo.map(info => {return info.persons[0]+' & '+info.persons[1]})}</span>
+                        <span>Title of this chat between </span>
                     </div>
                     <div className='container'>
                         <div className='messageBox'>

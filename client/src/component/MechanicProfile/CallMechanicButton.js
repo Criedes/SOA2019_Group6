@@ -45,9 +45,15 @@ class CallMechanicButton extends Component {
             this.props.setService({
                 customer_id: this.props.auth.user._id
                 , mechanic_id: this.state.user._id
-                , mechanic_data : this.state.user
-                , customer_data : this.props.auth.user
+                , mechanic_data: this.state.user
+                , customer_data: this.props.auth.user
             })
+
+            localStorage.setItem('customer_id', this.props.auth.user._id)
+            localStorage.setItem('mechanic_id', this.state.user._id)
+            localStorage.setItem('mechanic_name', this.state.user.machanic_name)
+            localStorage.setItem('customer_name', this.props.auth.user.name)
+            localStorage.setItem('role', this.props.auth.user.role)
             this.setState({ isRedirect: false, callMechanicStatus: false })
             return <Redirect to='/chat' />
         }
