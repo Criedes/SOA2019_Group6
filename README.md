@@ -5,20 +5,20 @@
 - NodeJS
 - MongoDB
 
+### Official Website
+- [```Payang```](https://payangonline.me/)
+
 ### Deploy API
-```https://payangonline.me/api/{endpoint}```
+- ```https://payangonline.me/{endpoint}```
 
 
 ### Prometheus
-```http://35.240.192.56:9090```
+- [```http://35.240.192.56:9090```](http://35.240.192.56:9090)
 
 
 ### Eureka
-```http://35.240.192.56:8761```
+- [```http://35.240.192.56:8761```](http://35.240.192.56:8761)
 
-
-### Deploy API
-```http://35.231.183.143:3000/{endpoint}```
 
 
 # How to run API
@@ -32,13 +32,6 @@
 2. cd SOA2019_Group6
 3. cd api
 
-### Set Up MongoDB
-1. make sure your computer be installed mongoDB and MongoShell started already.
- 2. import mockup database use this command.
- 
- `mongoimport --db payang --collection mechanics --file mechanics.json`
- 
- `mongoimport --db payang --collection customers --file customers.json`
 
 ### Install node module
 use command. `npm install`
