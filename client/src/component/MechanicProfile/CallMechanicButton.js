@@ -11,7 +11,6 @@ class CallMechanicButton extends Component {
         user: null
     }
 
-
     callMechanic = () => {
         socket.emit('callMechanic', { user: this.props.auth.user, mechanic_id: this.props.mechanic_id })
         this.setState({ callMechanicStatus: true })
