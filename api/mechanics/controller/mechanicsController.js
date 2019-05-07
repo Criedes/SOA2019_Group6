@@ -16,15 +16,6 @@ router.get('/find/:id', mechanicService.findMechanicById)
 
 router.post('/search', mechanicService.queryMechanicByName)
 
-//get mechanic infomation by shop ' s name
-router.get('/find/garage/:shopname', mechanicService.findMechanicByShopName)
-
-//update Status ( change toggle )
-router.put('/updatestatus/:id', mechanicService.updateStatusById)
-
-//update counter of customer
-router.put('/updatecounter/:id', mechanicService.updateCountById)
-
 //register new mechanic
 router.post('/register', mechanicService.registerMechanic)
 

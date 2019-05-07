@@ -21,7 +21,12 @@ exports.findMechanicById = (req, res) => {
     counter.inc();
     async function getMechanicById() {
         const id = req.params.id
-        const mechanic = await findMechanicSchema.find({ "_id": id })
+        const mechanic = await findMechanicSchema.find({ "_id": id },(err, docs) => {
+            if (err) {
+                return res.status(404).json({
+                    success: false
+                });
+            };)
         res.status(200).json(mechanic)
     }
     getMechanicById()
@@ -31,55 +36,15 @@ exports.queryMechanicByName = (req, res) => {
     counter.inc();
     async function getMechanicById() {
         const name = req.body.name
-        const mechanic = await findMechanicSchema.find({'machanic_name': {'$regex': new RegExp('^' + name, 'i')}})
+        const mechanic = await findMechanicSchema.find({'machanic_name': {'$regex': new RegExp('^' + name, 'i')}},(err, docs) => {
+            if (err) {
+                return res.status(404).json({
+                    success: false
+                });
+            };)
         res.status(200).json(mechanic)
     }
     getMechanicById()
-}
-
-exports.findMechanicByShopName = (req, res) => {
-    counter.inc();
-    async function getMechanicByShopName() {
-        const shop_name = req.params.shopname
-        const mechanic = await findMechanicSchema.find({ "garagename": shop_name })
-        res.status(200).json(mechanic)
-    }
-    getMechanicByShopName()
-}
-
-exports.updateStatusById = (req, res) => {
-    counter.inc();
-    async function checkStatus() {
-        const id = req.params.id
-        const status_obj = await findMechanicSchema.find({ "_id": id }).select({ "status": 1 })
-
-        if (status_obj[0].status) {
-            const result_updated = await findMechanicSchema.update({ "_id": id }, {
-                $set: {
-                    status: false
-                }
-            }, { new: true })
-            res.status(200).json(result_updated)
-        } else {
-            const result_updated = await findMechanicSchema.update({ "_id": id }, {
-                $set: {
-                    status: true
-                }
-            }, { new: true })
-            res.status(200).json(result_updated)
-        }
-    }
-    checkStatus()
-}
-
-exports.updateCountById = (req, res) => {
-    counter.inc();
-    async function updateCount() {
-        const _id = req.params.id
-        const result = await findMechanicSchema.findOneAndUpdate({ _id: _id }, { $inc: { number_of_customer: 1 } }, { new: true })
-        res.status(200).json(result)
-    }
-    updateCount();
 }
 
 exports.registerMechanic = (req, res) => {
@@ -114,7 +79,6 @@ exports.registerMechanic = (req, res) => {
                 })
                 newMechanic.save(function (err, post) {
                     if (err) { 
-                        console.log(err)
                         return res.status(400).json({
                         success: false
                     })}
