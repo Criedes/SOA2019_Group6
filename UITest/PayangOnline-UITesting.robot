@@ -56,23 +56,23 @@ SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
 
 # Login ในส่วนของCustomer
 เลือกLoginของCustomer
-    Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]
-	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[1]/button
+    Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div/a
+	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div[2]/div[1]/button
 กรอกUsernameและPasswordของCustomer
 	Input Text  name:username  ${customer_username}
 	Input Text  name:password  ${customer_password}
-	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button
+	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div[2]/div[3]/form/div[1]/div[3]/button
 ต้องเจอSignOutของCustomer
 	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[2]/h6
 
 # Login ในส่วนของMechanic
 เลือกLoginของMechanic
-	Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]
-	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[2]/button
+	Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div/a
+	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div[2]/div[2]/button
 กรอกUsernameและPasswordของMechanic
 	Input Text  name:username  ${mechanic_username}
 	Input Text  name:password  ${mechanic_password}
-	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div/div[3]/form/div/div[3]/button
+	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div[2]/div[3]/form/div[1]/div[3]/button
 ต้องเจอSignOutของMechanic
 	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[3]/div/h6
 
@@ -85,11 +85,11 @@ SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
 
 # SignOutจากCustomerแล้วNavbarเปลี่ยนกลับ
 กด​SignOutแล้วกลับมาหน้าแรกของCustomer
-	Sleep  5s
+	Sleep  8s
 	Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[2]
-	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]/a
+	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div
 
 กด​SignOutแล้วกลับมาหน้าแรกของMechanic
-	Sleep  5s
+	Sleep  8s
 	Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[3]/div
-	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[3]/a
+	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div
