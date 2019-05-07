@@ -83,7 +83,6 @@ class MechanicProfile extends Component {
         localStorage.setItem('mechanic_name', this.props.auth.user.machanic_name)
         localStorage.setItem('customer_name', this.state.customer.name)
         localStorage.setItem('role', this.props.auth.user.role)
-        
         socket.emit('acceptcall', { customer_id: this.state.customer._id, user: this.props.auth.user })
     }
 
