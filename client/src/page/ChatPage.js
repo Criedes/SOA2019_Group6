@@ -115,7 +115,6 @@ class ChatPage extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => ({
     service: state.service,
     auth: state.auth,
