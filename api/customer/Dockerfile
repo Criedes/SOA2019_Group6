@@ -1,10 +1,11 @@
 FROM node:11.13.0
 
+ADD package.json /tmp/package.json
+RUN cd /tmp && npm install
+RUN cp -a /tmp/node_modules /work
+
 WORKDIR /work
-
-COPY . .
-
-RUN npm install
+ADD . /work
 
 ## THE LIFE SAVER
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.5.0/wait /wait

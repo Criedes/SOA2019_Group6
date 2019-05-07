@@ -1,0 +1,696 @@
+{
+	"info": {
+		"_postman_id": "943bd66e-afc5-56d3-a15b-1a5ea657dcd0",
+		"name": "API Test For payangonline.me",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST to /auth/customer Should have Status 201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eeea5a98-e915-4aab-97a7-cc4deffe5077",
+						"exec": [
+							"pm.test(\"Status code should be 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response should have token\", function () {",
+							"     pm.response.to.have.jsonBody(\"token\")",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\":\"kitti01\",\r\n\t\"password\":\"kitti01\"\r\n}"
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/auth/customer",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"auth",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST to /auth/customer Should have Status 400 (wrong password)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eeea5a98-e915-4aab-97a7-cc4deffe5077",
+						"exec": [
+							"pm.test(\"Status code should be 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Response should show Password Incorrect\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.msg).to.eql(\"Password incorrect\"); ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\":\"kitti01\",\r\n\t\"password\":\"kitti02\"\r\n}"
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/auth/customer",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"auth",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST to /auth/customer Should have Status 400 (don't have user)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eeea5a98-e915-4aab-97a7-cc4deffe5077",
+						"exec": [
+							"pm.test(\"Status code should be 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Response should show invalid email or password\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.msg).to.eql(\"invalid email or password\"); ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\":\"kitti03\",\r\n\t\"password\":\"kitti02\"\r\n}"
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/auth/customer",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"auth",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST to /auth/mechanic Should have Status 201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "399d5f1f-5acd-4978-9914-2e193be97b90",
+						"exec": [
+							"pm.test(\"Status code should be 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response should have token\", function () {",
+							"     pm.response.to.have.jsonBody(\"token\")",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"nawin01\",\n\t\"password\":\"nawin01\"\n}"
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/auth/mechanic",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"auth",
+						"mechanic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST to /auth/mechanic Should have Status 400 (wrong password)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42ca0802-f1b9-4603-84c4-97c742b221c2",
+						"exec": [
+							"pm.test(\"Status code should be 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Response should show Password Incorrect\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.msg).to.eql(\"Password incorrect\"); ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\":\"nawin01\",\r\n\t\"password\":\"nawin02\"\r\n}"
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/auth/mechanic",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"auth",
+						"mechanic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST to /auth/mechanic Should have Status 400 (don't have user)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "931c566e-0347-4f17-b844-238406afb1a5",
+						"exec": [
+							"pm.test(\"Status code should be 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Response should show invalid email or password\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.msg).to.eql(\"invalid email or password\"); ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\":\"kitti03\",\r\n\t\"password\":\"kitti02\"\r\n}"
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/auth/mechanic",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"auth",
+						"mechanic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET from /api/customers/:id Should have Status 404 (not found user)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46082e64-bf0c-420a-b03c-3a62eb8548d5",
+						"exec": [
+							"pm.test(\"Status code should be 400\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response should show false\", function () {",
+							"     var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(false); ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/customers/sdfsdfsdfsdfsdfsd",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"customers",
+						"sdfsdfsdfsdfsdfsd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET from /api/customers/:id Should have Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46082e64-bf0c-420a-b03c-3a62eb8548d5",
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response should have name\", function () {",
+							"     pm.response.to.have.jsonBody(\"name\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/customers/5cd0c28d103d100013bd4b00",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"customers",
+						"5cd0c28d103d100013bd4b00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST to /api/customers/register Should have Status 201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46082e64-bf0c-420a-b03c-3a62eb8548d5",
+						"exec": [
+							"pm.test(\"Status code should be 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response should have name\", function () {",
+							"     pm.response.to.have.jsonBody(\"name\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"tester testo\",\n    \"username\": \"tester01\",\n    \"password\": \"$2b$10$.BgZvvJKLpir2EPXFx9h2e955Q.irSaqqk9i/wV8wO8ZhGbwR/aSG\",\n    \"phone\": \"0953244827\"\n}\n"
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/customers/register",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"customers",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST to /api/customers/register Should have Status 400 (Missing some key)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46082e64-bf0c-420a-b03c-3a62eb8548d5",
+						"exec": [
+							"pm.test(\"Status code should be 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response should have error\", function () {",
+							"     pm.response.to.have.jsonBody(\"success\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"tester testo\",\n    \"username\": \"tester01\",\n    \"password\": \"$2b$10$.BgZvvJKLpir2EPXFx9h2e955Q.irSaqqk9i/wV8wO8ZhGbwR/aSG\",\n    \"role\": \"customer\",\n    \"status\": \"null\",\n    \"request_mechanic_id\": \"null\"\n}\n"
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/customers/register",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"customers",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET api/mechanics/find Should have Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ebe19002-9960-4b8e-b691-d0060dd0cf54",
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response should have list of mechanic\", function () {",
+							"     pm.response.to.have.jsonBody();",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/mechanics/find",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"mechanics",
+						"find"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST api/mechanic/find/:id Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7d05b57-2c0c-48b6-a6a0-8fd4ac92336a",
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response should have mechanic\", function () {",
+							"     pm.response.to.have.jsonBody();",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/mechanics/find/5ccf1ed0c5233a001327c5d3",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"mechanics",
+						"find",
+						"5ccf1ed0c5233a001327c5d3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST api/mechanic/find/:id Status 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7d05b57-2c0c-48b6-a6a0-8fd4ac92336a",
+						"exec": [
+							"pm.test(\"Status code should be 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response should show invalid email or password\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(false); ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/mechanics/find/hgkhgjkhglhlkhlh",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"mechanics",
+						"find",
+						"hgkhgjkhglhlkhlh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST api/mechanics/search Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed2b6e9e-d9ef-4814-86ca-35e8f3348c32",
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response should show invalid email or password\", function () {",
+							"    pm.response.to.have.jsonBody(); ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Main\"\n}"
+				},
+				"url": {
+					"raw": "https://payangonline.me/api/mechanics/search",
+					"protocol": "https",
+					"host": [
+						"payangonline",
+						"me"
+					],
+					"path": [
+						"api",
+						"mechanics",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
