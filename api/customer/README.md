@@ -9,7 +9,7 @@
 6.	run test by this command `npm start`
 
 ### Test
-1.	run test by this command npm test
+1.	run test by this command `npm test`
 
 ## Endpoints
 1.	Get information of customer by ID.
