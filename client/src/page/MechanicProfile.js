@@ -98,12 +98,12 @@ class MechanicProfile extends Component {
             console.log(this.state.customer)
             Swal.fire({
                 title: 'คุณ' + this.state.customer.name + ' ต้องการใช้บริการ',
-                text: "You won't be able to revert this!",
+                text: "กรุณากด Accept เพื่อตอบรับคำข้อหรือกด Cancel เพื่อปฏิเสธ",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Accept'
             }).then((result) => {
                 if (result.value) {
                     this.acceptCalling()
