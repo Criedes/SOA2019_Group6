@@ -7,7 +7,7 @@ class HomePage extends Component {
     render() { 
         return ( 
             <div>
-                {/* <Header /> */}
+                <Header /> 
                 <Landing />
                 <Content />
             </div>
