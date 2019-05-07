@@ -49,6 +49,12 @@ SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
 	กด​SignOutแล้วกลับมาหน้าแรกของMechanic
 	Close Browser
 
+กดFind MechanicแบบLoginแล้วต้องขึ้นSee information
+	เปิดหน้าแรกของเว็บPayangOnline
+	เลือกLoginของCustomer
+    กรอกUsernameและPasswordของCustomer
+	กดFind Mechanicเจอปุ่ม​See information
+
 *** Keywords ***
 
 เปิดหน้าแรกของเว็บPayangOnline
@@ -78,7 +84,7 @@ SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
 
 # Searchคำว่าmainต้องเจอMainShopร้านเดียว
 เข้าไปพิมในช่องSearch
-	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div[4]/div/a/p
+	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div[4]/div/a
 	Input Text  class:search_input  main
 ต้องเจอร้านเดียว
 	Page Should Contain Element  class:mechanic-wrapper  limit=1
@@ -93,3 +99,11 @@ SignOutจากMechanicแล้วNavbarเปลี่ยนกลับ
 	Sleep  8s
 	Click Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[3]/div
 	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div
+
+
+# กดFind MechanicแบบLoginแล้วต้องขึ้นSee information
+
+กดFind Mechanicเจอปุ่ม​See information
+	Wait Until Page Contains Element  xpath://*[@id="root"]/div/div/div[1]/div/div/div[2]/div[2]/h6
+	Click Element  xpath://*[@id="root"]/div/div/div[2]/div/div/div[4]/div/a
+	Wait Until Page Contains Element  class:select_mechanic_btn
