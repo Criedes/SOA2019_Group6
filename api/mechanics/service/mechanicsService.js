@@ -124,8 +124,6 @@ exports.registerMechanic = (req, res) => {
                   })
             })
         })
-        
-
     }
 
     registMechanic();
