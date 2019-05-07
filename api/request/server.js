@@ -18,7 +18,6 @@ io.on('connection', (socket) => {
         io.sockets.emit(data.mechanic_id, data)
     })
 
-
     //mechanic accept call
     //reciever => client
     //publisher => mechanic
