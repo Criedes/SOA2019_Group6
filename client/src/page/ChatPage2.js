@@ -17,7 +17,6 @@ class ChatPage2 extends Component {
         message: "",
     }
 
-
     componentDidMount = () => {
         // axios.get('http://localhost:3005/api/request/messages', {
         //     params: {
