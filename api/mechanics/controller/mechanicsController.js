@@ -35,5 +35,4 @@ router.get('/metrics', (request, response) => {
     response.send(Prometheus.register.metrics())
 })
 
-
 module.exports = router;
