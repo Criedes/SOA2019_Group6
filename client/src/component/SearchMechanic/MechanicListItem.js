@@ -15,7 +15,6 @@ class MechanicListItem extends Component {
                     <div className="mechanic-info">
                         <div className="header-info">
                             <h3>{data.machanic_name}</h3>
-                            <h6>{`ระยะทาง ${data.howFar} กิโลเมตร`}</h6>
                         </div>
                         <div className="info">
                             <div className="price">

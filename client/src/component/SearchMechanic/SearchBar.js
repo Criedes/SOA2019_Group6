@@ -19,7 +19,6 @@ class SearchBar extends Component {
                 <div className="search-row">
                     <form className="from-search" onSubmit={this.handleSubmit}>
                         <input className="search_input" placeholder={"ค้นหาชื่อร้านหรืออู่"} type="text" value={this.state.search_text} onChange={this.handleChange} />
-                        <button className="submit_btn" type="submit"  value="Submit"><i className="fa fa-search" aria-hidden="true"></i> Find Mechanic</button>
                     </form>
                 </div>
             </div>

@@ -103,3 +103,13 @@
     width: 30%;
 }
 
+
+@media only screen and (max-width: 1000px) {
+    .Intro{
+        display: none;
+    }
+    .sub-content:nth-child(1){
+        width: 100%;
+    }
+  }
+

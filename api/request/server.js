@@ -1,7 +1,7 @@
 const app = require('./app')
 const socket = require('socket.io')
 
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
     console.log("Server run on port: ", server.address().port)
 })
@@ -34,6 +34,12 @@ io.on('connection', (socket) => {
         console.log("Message sent to server on:"+"newMessage")
         console.log(data)
         io.sockets.emit(data.channal, data.data)
+    })
+
+    socket.on('successService', (data) => {
+        console.log("Message sent to server on:"+"newMessage")
+        console.log(data)
+        io.sockets.emit(data.customer_id, {reset:true})
     })
 })
 

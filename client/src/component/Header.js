@@ -110,7 +110,7 @@ class Header extends Component {
                                 </Link>
                             </div>
                             <div className="navbar-r">
-                                <div className="">
+                                {/* <div className="">
                                     <Link to="/">
                                         <h6>Home</h6>
                                         <span>หน้าแรก</span>
@@ -121,7 +121,7 @@ class Header extends Component {
                                         <h6>Become Partner</h6>
                                         <span>สมัครเป็นช่าง</span>
                                     </Link>
-                                </div>
+                                </div> */}
                                 <div>
                                     <Link to="/login">
                                         <h6>Sign in</h6>
