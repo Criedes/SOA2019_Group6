@@ -63,7 +63,7 @@ use command. `npm start`
 |---------------------------|---------------------------------------------|
 |GET  `/api/mechanics/find` | get information of all mechanics. | 
 |GET  `/api/mechanics/find/:id` | get information of mechanic by ID. | 
-|GET  `/api/mechanics/find/garage/:shopname` | get information of mechanic by Garage name ( shop name ). | 
+|GET  `/api/mechanics/search` | get information of mechanic by input data. | 
 |POST `/api/mechanics/register` | post register new mechanic by request body.|
 
 

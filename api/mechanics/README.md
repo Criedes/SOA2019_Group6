@@ -28,9 +28,9 @@
 
 3. get information of mechanic by Garage name ( shop name ).
 
-    ```GET /api/mechanics/find/garage/:shopname``` 
+    ```GET /api/mechanics/search``` 
     
-      Return ```200 Success``` Search and show mechanic by Garage name (shop name ).
+      Return ```200 Success``` Search and show mechanic by input data.
 
 ***
   
