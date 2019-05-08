@@ -7,7 +7,8 @@
 5.	run test by this command ```npm start	```
 
 ### Test
-1.	run test by this command ```npm test```
+1.	set NODE_ENV=test
+2.  run test by this command ```npm test```
 
 ### Endpoints
 1. get information of all mechanics.
