@@ -19,12 +19,12 @@ class ApiDoc extends Component {
             service: 'Mechanic',
             desc: 'post register new mechanic by request body.'
         },{
-            path: '/api/customers/:id',
-            service: 'customers',
+            path: '/api/customer/:id',
+            service: 'customer',
             desc: 'Get information of customer by ID.'
         },{
-            path: '/api/customers/register',
-            service: 'customers',
+            path: '/api/customer/register',
+            service: 'customer',
             desc: 'Post request body to save in database.'
         },{
             path: '/api/auth/customer',
