@@ -37,7 +37,7 @@ exports.authenUser = async (req, res) => {
     }
 
     jwt.sign(payload, config.get('jwtPrivateKey'), { expiresIn: 360000 }, (err, token) => {
-        console.log(token)
+        // console.log(token)
         res.header('Authorization', token).status(201).json({ token })
     })
 }
@@ -66,7 +66,7 @@ exports.authenMechanic = async (req, res) => {
     }
 
     jwt.sign(payload, config.get('jwtPrivateKey'), { expiresIn: 360000 }, (err, token) => {
-        console.log(payload)
+        // console.log(payload)
         res.header('Authorization', token).status(201).json({ token })
     })
 }
