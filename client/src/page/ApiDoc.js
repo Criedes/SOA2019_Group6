@@ -10,6 +10,14 @@ class ApiDoc extends Component {
             path: '/api/customers/register',
             service: 'customers',
             desc: 'Post request body to save in database.'
+        },{
+            path: '/api/auth/customer',
+            service: 'auth',
+            desc: 'Authentication customer in auth service by username and password.'
+        },{
+            path: '/api/auth/mechanic',
+            service: 'auth',
+            desc: 'Authentication mechanic in auth service by username and password.'
         }]
     }
     render() {
