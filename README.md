@@ -13,14 +13,14 @@
 
 
 ### Prometheus
-- [```http://35.240.192.56:9090```](http://35.240.192.56:9090)
+- [```http://35.240.250.162:9090```](http://35.240.250.162:9090)
 
 
 ### Eureka
-- [```http://35.240.192.56:8761```](http://35.240.192.56:8761)
+- [```http://35.240.250.162:8761```](http://35.240.250.162:8761)
 
 ### Grafana
-- [```http://35.240.192.56:3006```](http://35.240.192.56:3006)
+- [```http://35.240.250.162:3006```](http://35.240.250.162:3006)
 
 # How to run API
 
@@ -41,6 +41,7 @@ use command. `npm install`
 use command. `npm start`
 
 # API
+- [API Gateway](https://payangonline.me/api)
 
 - [Customer Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/customer)
 
@@ -49,7 +50,7 @@ use command. `npm start`
 |GET  `/api/customers/:id` |  Get information of customer by ID. | 
 |POST `/api/customers/register` | Post request body to save in database. | 
 
--  [Auth Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/auth)
+-  [Authentication Service](https://github.com/Criedes/SOA2019_Group6/tree/master/api/auth)
    
 | Event                     | Description                                   | 
 |---------------------------|---------------------------------------------|
@@ -63,7 +64,7 @@ use command. `npm start`
 |---------------------------|---------------------------------------------|
 |GET  `/api/mechanics/find` | get information of all mechanics. | 
 |GET  `/api/mechanics/find/:id` | get information of mechanic by ID. | 
-|GET  `/api/mechanics/find/garage/:shopname` | get information of mechanic by Garage name ( shop name ). | 
+|GET  `/api/mechanics/search` | get information of mechanic by input data. | 
 |POST `/api/mechanics/register` | post register new mechanic by request body.|
 
 

@@ -3,22 +3,6 @@ import ApiListItem from '../component/ApiDoc/ApiListItem'
 class ApiDoc extends Component {
     state = {
         list: [{
-            path: 'api/customers/:id',
-            service: 'customers',
-            desc: 'Get information of customer by ID.'
-        },{
-            path: '/api/customers/register',
-            service: 'customers',
-            desc: 'Post request body to save in database.'
-        },{
-            path: '/api/auth/customer',
-            service: 'auth',
-            desc: 'Authentication customer in auth service by username and password.'
-        },{
-            path: '/api/auth/mechanic',
-            service: 'auth',
-            desc: 'Authentication mechanic in auth service by username and password.'
-        },{
             path: '/api/mechanics/find',
             service: 'Mechanic',
             desc: 'get information of all mechanics.'
@@ -27,13 +11,29 @@ class ApiDoc extends Component {
             service: 'Mechanic',
             desc: 'get information of mechanic by ID.'
         },{
-            path: '/api/mechanics/find/garage/:shopname',
+            path: '/api/mechanics/search',
             service: 'Mechanic',
-            desc: 'get information of mechanic by Garage name ( shop name ).'
+            desc: 'get information of mechanic by input data'
         },{
             path: '/api/mechanics/register',
             service: 'Mechanic',
             desc: 'post register new mechanic by request body.'
+        },{
+            path: '/api/customers/:id',
+            service: 'Customer',
+            desc: 'Get information of customer by ID.'
+        },{
+            path: '/api/customers/register',
+            service: 'Customer',
+            desc: 'Post request body to save in database.'
+        },{
+            path: '/api/auth/customer',
+            service: 'Authentication',
+            desc: 'Authentication customer in auth service by username and password.'
+        },{
+            path: '/api/auth/mechanic',
+            service: 'Authentication',
+            desc: 'Authentication mechanic in auth service by username and password.'
         }]
     }
     render() {
