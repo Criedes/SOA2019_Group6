@@ -85,24 +85,24 @@ jobs:
                     docker build -t $DOCKER_USERNAME/payang_frontend:2.0 .
                     docker push $DOCKER_USERNAME/payang_frontend:2.0
 # Deploy Website
-    service-deploy:
-        machine:
-            enabled: true
-        steps:
+    # service-deploy:
+    #     machine:
+    #         enabled: true
+    #     steps:
 
-            - run:
-                name: SSH
-                command: |                                        
-                    sudo apt-get install sshpass
-                    sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} \
-                    "ssh -i ${KEY_PATH} ${DEPLOY_USER}@${DEPLOY_HOST} \
-                    \"cd SOA2019_Group6 && \
-                    git reset --hard && \
-                    git pull && \
-                    sudo docker-compose stop && \
-                    sudo docker-compose rm -f && \
-                    sudo docker-compose pull && \
-                    sudo docker-compose up -d \""
+    #         - run:
+    #             name: SSH
+    #             command: |                                        
+    #                 sudo apt-get install sshpass
+    #                 sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} \
+    #                 "ssh -i ${KEY_PATH} ${DEPLOY_USER}@${DEPLOY_HOST} \
+    #                 \"cd SOA2019_Group6 && \
+    #                 git reset --hard && \
+    #                 git pull && \
+    #                 sudo docker-compose stop && \
+    #                 sudo docker-compose rm -f && \
+    #                 sudo docker-compose pull && \
+    #                 sudo docker-compose up -d \""
 
 workflows:
     version: 2
@@ -133,15 +133,15 @@ workflows:
                     branches:
                         only:
                             - master
-            - service-deploy:
-                requires:
-                    - customer
-                    - mechanics
-                    - request
-                    - authen
-                    - payang_frontend
-                filters:
-                    branches:
-                        only:
-                            - master
+            # - service-deploy:
+            #     requires:
+            #         - customer
+            #         - mechanics
+            #         - request
+            #         - authen
+            #         - payang_frontend
+            #     filters:
+            #         branches:
+            #             only:
+            #                 - master
             
