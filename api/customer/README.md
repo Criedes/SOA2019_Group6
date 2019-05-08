@@ -13,13 +13,13 @@
 
 ## Endpoints
 1.	Get information of customer by ID.
--	`Get /api/customer/:id`
+-	`Get /api/customers/:id`
   
       Return `200 SUCCESS` show all list of customer with information of user profile when given an exists user ID.
  ***
 
 2.	Post request body to save in database.
--	`Post /api/customer/register`
+-	`Post /api/customers/register`
 
         {
 	        name: ‘Jutharat’
