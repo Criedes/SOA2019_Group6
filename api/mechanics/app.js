@@ -5,11 +5,17 @@ var cors = require('cors')
 const port = 3000
 const Eureka = require('eureka-js-client').Eureka;
 var jsonParser = bodyParser.json()
+const ENV =  process.env.NODE_ENV || 'production';
+
 app.use(urlencodedParser = bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(cors())
 
 const mechanicsController = require('./controller/mechanicsController')
+if(ENV === 'test'){
+ app.use('/api/mechanics', mechanicsController)
+}
+else{
 const client = new Eureka({
     // application instance information
     instance: {
@@ -44,5 +50,6 @@ client.start((error) => {
     console.log(error || 'Eureka client started');
     app.use('/api/mechanics', mechanicsController)
 });
-// app.use('/api/mechanics', mechanicsController)
+}
+
 module.exports = app
