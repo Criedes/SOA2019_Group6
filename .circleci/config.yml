@@ -11,40 +11,13 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Customer Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
                 name: Build Docker Customer service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/customer_service .
                     docker push $DOCKER_USERNAME/customer_service
-    # customer-deploy:
-    #     working_directory: ~/SOA2019_Group6/api/customer/
-    #     docker:
-    #         - image: google/cloud-sdk
-    #     steps:
-    #         - setup_remote_docker:
-    #             docker_layer_caching: true
-    #         - checkout:
-    #             path: ~/SOA2019_Group6
-    #         - run:
-    #             name: Config gcloud credentials
-    #             command: |
-    #                 echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-    #                 gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
-    #                 gcloud auth configure-docker
-    #         - run:
-    #             name: SSH
-    #             command: |
-    #                 gcloud --quiet compute ssh customer-service --zone asia-southeast1-b \
-    #                 --command "docker pull tomtan05/customer_service && docker run -p 3001:3000 -d tomtan05/customer_service"
+
 # Mechanics Service
     mechanics:
         working_directory: ~/SOA2019_Group6/api/mechanics/
@@ -55,20 +28,13 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Mechanics Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
                 name: Build Docker mechanics service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/mechanics_service .
                     docker push $DOCKER_USERNAME/mechanics_service
+
 # Request Mechanics Service
     request:
         working_directory: ~/SOA2019_Group6/api/request/
@@ -79,20 +45,13 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Request Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
                 name: Build Docker request service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/request_service .
                     docker push $DOCKER_USERNAME/request_service
+
 # Authentication Service
     authen:
         working_directory: ~/SOA2019_Group6/api/auth/
@@ -103,20 +62,13 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Request Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
                 name: Build Docker request service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/authen_service .
                     docker push $DOCKER_USERNAME/authen_service
+# Front-end
     payang_frontend:
         working_directory: ~/SOA2019_Group6/client/
         docker:
@@ -126,30 +78,13 @@ jobs:
                 docker_layer_caching: true
             - checkout:
                 path: ~/SOA2019_Group6
-            # - run:
-            #     name: Install Library
-            #     command: |
-            #         npm install
-            # - run:
-            #     name: Test Request Service
-            #     command: |
-            #         npm test #wait for mongodb
             - run:
                 name: Build Docker request service Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker build -t $DOCKER_USERNAME/payang_frontend .
                     docker push $DOCKER_USERNAME/payang_frontend
-#deploy
-    # service-deploy:
-    #     machine:
-    #         enabled: true
-    #     steps:
-    #         - run:
-    #             name: SSH
-    #             command: |
-    #                 sudo apt-get install sshpass
-    #                 sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6;git reset --hard;git pull;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
+# Deploy Website
     service-deploy:
         machine:
             enabled: true
@@ -168,66 +103,32 @@ jobs:
                     sudo docker-compose rm -f && \
                     sudo docker-compose pull && \
                     sudo docker-compose up -d \""
-                    # --command "git reset --hard && git pull && sudo docker-compose stop && sudo docker-compose rm -f && sudo docker-compose pull && sudo docker-compose up -d"
-    
-#Test
-    # machine:
-    #         enabled: true
-    #     steps:
-    #         - run:
-    #             name: SSH
-    #             command: |
-    #                 sudo apt-get install sshpass
-    #                 sshpass -p ${SSH_PASS} ssh -v ${SSH_USER}@${SSH_HOST} "cd SOA2019_Group6/api; npm test"
-
 
 workflows:
     version: 2
     complie:
         jobs:
-            # - mongo:
-            #     filters:
-            #         branches:
-            #             only:
-            #                 - master
             - customer:
-                # requires:
-                #     - mongo
                 filters:
                     branches:
                         only:
                             - master
-            # - customer-deploy:
-            #     requires:
-            #         - customer
-            #     filters:
-            #         branches:
-            #             only:
-            #                 - master
             - mechanics:
-                # requires:
-                #     - mongo
                 filters:
                     branches:
                         only:
                             - master
             - request:
-                # requires:
-                #     - mongo
                 filters:
                     branches:
                         only:
                             - master
             - authen:
-                # requires:
-                #     - mongo
                 filters:
                     branches:
                         only:
                             - master
             - payang_frontend:
-                # requires:
-                #     - mongo
                 filters:
                     branches:
                         only:
@@ -243,11 +144,4 @@ workflows:
                     branches:
                         only:
                             - master
-            # - api-test:
-            #     requires:
-            #         - service-deploy:
-            #     filters:
-            #         branches:
-            #             only:
-            #                 - master
             
