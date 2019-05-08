@@ -18,6 +18,22 @@ class ApiDoc extends Component {
             path: '/api/auth/mechanic',
             service: 'auth',
             desc: 'Authentication mechanic in auth service by username and password.'
+        },{
+            path: '/api/mechanics/find',
+            service: 'Mechanic',
+            desc: 'get information of all mechanics.'
+        },{
+            path: '/api/mechanics/find/:id',
+            service: 'Mechanic',
+            desc: 'get information of mechanic by ID.'
+        },{
+            path: '/api/mechanics/find/garage/:shopname',
+            service: 'Mechanic',
+            desc: 'get information of mechanic by Garage name ( shop name ).'
+        },{
+            path: '/api/mechanics/register',
+            service: 'Mechanic',
+            desc: 'post register new mechanic by request body.'
         }]
     }
     render() {
