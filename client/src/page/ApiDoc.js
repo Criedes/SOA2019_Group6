@@ -3,22 +3,6 @@ import ApiListItem from '../component/ApiDoc/ApiListItem'
 class ApiDoc extends Component {
     state = {
         list: [{
-            path: 'api/customers/:id',
-            service: 'customers',
-            desc: 'Get information of customer by ID.'
-        },{
-            path: '/api/customers/register',
-            service: 'customers',
-            desc: 'Post request body to save in database.'
-        },{
-            path: '/api/auth/customer',
-            service: 'auth',
-            desc: 'Authentication customer in auth service by username and password.'
-        },{
-            path: '/api/auth/mechanic',
-            service: 'auth',
-            desc: 'Authentication mechanic in auth service by username and password.'
-        },{
             path: '/api/mechanics/find',
             service: 'Mechanic',
             desc: 'get information of all mechanics.'
@@ -34,6 +18,22 @@ class ApiDoc extends Component {
             path: '/api/mechanics/register',
             service: 'Mechanic',
             desc: 'post register new mechanic by request body.'
+        },{
+            path: '/api/customers/:id',
+            service: 'customers',
+            desc: 'Get information of customer by ID.'
+        },{
+            path: '/api/customers/register',
+            service: 'customers',
+            desc: 'Post request body to save in database.'
+        },{
+            path: '/api/auth/customer',
+            service: 'auth',
+            desc: 'Authentication customer in auth service by username and password.'
+        },{
+            path: '/api/auth/mechanic',
+            service: 'auth',
+            desc: 'Authentication mechanic in auth service by username and password.'
         }]
     }
     render() {
