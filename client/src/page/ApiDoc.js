@@ -3,13 +3,13 @@ import ApiListItem from '../component/ApiDoc/ApiListItem'
 class ApiDoc extends Component {
     state = {
         list: [{
-            path: '/api/customer/register',
+            path: 'api/customers/:id',
             service: 'customers',
-            desc: 'register customer'
+            desc: 'Get information of customer by ID.'
         },{
-            path: '/api/customer/register',
+            path: '/api/customers/register',
             service: 'customers',
-            desc: 'register customer'
+            desc: 'Post request body to save in database.'
         }]
     }
     render() {
