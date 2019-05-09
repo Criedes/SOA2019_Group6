@@ -5,14 +5,6 @@
 3. cd `api`
 4. cd `API_Name`
 
-### Set Up MongoDB
-1. make sure your computer be installed mongoDB and MongoShell started already.
-2. import mockup database use this command.
- 
- `mongoimport --db payang --collection mechanics --file mechanics.json`
- 
- `mongoimport --db payang --collection customers --file customers.json`
-
 ### Install node module
 use command. `npm install`
 
@@ -22,7 +14,8 @@ use command. `npm start`
 # Test Endpoint
 1. make sure your computer be installed mongoDB and MongoShell started already.
 2. cd to directory 'api'
-3. run test by this command `npm test`
+3. set NODE_ENV=test
+4. run test by this command ```npm test```
 
 # API
 
