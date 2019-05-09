@@ -33,6 +33,9 @@
 2. cd SOA2019_Group6
 3. cd api
 
+### Change to Each API Directory
+1. use command. `cd SERVICE_NAME`
+2. use command `set NODE_ENV=test`
 
 ### Install node module
 use command. `npm install`
