@@ -4,7 +4,8 @@
 2.	cd SOA2019_Group6
 3.	cd to directory ```api```
 4.	cd to directory ```auth```
-5.	run test by this command ```npm start	```
+5.  set NODE_ENV=production
+6.	run test by this command ```npm start	```
 
 ### Test
 1.	set NODE_ENV=test
